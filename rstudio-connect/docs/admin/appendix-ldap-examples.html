@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>RStudio Connect: Admin Guide</title>
+  <meta name="description" content="RStudio Connect: Admin Guide">
+  <meta name="generator" content="bookdown 0.3.18 and GitBook 2.6.7">
+
+  <meta property="og:title" content="RStudio Connect: Admin Guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="RStudio Connect: Admin Guide" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="custom-landing.html">
+<link rel="next" href="appendix-deployment-guide.html">
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#system-requirements"><i class="fa fa-check"></i><b>1.1</b> System Requirements</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
+<li class="chapter" data-level="2.1" data-path="getting-started.html"><a href="getting-started.html#installation"><i class="fa fa-check"></i><b>2.1</b> Installation</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="getting-started.html"><a href="getting-started.html#installation-ubuntu"><i class="fa fa-check"></i><b>2.1.1</b> Ubuntu (12.04+)</a></li>
+<li class="chapter" data-level="2.1.2" data-path="getting-started.html"><a href="getting-started.html#installation-redhat"><i class="fa fa-check"></i><b>2.1.2</b> Red Hat Enterprise Linux/CentOS Linux (6.0+)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="getting-started.html"><a href="getting-started.html#initial-configuration"><i class="fa fa-check"></i><b>2.2</b> Initial Configuration</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="getting-started.html"><a href="getting-started.html#editing-config"><i class="fa fa-check"></i><b>2.2.1</b> Editing the Configuration File</a></li>
+<li class="chapter" data-level="2.2.2" data-path="getting-started.html"><a href="getting-started.html#getting-started-authentication"><i class="fa fa-check"></i><b>2.2.2</b> Authentication</a></li>
+<li class="chapter" data-level="2.2.3" data-path="getting-started.html"><a href="getting-started.html#getting-started-admin-account"><i class="fa fa-check"></i><b>2.2.3</b> Sign In!</a></li>
+<li class="chapter" data-level="2.2.4" data-path="getting-started.html"><a href="getting-started.html#getting-started-email"><i class="fa fa-check"></i><b>2.2.4</b> Email Sending</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="license-management.html"><a href="license-management.html"><i class="fa fa-check"></i><b>3</b> License Management</a><ul>
+<li class="chapter" data-level="3.1" data-path="license-management.html"><a href="license-management.html#capabilities"><i class="fa fa-check"></i><b>3.1</b> Capabilities</a></li>
+<li class="chapter" data-level="3.2" data-path="license-management.html"><a href="license-management.html#notification-of-expiration"><i class="fa fa-check"></i><b>3.2</b> Notification of Expiration</a></li>
+<li class="chapter" data-level="3.3" data-path="license-management.html"><a href="license-management.html#product-activation"><i class="fa fa-check"></i><b>3.3</b> Product Activation</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="license-management.html"><a href="license-management.html#activation-basics"><i class="fa fa-check"></i><b>3.3.1</b> Activation Basics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="license-management.html"><a href="license-management.html#connectivity-requirements"><i class="fa fa-check"></i><b>3.4</b> Connectivity Requirements</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="license-management.html"><a href="license-management.html#proxy-servers"><i class="fa fa-check"></i><b>3.4.1</b> Proxy Servers</a></li>
+<li class="chapter" data-level="3.4.2" data-path="license-management.html"><a href="license-management.html#offline-activation"><i class="fa fa-check"></i><b>3.4.2</b> Offline Activation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="license-management.html"><a href="license-management.html#evaluations"><i class="fa fa-check"></i><b>3.5</b> Evaluations</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="license-management.html"><a href="license-management.html#extending-evaluations"><i class="fa fa-check"></i><b>3.5.1</b> Extending Evaluations</a></li>
+<li class="chapter" data-level="3.5.2" data-path="license-management.html"><a href="license-management.html#connectivity-requirements-1"><i class="fa fa-check"></i><b>3.5.2</b> Connectivity Requirements</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="license-management.html"><a href="license-management.html#licensing-errors"><i class="fa fa-check"></i><b>3.6</b> Licensing Errors</a></li>
+<li class="chapter" data-level="3.7" data-path="license-management.html"><a href="license-management.html#floating-licensing"><i class="fa fa-check"></i><b>3.7</b> Floating Licensing</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="license-management.html"><a href="license-management.html#the-rstudio-connect-license-server"><i class="fa fa-check"></i><b>3.7.1</b> The RStudio Connect License Server</a></li>
+<li class="chapter" data-level="3.7.2" data-path="license-management.html"><a href="license-management.html#license-server-offline-activation"><i class="fa fa-check"></i><b>3.7.2</b> License Server Offline Activation</a></li>
+<li class="chapter" data-level="3.7.3" data-path="license-management.html"><a href="license-management.html#using-floating-licensing"><i class="fa fa-check"></i><b>3.7.3</b> Using Floating Licensing</a></li>
+<li class="chapter" data-level="3.7.4" data-path="license-management.html"><a href="license-management.html#configuring-license-leases"><i class="fa fa-check"></i><b>3.7.4</b> Configuring License Leases</a></li>
+<li class="chapter" data-level="3.7.5" data-path="license-management.html"><a href="license-management.html#lease-expiration-and-renewal"><i class="fa fa-check"></i><b>3.7.5</b> Lease Expiration and Renewal</a></li>
+<li class="chapter" data-level="3.7.6" data-path="license-management.html"><a href="license-management.html#troubleshooting-floating-licensing"><i class="fa fa-check"></i><b>3.7.6</b> Troubleshooting Floating Licensing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="files-directories.html"><a href="files-directories.html"><i class="fa fa-check"></i><b>4</b> Files &amp; Directories</a><ul>
+<li class="chapter" data-level="4.1" data-path="files-directories.html"><a href="files-directories.html#program-files"><i class="fa fa-check"></i><b>4.1</b> Program Files</a></li>
+<li class="chapter" data-level="4.2" data-path="files-directories.html"><a href="files-directories.html#configuration"><i class="fa fa-check"></i><b>4.2</b> Configuration</a></li>
+<li class="chapter" data-level="4.3" data-path="files-directories.html"><a href="files-directories.html#server-log"><i class="fa fa-check"></i><b>4.3</b> Server Log</a></li>
+<li class="chapter" data-level="4.4" data-path="files-directories.html"><a href="files-directories.html#access-logs"><i class="fa fa-check"></i><b>4.4</b> Access Logs</a></li>
+<li class="chapter" data-level="4.5" data-path="files-directories.html"><a href="files-directories.html#application-logs"><i class="fa fa-check"></i><b>4.5</b> Application Logs</a></li>
+<li class="chapter" data-level="4.6" data-path="files-directories.html"><a href="files-directories.html#variable-data"><i class="fa fa-check"></i><b>4.6</b> Variable Data</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="files-directories.html"><a href="files-directories.html#data-permissions"><i class="fa fa-check"></i><b>4.6.1</b> Permissions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="files-directories.html"><a href="files-directories.html#backups"><i class="fa fa-check"></i><b>4.7</b> Backups</a></li>
+<li class="chapter" data-level="4.8" data-path="files-directories.html"><a href="files-directories.html#server-migrations"><i class="fa fa-check"></i><b>4.8</b> Server Migrations</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="server-management.html"><a href="server-management.html"><i class="fa fa-check"></i><b>5</b> Server Management</a><ul>
+<li class="chapter" data-level="5.1" data-path="server-management.html"><a href="server-management.html#stopping-starting"><i class="fa fa-check"></i><b>5.1</b> Stopping and Starting</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="server-management.html"><a href="server-management.html#systemd-red-hatcentos-7-ubuntu-16.04"><i class="fa fa-check"></i><b>5.1.1</b> systemd (Red Hat/CentOS 7, Ubuntu 16.04)</a></li>
+<li class="chapter" data-level="5.1.2" data-path="server-management.html"><a href="server-management.html#upstart-ubuntu-12.04-ubuntu-14.04-red-hat-6"><i class="fa fa-check"></i><b>5.1.2</b> Upstart (Ubuntu 12.04, Ubuntu 14.04, Red Hat 6)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="server-management.html"><a href="server-management.html#system-messages"><i class="fa fa-check"></i><b>5.2</b> System Messages</a></li>
+<li class="chapter" data-level="5.3" data-path="server-management.html"><a href="server-management.html#health-check"><i class="fa fa-check"></i><b>5.3</b> Health-Check</a></li>
+<li class="chapter" data-level="5.4" data-path="server-management.html"><a href="server-management.html#upgrading"><i class="fa fa-check"></i><b>5.4</b> Upgrading</a></li>
+<li class="chapter" data-level="5.5" data-path="server-management.html"><a href="server-management.html#purge"><i class="fa fa-check"></i><b>5.5</b> Purging RStudio Connect</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="high-availability.html"><a href="high-availability.html"><i class="fa fa-check"></i><b>6</b> High Availability and Load Balancing</a><ul>
+<li class="chapter" data-level="6.1" data-path="high-availability.html"><a href="high-availability.html#ha-checklist"><i class="fa fa-check"></i><b>6.1</b> HA Checklist</a></li>
+<li class="chapter" data-level="6.2" data-path="high-availability.html"><a href="high-availability.html#ha-limitations"><i class="fa fa-check"></i><b>6.2</b> HA Limitations</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="high-availability.html"><a href="high-availability.html#clock-synchronization"><i class="fa fa-check"></i><b>6.2.1</b> Clock Synchronization</a></li>
+<li class="chapter" data-level="6.2.2" data-path="high-availability.html"><a href="high-availability.html#node-management"><i class="fa fa-check"></i><b>6.2.2</b> Node Management</a></li>
+<li class="chapter" data-level="6.2.3" data-path="high-availability.html"><a href="high-availability.html#database-requirements"><i class="fa fa-check"></i><b>6.2.3</b> Database Requirements</a></li>
+<li class="chapter" data-level="6.2.4" data-path="high-availability.html"><a href="high-availability.html#ha-shared-directory"><i class="fa fa-check"></i><b>6.2.4</b> Shared Data Directory Requirements</a></li>
+<li class="chapter" data-level="6.2.5" data-path="high-availability.html"><a href="high-availability.html#metrics-requirements"><i class="fa fa-check"></i><b>6.2.5</b> Metrics Requirements</a></li>
+<li class="chapter" data-level="6.2.6" data-path="high-availability.html"><a href="high-availability.html#ha-shiny-apps"><i class="fa fa-check"></i><b>6.2.6</b> Shiny Applications</a></li>
+<li class="chapter" data-level="6.2.7" data-path="high-availability.html"><a href="high-availability.html#ha-rsconnect"><i class="fa fa-check"></i><b>6.2.7</b> rsconnect Cookie Support</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="high-availability.html"><a href="high-availability.html#updating-ha-nodes"><i class="fa fa-check"></i><b>6.3</b> Updating HA Nodes</a></li>
+<li class="chapter" data-level="6.4" data-path="high-availability.html"><a href="high-availability.html#downgrading"><i class="fa fa-check"></i><b>6.4</b> Downgrading</a></li>
+<li class="chapter" data-level="6.5" data-path="high-availability.html"><a href="high-availability.html#ha-details"><i class="fa fa-check"></i><b>6.5</b> HA Details</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="high-availability.html"><a href="high-availability.html#concurrent-scheduled-document-rendering"><i class="fa fa-check"></i><b>6.5.1</b> Concurrent Scheduled Document Rendering</a></li>
+<li class="chapter" data-level="6.5.2" data-path="high-availability.html"><a href="high-availability.html#concurrent-shiny-applications-and-ad-hoc-rendering"><i class="fa fa-check"></i><b>6.5.2</b> Concurrent Shiny Applications and Ad-Hoc Rendering</a></li>
+<li class="chapter" data-level="6.5.3" data-path="high-availability.html"><a href="high-availability.html#polling"><i class="fa fa-check"></i><b>6.5.3</b> Polling</a></li>
+<li class="chapter" data-level="6.5.4" data-path="high-availability.html"><a href="high-availability.html#abandoned-r-processes"><i class="fa fa-check"></i><b>6.5.4</b> Abandoned R Processes</a></li>
+<li class="chapter" data-level="6.5.5" data-path="high-availability.html"><a href="high-availability.html#abandoned-shiny-applications"><i class="fa fa-check"></i><b>6.5.5</b> Abandoned Shiny Applications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="running-a-proxy.html"><a href="running-a-proxy.html"><i class="fa fa-check"></i><b>7</b> Running with a Proxy</a><ul>
+<li class="chapter" data-level="7.1" data-path="running-a-proxy.html"><a href="running-a-proxy.html#nginx-configuration"><i class="fa fa-check"></i><b>7.1</b> Nginx Configuration</a></li>
+<li class="chapter" data-level="7.2" data-path="running-a-proxy.html"><a href="running-a-proxy.html#apache-configuration"><i class="fa fa-check"></i><b>7.2</b> Apache Configuration</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="security-auditing.html"><a href="security-auditing.html"><i class="fa fa-check"></i><b>8</b> Security &amp; Auditing</a><ul>
+<li class="chapter" data-level="8.1" data-path="security-auditing.html"><a href="security-auditing.html#api-security"><i class="fa fa-check"></i><b>8.1</b> API Security</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="security-auditing.html"><a href="security-auditing.html#preventing-brute-force-dictionary-attacks"><i class="fa fa-check"></i><b>8.1.1</b> Preventing Brute Force &amp; Dictionary Attacks</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="security-auditing.html"><a href="security-auditing.html#browser-security"><i class="fa fa-check"></i><b>8.2</b> Browser Security</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="security-auditing.html"><a href="security-auditing.html#guaranteeing-https"><i class="fa fa-check"></i><b>8.2.1</b> Guaranteeing HTTPS</a></li>
+<li class="chapter" data-level="8.2.2" data-path="security-auditing.html"><a href="security-auditing.html#content-sniffing"><i class="fa fa-check"></i><b>8.2.2</b> Content Sniffing</a></li>
+<li class="chapter" data-level="8.2.3" data-path="security-auditing.html"><a href="security-auditing.html#content-embedding"><i class="fa fa-check"></i><b>8.2.3</b> Content Embedding</a></li>
+<li class="chapter" data-level="8.2.4" data-path="security-auditing.html"><a href="security-auditing.html#custom-headers"><i class="fa fa-check"></i><b>8.2.4</b> Custom Headers</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="security-auditing.html"><a href="security-auditing.html#audit-logs"><i class="fa fa-check"></i><b>8.3</b> Audit Logs</a></li>
+<li class="chapter" data-level="8.4" data-path="security-auditing.html"><a href="security-auditing.html#audit-cli"><i class="fa fa-check"></i><b>8.4</b> Audit Logs Command-Line Interface</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="database-provider.html"><a href="database-provider.html"><i class="fa fa-check"></i><b>9</b> Database</a><ul>
+<li class="chapter" data-level="9.1" data-path="database-provider.html"><a href="database-provider.html#database-sqlite"><i class="fa fa-check"></i><b>9.1</b> SQLite</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="database-provider.html"><a href="database-provider.html#database-sqlite-backups"><i class="fa fa-check"></i><b>9.1.1</b> SQLite Backups</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="database-provider.html"><a href="database-provider.html#database-postgres"><i class="fa fa-check"></i><b>9.2</b> PostgreSQL</a></li>
+<li class="chapter" data-level="9.3" data-path="database-provider.html"><a href="database-provider.html#changing-database-provider"><i class="fa fa-check"></i><b>9.3</b> Changing Database Provider</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="database-provider.html"><a href="database-provider.html#database-migration-checklist"><i class="fa fa-check"></i><b>9.3.1</b> Database Migration Checklist</a></li>
+<li class="chapter" data-level="9.3.2" data-path="database-provider.html"><a href="database-provider.html#configuration-requirements"><i class="fa fa-check"></i><b>9.3.2</b> Configuration Requirements</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="authentication.html"><a href="authentication.html"><i class="fa fa-check"></i><b>10</b> Authentication</a><ul>
+<li class="chapter" data-level="10.1" data-path="authentication.html"><a href="authentication.html#changing-authentication-provider"><i class="fa fa-check"></i><b>10.1</b> Changing Authentication Provider</a></li>
+<li class="chapter" data-level="10.2" data-path="authentication.html"><a href="authentication.html#session-management"><i class="fa fa-check"></i><b>10.2</b> Session Management</a></li>
+<li class="chapter" data-level="10.3" data-path="authentication.html"><a href="authentication.html#auth-username-requirements"><i class="fa fa-check"></i><b>10.3</b> Username requirements</a></li>
+<li class="chapter" data-level="10.4" data-path="authentication.html"><a href="authentication.html#authentication-password"><i class="fa fa-check"></i><b>10.4</b> Password</a></li>
+<li class="chapter" data-level="10.5" data-path="authentication.html"><a href="authentication.html#authentication-ldap"><i class="fa fa-check"></i><b>10.5</b> LDAP and Active Directory</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="authentication.html"><a href="authentication.html#defining-an-ldap-or-ad-section"><i class="fa fa-check"></i><b>10.5.1</b> Defining an LDAP or AD section</a></li>
+<li class="chapter" data-level="10.5.2" data-path="authentication.html"><a href="authentication.html#complete-configuration-example"><i class="fa fa-check"></i><b>10.5.2</b> Complete Configuration Example</a></li>
+<li class="chapter" data-level="10.5.3" data-path="authentication.html"><a href="authentication.html#ldap-or-ad-configuration-settings"><i class="fa fa-check"></i><b>10.5.3</b> LDAP or AD Configuration Settings</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="authentication.html"><a href="authentication.html#authentication-oauth2"><i class="fa fa-check"></i><b>10.6</b> OAuth2 (Google)</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="authentication.html"><a href="authentication.html#obtaining-a-client-id-and-client-secret"><i class="fa fa-check"></i><b>10.6.1</b> Obtaining a Client ID and Client Secret</a></li>
+<li class="chapter" data-level="10.6.2" data-path="authentication.html"><a href="authentication.html#restricting-access"><i class="fa fa-check"></i><b>10.6.2</b> Restricting Access</a></li>
+<li class="chapter" data-level="10.6.3" data-path="authentication.html"><a href="authentication.html#searches"><i class="fa fa-check"></i><b>10.6.3</b> Searches</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="authentication.html"><a href="authentication.html#authentication-pam"><i class="fa fa-check"></i><b>10.7</b> PAM</a><ul>
+<li class="chapter" data-level="10.7.1" data-path="authentication.html"><a href="authentication.html#ubuntu"><i class="fa fa-check"></i><b>10.7.1</b> Ubuntu</a></li>
+<li class="chapter" data-level="10.7.2" data-path="authentication.html"><a href="authentication.html#red-hatcentos"><i class="fa fa-check"></i><b>10.7.2</b> Red Hat/CentOS</a></li>
+<li class="chapter" data-level="10.7.3" data-path="authentication.html"><a href="authentication.html#configuring-a-pam-service"><i class="fa fa-check"></i><b>10.7.3</b> Configuring a PAM service</a></li>
+<li class="chapter" data-level="10.7.4" data-path="authentication.html"><a href="authentication.html#groups"><i class="fa fa-check"></i><b>10.7.4</b> Groups</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="authentication.html"><a href="authentication.html#authentication-proxy"><i class="fa fa-check"></i><b>10.8</b> Proxied Authentication</a><ul>
+<li class="chapter" data-level="10.8.1" data-path="authentication.html"><a href="authentication.html#how-this-works"><i class="fa fa-check"></i><b>10.8.1</b> How this Works</a></li>
+<li class="chapter" data-level="10.8.2" data-path="authentication.html"><a href="authentication.html#deployment-from-the-rstudio-ide"><i class="fa fa-check"></i><b>10.8.2</b> Deployment from the RStudio IDE</a></li>
+<li class="chapter" data-level="10.8.3" data-path="authentication.html"><a href="authentication.html#configuring-proxied-authentication"><i class="fa fa-check"></i><b>10.8.3</b> Configuring Proxied Authentication</a></li>
+<li class="chapter" data-level="10.8.4" data-path="authentication.html"><a href="authentication.html#troubleshooting-proxied-authentication"><i class="fa fa-check"></i><b>10.8.4</b> Troubleshooting Proxied Authentication</a></li>
+<li class="chapter" data-level="10.8.5" data-path="authentication.html"><a href="authentication.html#groups-1"><i class="fa fa-check"></i><b>10.8.5</b> Groups</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="user-management.html"><a href="user-management.html"><i class="fa fa-check"></i><b>11</b> User Management</a><ul>
+<li class="chapter" data-level="11.1" data-path="user-management.html"><a href="user-management.html#self-registration"><i class="fa fa-check"></i><b>11.1</b> Self Registration</a></li>
+<li class="chapter" data-level="11.2" data-path="user-management.html"><a href="user-management.html#user-roles"><i class="fa fa-check"></i><b>11.2</b> User Roles</a></li>
+<li class="chapter" data-level="11.3" data-path="user-management.html"><a href="user-management.html#user-permissions"><i class="fa fa-check"></i><b>11.3</b> User Permissions</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="user-management.html"><a href="user-management.html#all-content"><i class="fa fa-check"></i><b>11.3.1</b> All Content</a></li>
+<li class="chapter" data-level="11.3.2" data-path="user-management.html"><a href="user-management.html#r-markdown-reports"><i class="fa fa-check"></i><b>11.3.2</b> R Markdown Reports</a></li>
+<li class="chapter" data-level="11.3.3" data-path="user-management.html"><a href="user-management.html#shiny-applications-plumber-apis"><i class="fa fa-check"></i><b>11.3.3</b> Shiny Applications &amp; Plumber APIs</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="user-management.html"><a href="user-management.html#admin-capabilities"><i class="fa fa-check"></i><b>11.4</b> Administrator Capabilities</a></li>
+<li class="chapter" data-level="11.5" data-path="user-management.html"><a href="user-management.html#locked-accounts"><i class="fa fa-check"></i><b>11.5</b> Locked Accounts</a></li>
+<li class="chapter" data-level="11.6" data-path="user-management.html"><a href="user-management.html#username-requirements"><i class="fa fa-check"></i><b>11.6</b> Username Requirements</a></li>
+<li class="chapter" data-level="11.7" data-path="user-management.html"><a href="user-management.html#user-renaming"><i class="fa fa-check"></i><b>11.7</b> User Renaming</a></li>
+<li class="chapter" data-level="11.8" data-path="user-management.html"><a href="user-management.html#user-cli"><i class="fa fa-check"></i><b>11.8</b> Command-Line Interface</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="process-management.html"><a href="process-management.html"><i class="fa fa-check"></i><b>12</b> Process Management</a><ul>
+<li class="chapter" data-level="12.1" data-path="process-management.html"><a href="process-management.html#process-management-sandboxing"><i class="fa fa-check"></i><b>12.1</b> Sandboxing</a></li>
+<li class="chapter" data-level="12.2" data-path="process-management.html"><a href="process-management.html#temp-directory"><i class="fa fa-check"></i><b>12.2</b> Temporary Directory</a></li>
+<li class="chapter" data-level="12.3" data-path="process-management.html"><a href="process-management.html#shiny-and-plumber"><i class="fa fa-check"></i><b>12.3</b> Shiny Applications &amp; Plumber APIs</a></li>
+<li class="chapter" data-level="12.4" data-path="process-management.html"><a href="process-management.html#process-management-runas"><i class="fa fa-check"></i><b>12.4</b> User Account for R Processes</a></li>
+<li class="chapter" data-level="12.5" data-path="process-management.html"><a href="process-management.html#process-management-runas-current"><i class="fa fa-check"></i><b>12.5</b> Current user execution</a></li>
+<li class="chapter" data-level="12.6" data-path="process-management.html"><a href="process-management.html#process-management-pam-sessions"><i class="fa fa-check"></i><b>12.6</b> PAM sessions</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="process-management.html"><a href="process-management.html#pam-credential-caching-kerberos"><i class="fa fa-check"></i><b>12.6.1</b> PAM Credential Caching (Kerberos)</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="process-management.html"><a href="process-management.html#path-rewriting"><i class="fa fa-check"></i><b>12.7</b> Path Rewriting</a></li>
+<li class="chapter" data-level="12.8" data-path="process-management.html"><a href="process-management.html#program-supervisors"><i class="fa fa-check"></i><b>12.8</b> Program Supervisors</a><ul>
+<li class="chapter" data-level="12.8.1" data-path="process-management.html"><a href="process-management.html#example-supervisors"><i class="fa fa-check"></i><b>12.8.1</b> Example Supervisors</a></li>
+</ul></li>
+<li class="chapter" data-level="12.9" data-path="process-management.html"><a href="process-management.html#using-the-config-package"><i class="fa fa-check"></i><b>12.9</b> Using the <code>config</code> Package</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="content-management.html"><a href="content-management.html"><i class="fa fa-check"></i><b>13</b> Content Management</a><ul>
+<li class="chapter" data-level="13.1" data-path="content-management.html"><a href="content-management.html#sharing-settings"><i class="fa fa-check"></i><b>13.1</b> Sharing Settings</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="content-management.html"><a href="content-management.html#collaborators"><i class="fa fa-check"></i><b>13.1.1</b> Collaborators</a></li>
+<li class="chapter" data-level="13.1.2" data-path="content-management.html"><a href="content-management.html#viewers"><i class="fa fa-check"></i><b>13.1.2</b> Viewers</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="content-management.html"><a href="content-management.html#vanity-paths"><i class="fa fa-check"></i><b>13.2</b> Vanity Paths</a></li>
+<li class="chapter" data-level="13.3" data-path="content-management.html"><a href="content-management.html#tags"><i class="fa fa-check"></i><b>13.3</b> Tags</a></li>
+<li class="chapter" data-level="13.4" data-path="content-management.html"><a href="content-management.html#bundle-management"><i class="fa fa-check"></i><b>13.4</b> Bundle Management</a></li>
+<li class="chapter" data-level="13.5" data-path="content-management.html"><a href="content-management.html#api-keys"><i class="fa fa-check"></i><b>13.5</b> API Keys</a><ul>
+<li class="chapter" data-level="13.5.1" data-path="content-management.html"><a href="content-management.html#how-this-works-1"><i class="fa fa-check"></i><b>13.5.1</b> How this Works</a></li>
+<li class="chapter" data-level="13.5.2" data-path="content-management.html"><a href="content-management.html#api-keys-configuration"><i class="fa fa-check"></i><b>13.5.2</b> Configuring API Keys</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>14</b> R</a><ul>
+<li class="chapter" data-level="14.1" data-path="r.html"><a href="r.html#installing-r"><i class="fa fa-check"></i><b>14.1</b> Installing R</a></li>
+<li class="chapter" data-level="14.2" data-path="r.html"><a href="r.html#upgrading-r"><i class="fa fa-check"></i><b>14.2</b> Upgrading R</a></li>
+<li class="chapter" data-level="14.3" data-path="r.html"><a href="r.html#r-versions"><i class="fa fa-check"></i><b>14.3</b> R Versions</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="r.html"><a href="r.html#scanning"><i class="fa fa-check"></i><b>14.3.1</b> Scanning</a></li>
+<li class="chapter" data-level="14.3.2" data-path="r.html"><a href="r.html#r-versions-1"><i class="fa fa-check"></i><b>14.3.2</b> R Versions</a></li>
+<li class="chapter" data-level="14.3.3" data-path="r.html"><a href="r.html#etcrstudior-versions"><i class="fa fa-check"></i><b>14.3.3</b> /etc/rstudio/r-versions</a></li>
+<li class="chapter" data-level="14.3.4" data-path="r.html"><a href="r.html#excluding-versions"><i class="fa fa-check"></i><b>14.3.4</b> Excluding Versions</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="r.html"><a href="r.html#r-version-matching"><i class="fa fa-check"></i><b>14.4</b> R Version Matching</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="package-management.html"><a href="package-management.html"><i class="fa fa-check"></i><b>15</b> Package Management</a><ul>
+<li class="chapter" data-level="15.1" data-path="package-management.html"><a href="package-management.html#package-installation"><i class="fa fa-check"></i><b>15.1</b> Package Installation</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="package-management.html"><a href="package-management.html#external-package-installation"><i class="fa fa-check"></i><b>15.1.1</b> External Package Installation</a></li>
+<li class="chapter" data-level="15.1.2" data-path="package-management.html"><a href="package-management.html#proxy-configuration"><i class="fa fa-check"></i><b>15.1.2</b> Proxy Configuration</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="package-management.html"><a href="package-management.html#private-repositories"><i class="fa fa-check"></i><b>15.2</b> Private Repositories</a></li>
+<li class="chapter" data-level="15.3" data-path="package-management.html"><a href="package-management.html#private-packages"><i class="fa fa-check"></i><b>15.3</b> Private Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="metrics.html"><a href="metrics.html"><i class="fa fa-check"></i><b>16</b> Historical Metrics</a><ul>
+<li class="chapter" data-level="16.1" data-path="metrics.html"><a href="metrics.html#historical-metrics-settings"><i class="fa fa-check"></i><b>16.1</b> Historical Metrics Settings</a></li>
+<li class="chapter" data-level="16.2" data-path="metrics.html"><a href="metrics.html#historical-metrics-process-management"><i class="fa fa-check"></i><b>16.2</b> Historical Metrics Process Management</a></li>
+<li class="chapter" data-level="16.3" data-path="metrics.html"><a href="metrics.html#historical-metrics-process-logging"><i class="fa fa-check"></i><b>16.3</b> Historical Metrics Process Logging</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="appendix-configuration.html"><a href="appendix-configuration.html"><i class="fa fa-check"></i><b>A</b> Configuration Options</a><ul>
+<li class="chapter" data-level="A.1" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-basics"><i class="fa fa-check"></i><b>A.1</b> Configuration Basics</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-file-format"><i class="fa fa-check"></i><b>A.1.1</b> File Format</a></li>
+<li class="chapter" data-level="A.1.2" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-multi-properties"><i class="fa fa-check"></i><b>A.1.2</b> Multi-value Properties</a></li>
+<li class="chapter" data-level="A.1.3" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-property-types"><i class="fa fa-check"></i><b>A.1.3</b> Property Types</a></li>
+<li class="chapter" data-level="A.1.4" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-reloadable-properties"><i class="fa fa-check"></i><b>A.1.4</b> Reloadable Properties</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-server"><i class="fa fa-check"></i><b>A.2</b> Server</a></li>
+<li class="chapter" data-level="A.3" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-http"><i class="fa fa-check"></i><b>A.3</b> Http</a></li>
+<li class="chapter" data-level="A.4" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-https"><i class="fa fa-check"></i><b>A.4</b> Https</a></li>
+<li class="chapter" data-level="A.5" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-httpredirect"><i class="fa fa-check"></i><b>A.5</b> HttpRedirect</a></li>
+<li class="chapter" data-level="A.6" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-licensing"><i class="fa fa-check"></i><b>A.6</b> Licensing</a></li>
+<li class="chapter" data-level="A.7" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-database"><i class="fa fa-check"></i><b>A.7</b> Database</a></li>
+<li class="chapter" data-level="A.8" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-sqlite"><i class="fa fa-check"></i><b>A.8</b> SQLite</a></li>
+<li class="chapter" data-level="A.9" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-postgres"><i class="fa fa-check"></i><b>A.9</b> Postgres</a></li>
+<li class="chapter" data-level="A.10" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-authentication"><i class="fa fa-check"></i><b>A.10</b> Authentication</a></li>
+<li class="chapter" data-level="A.11" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-password"><i class="fa fa-check"></i><b>A.11</b> Password</a></li>
+<li class="chapter" data-level="A.12" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-oauth2"><i class="fa fa-check"></i><b>A.12</b> OAuth2</a></li>
+<li class="chapter" data-level="A.13" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-ldap"><i class="fa fa-check"></i><b>A.13</b> LDAP</a></li>
+<li class="chapter" data-level="A.14" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-pam"><i class="fa fa-check"></i><b>A.14</b> PAM</a></li>
+<li class="chapter" data-level="A.15" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-authentication-proxy"><i class="fa fa-check"></i><b>A.15</b> Proxied Authentication</a></li>
+<li class="chapter" data-level="A.16" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-authorization"><i class="fa fa-check"></i><b>A.16</b> Authorization</a></li>
+<li class="chapter" data-level="A.17" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-applications"><i class="fa fa-check"></i><b>A.17</b> Applications</a></li>
+<li class="chapter" data-level="A.18" data-path="appendix-configuration.html"><a href="appendix-configuration.html#packages"><i class="fa fa-check"></i><b>A.18</b> Packages</a></li>
+<li class="chapter" data-level="A.19" data-path="appendix-configuration.html"><a href="appendix-configuration.html#client"><i class="fa fa-check"></i><b>A.19</b> Client</a></li>
+<li class="chapter" data-level="A.20" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-scheduler"><i class="fa fa-check"></i><b>A.20</b> Runtime/Scheduler</a></li>
+<li class="chapter" data-level="A.21" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-jobs"><i class="fa fa-check"></i><b>A.21</b> Jobs</a></li>
+<li class="chapter" data-level="A.22" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-metrics"><i class="fa fa-check"></i><b>A.22</b> Historical Metrics</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="cli.html"><a href="cli.html"><i class="fa fa-check"></i><b>B</b> Command-Line Interface</a><ul>
+<li class="chapter" data-level="B.1" data-path="cli.html"><a href="cli.html#user-management-1"><i class="fa fa-check"></i><b>B.1</b> User Management</a><ul>
+<li class="chapter" data-level="B.1.1" data-path="cli.html"><a href="cli.html#commands"><i class="fa fa-check"></i><b>B.1.1</b> Commands</a></li>
+<li class="chapter" data-level="B.1.2" data-path="cli.html"><a href="cli.html#flags"><i class="fa fa-check"></i><b>B.1.2</b> Flags</a></li>
+<li class="chapter" data-level="B.1.3" data-path="cli.html"><a href="cli.html#examples"><i class="fa fa-check"></i><b>B.1.3</b> Examples:</a></li>
+</ul></li>
+<li class="chapter" data-level="B.2" data-path="cli.html"><a href="cli.html#migration-cli"><i class="fa fa-check"></i><b>B.2</b> Migration Utility</a><ul>
+<li class="chapter" data-level="B.2.1" data-path="cli.html"><a href="cli.html#commands-1"><i class="fa fa-check"></i><b>B.2.1</b> Commands</a></li>
+<li class="chapter" data-level="B.2.2" data-path="cli.html"><a href="cli.html#flags-1"><i class="fa fa-check"></i><b>B.2.2</b> Flags</a></li>
+<li class="chapter" data-level="B.2.3" data-path="cli.html"><a href="cli.html#examples-1"><i class="fa fa-check"></i><b>B.2.3</b> Examples</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="custom-landing.html"><a href="custom-landing.html"><i class="fa fa-check"></i><b>C</b> Using a Custom Landing Page</a><ul>
+<li class="chapter" data-level="C.1" data-path="custom-landing.html"><a href="custom-landing.html#overview"><i class="fa fa-check"></i><b>C.1</b> Overview</a></li>
+<li class="chapter" data-level="C.2" data-path="custom-landing.html"><a href="custom-landing.html#configuration-1"><i class="fa fa-check"></i><b>C.2</b> Configuration</a></li>
+<li class="chapter" data-level="C.3" data-path="custom-landing.html"><a href="custom-landing.html#custom-landing-page-assets"><i class="fa fa-check"></i><b>C.3</b> Custom Landing Page Assets</a></li>
+<li class="chapter" data-level="C.4" data-path="custom-landing.html"><a href="custom-landing.html#example"><i class="fa fa-check"></i><b>C.4</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="appendix-ldap-examples.html"><a href="appendix-ldap-examples.html"><i class="fa fa-check"></i><b>D</b> LDAP/AD Configuration Examples</a><ul>
+<li class="chapter" data-level="D.1" data-path="appendix-ldap-examples.html"><a href="appendix-ldap-examples.html#appendix-ldap-examples-single"><i class="fa fa-check"></i><b>D.1</b> Single Bind</a></li>
+<li class="chapter" data-level="D.2" data-path="appendix-ldap-examples.html"><a href="appendix-ldap-examples.html#appendix-ldap-examples-double"><i class="fa fa-check"></i><b>D.2</b> Double Bind</a></li>
+<li class="chapter" data-level="D.3" data-path="appendix-ldap-examples.html"><a href="appendix-ldap-examples.html#appendix-ldap-examples-ldif"><i class="fa fa-check"></i><b>D.3</b> LDIF</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html"><i class="fa fa-check"></i><b>E</b> RStudio Connect Deployment Guide</a><ul>
+<li class="chapter" data-level="E.1" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#overview-1"><i class="fa fa-check"></i><b>E.1</b> Overview</a></li>
+<li class="chapter" data-level="E.2" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#programmatic-deployment"><i class="fa fa-check"></i><b>E.2</b> Programmatic Deployment</a></li>
+<li class="chapter" data-level="E.3" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#step-1-building-the-bundle"><i class="fa fa-check"></i><b>E.3</b> Step 1: Building the Bundle</a><ul>
+<li class="chapter" data-level="E.3.1" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#application-metadata"><i class="fa fa-check"></i><b>E.3.1</b> Application Metadata</a></li>
+<li class="chapter" data-level="E.3.2" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#list-of-target-files"><i class="fa fa-check"></i><b>E.3.2</b> List of Target Files</a></li>
+<li class="chapter" data-level="E.3.3" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#lint"><i class="fa fa-check"></i><b>E.3.3</b> Lint</a></li>
+<li class="chapter" data-level="E.3.4" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#create-temporary-folder"><i class="fa fa-check"></i><b>E.3.4</b> Create Temporary Folder</a></li>
+<li class="chapter" data-level="E.3.5" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#library-dependencies"><i class="fa fa-check"></i><b>E.3.5</b> Library Dependencies</a></li>
+<li class="chapter" data-level="E.3.6" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#manifest"><i class="fa fa-check"></i><b>E.3.6</b> Manifest</a></li>
+</ul></li>
+<li class="chapter" data-level="E.4" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#step-2-push-bundle-to-connect"><i class="fa fa-check"></i><b>E.4</b> Step 2: Push Bundle to Connect</a></li>
+<li class="chapter" data-level="E.5" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#step-3-bundle-is-deployed-on-connect"><i class="fa fa-check"></i><b>E.5</b> Step 3: Bundle is deployed on Connect</a><ul>
+<li class="chapter" data-level="E.5.1" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#parse-the-manifest"><i class="fa fa-check"></i><b>E.5.1</b> Parse the Manifest</a></li>
+<li class="chapter" data-level="E.5.2" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#packrat-restore"><i class="fa fa-check"></i><b>E.5.2</b> Packrat Restore</a></li>
+<li class="chapter" data-level="E.5.3" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#r-markdown-render"><i class="fa fa-check"></i><b>E.5.3</b> R Markdown Render</a></li>
+</ul></li>
+<li class="chapter" data-level="E.6" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#other-frequently-asked-questions"><i class="fa fa-check"></i><b>E.6</b> Other Frequently Asked Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="appendix-ci.html"><a href="appendix-ci.html"><i class="fa fa-check"></i><b>F</b> Using Continuous Integration to Deploy Content</a><ul>
+<li class="chapter" data-level="F.1" data-path="appendix-ci.html"><a href="appendix-ci.html#overview-2"><i class="fa fa-check"></i><b>F.1</b> Overview</a></li>
+<li class="chapter" data-level="F.2" data-path="appendix-ci.html"><a href="appendix-ci.html#prerequisites"><i class="fa fa-check"></i><b>F.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="F.3" data-path="appendix-ci.html"><a href="appendix-ci.html#configuring-a-ci-server-to-deploy-content-to-connect"><i class="fa fa-check"></i><b>F.3</b> Configuring a CI Server to Deploy Content to Connect</a><ul>
+<li class="chapter" data-level="F.3.1" data-path="appendix-ci.html"><a href="appendix-ci.html#installing-rsconnect"><i class="fa fa-check"></i><b>F.3.1</b> Installing rsconnect</a></li>
+<li class="chapter" data-level="F.3.2" data-path="appendix-ci.html"><a href="appendix-ci.html#configuring-rsconnect"><i class="fa fa-check"></i><b>F.3.2</b> Configuring rsconnect</a></li>
+<li class="chapter" data-level="F.3.3" data-path="appendix-ci.html"><a href="appendix-ci.html#deploying-content-with-rsconnect"><i class="fa fa-check"></i><b>F.3.3</b> Deploying Content with rsconnect</a></li>
+<li class="chapter" data-level="F.3.4" data-path="appendix-ci.html"><a href="appendix-ci.html#package-and-r-version-compatibility"><i class="fa fa-check"></i><b>F.3.4</b> Package and R Version Compatibility</a></li>
+<li class="chapter" data-level="F.3.5" data-path="appendix-ci.html"><a href="appendix-ci.html#cran-note"><i class="fa fa-check"></i><b>F.3.5</b> CRAN Note</a></li>
+</ul></li>
+<li class="chapter" data-level="F.4" data-path="appendix-ci.html"><a href="appendix-ci.html#warning-and-security-information"><i class="fa fa-check"></i><b>F.4</b> Warning and Security Information</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html"><i class="fa fa-check"></i><b>G</b> Programmatic Deployment with rsconnect</a><ul>
+<li class="chapter" data-level="G.1" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#overview-3"><i class="fa fa-check"></i><b>G.1</b> Overview</a></li>
+<li class="chapter" data-level="G.2" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#use-case-a-shiny-application"><i class="fa fa-check"></i><b>G.2</b> Use Case: A Shiny Application</a><ul>
+<li class="chapter" data-level="G.2.1" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#use-case-scenario"><i class="fa fa-check"></i><b>G.2.1</b> Use Case Scenario</a></li>
+<li class="chapter" data-level="G.2.2" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#installing-rsconnect-1"><i class="fa fa-check"></i><b>G.2.2</b> Installing rsconnect</a></li>
+<li class="chapter" data-level="G.2.3" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#configuring-a-custom-runas-user"><i class="fa fa-check"></i><b>G.2.3</b> Configuring a Custom “RunAs” User</a></li>
+<li class="chapter" data-level="G.2.4" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#configuring-rsconnect-1"><i class="fa fa-check"></i><b>G.2.4</b> Configuring rsconnect</a></li>
+<li class="chapter" data-level="G.2.5" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#deploying-content-with-rsconnect-1"><i class="fa fa-check"></i><b>G.2.5</b> Deploying Content with rsconnect</a></li>
+<li class="chapter" data-level="G.2.6" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#cran-note-1"><i class="fa fa-check"></i><b>G.2.6</b> CRAN Note</a></li>
+</ul></li>
+<li class="chapter" data-level="G.3" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#warning-and-security-information-1"><i class="fa fa-check"></i><b>G.3</b> Warning and Security Information</a></li>
+<li class="chapter" data-level="G.4" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#appendix-rsconnect-example"><i class="fa fa-check"></i><b>G.4</b> Example Shiny Application</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RStudio Connect: Admin Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="appendix-ldap-examples" class="section level1">
+<h1><span class="header-section-number">D</span> LDAP/AD Configuration Examples</h1>
+<p>This section contains sample RStudio Connect configurations to help you get started with LDAP authentication. We have provided a single bind and a double bind example (double bind is recommended).</p>
+<p>The LDIF file contained in <a href="appendix-ldap-examples.html#appendix-ldap-examples-ldif">D.3</a> describes a LDAP organization used in our examples.</p>
+<div id="appendix-ldap-examples-single" class="section level2">
+<h2><span class="header-section-number">D.1</span> Single Bind</h2>
+<p>Here is a partial RStudio Connect configuration file showing how to connect using single-bind LDAP authentication. We are assuming the LDIF contained in <a href="appendix-ldap-examples.html#appendix-ldap-examples-ldif">D.3</a> describes the LDAP structure.</p>
+<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="co"># using single bind</span>
+<span class="kw">[LDAP &quot;myLDAPserverSingle&quot;]</span>
+<span class="dt">ServerAddress </span><span class="ot">=</span><span class="st"> </span><span class="fl">127.0.0.1</span><span class="st">:</span><span class="dv">389</span>
+<span class="dt">UserSearchBaseDN </span><span class="ot">=</span><span class="st"> &quot;ou=People,dc=company,dc=com&quot;</span>
+<span class="dt">UserObjectClass </span><span class="ot">=</span><span class="st"> posixAccount</span>
+<span class="dt">UserFirstNameAttribute </span><span class="ot">=</span><span class="st"> givenName</span>
+<span class="dt">UserLastNameAttribute </span><span class="ot">=</span><span class="st"> sn</span>
+<span class="dt">UserEmailAttribute </span><span class="ot">=</span><span class="st"> mail</span>
+<span class="dt">UsernameAttribute </span><span class="ot">=</span><span class="st"> uid</span></code></pre></div>
+</div>
+<div id="appendix-ldap-examples-double" class="section level2">
+<h2><span class="header-section-number">D.2</span> Double Bind</h2>
+<p>Here is a partial RStudio Connect configuration file showing how to connect using double bind LDAP authentication. We are assuming the LDIF contained in <a href="appendix-ldap-examples.html#appendix-ldap-examples-ldif">D.3</a> describes the LDAP structure.</p>
+<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="co"># using double bind</span>
+<span class="kw">[LDAP &quot;myLDAPserver&quot;]</span>
+<span class="dt">ServerAddress </span><span class="ot">=</span><span class="st"> </span><span class="fl">127.0.0.1</span><span class="st">:</span><span class="dv">389</span>
+<span class="dt">BindDN </span><span class="ot">=</span><span class="st"> cn=admin,dc=company,dc=com&quot;</span>
+<span class="dt">BindPassword </span><span class="ot">=</span><span class="st"> &quot;password&quot;</span>
+<span class="dt">UserSearchBaseDN </span><span class="ot">=</span><span class="st"> &quot;ou=People,dc=company,dc=com&quot;</span>
+<span class="dt">UserObjectClass </span><span class="ot">=</span><span class="st"> posixAccount</span>
+<span class="dt">UserFirstNameAttribute </span><span class="ot">=</span><span class="st"> givenName</span>
+<span class="dt">UserLastNameAttribute </span><span class="ot">=</span><span class="st"> sn</span>
+<span class="dt">UserEmailAttribute </span><span class="ot">=</span><span class="st"> mail</span>
+<span class="dt">UsernameAttribute </span><span class="ot">=</span><span class="st"> uid</span></code></pre></div>
+</div>
+<div id="appendix-ldap-examples-ldif" class="section level2">
+<h2><span class="header-section-number">D.3</span> LDIF</h2>
+<p>Here is an LDIF (LDAP Data Interchange Format) file describing a hypothetical organization.</p>
+<pre class="ldif"><code>dn: ou=People,dc=company,dc=com
+objectClass: organizationalUnit
+
+dn: ou=Groups,dc=company,dc=com
+objectClass: organizationalUnit
+
+dn: cn=membera-grp,ou=Groups,dc=suba,dc=company,dc=com
+objectClass: posixGroup
+cn: membera-grp
+gidNumber: 50000
+memberUid: membera
+
+dn: cn=memberb-grp,ou=Groups,dc=subb,dc=company,dc=com
+objectClass: posixGroup
+cn: memberb-grp
+gidNumber: 50001
+memberUid: memberb
+
+dn: cn=memberc-grp,ou=Groups,dc=subc,dc=company,dc=com
+objectClass: posixGroup
+cn: memberc-grp
+gidNumber: 50002
+memberUid: memberc
+
+dn: uid=membera,ou=People,dc=suba,dc=company,dc=com
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: membera
+sn: A
+givenName: Member
+cn: Member A
+displayName: Member A
+uidNumber: 20000
+gidNumber: 50000
+userPassword: memberaldap
+gecos: MemberA
+loginShell: /bin/bash
+homeDirectory: /home/membera
+mail: membera@company.com
+
+dn: uid=memberb,ou=People,dc=subb,dc=company,dc=com
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: memberb
+sn: B
+givenName: Member
+cn: Member B
+displayName: Member B
+uidNumber: 20001
+gidNumber: 50001
+userPassword: memberbldap
+gecos: MemberB
+loginShell: /bin/bash
+homeDirectory: /home/memberb
+mail: memberb@company.com
+
+dn: uid=memberc,ou=People,dc=subc,dc=company,dc=com
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: memberc
+sn: C
+givenName: Member
+cn: Member C
+displayName: Member C
+uidNumber: 20002
+gidNumber: 50002
+userPassword: membercldap
+gecos: MemberC
+loginShell: /bin/bash
+homeDirectory: /home/memberc
+mail: memberc@company.com</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="custom-landing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="appendix-deployment-guide.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["rstudio-connect-admin-guide-1.5.10-6.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

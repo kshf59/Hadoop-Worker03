@@ -1,0 +1,169 @@
+<div id="sel_metrics_page"></div>
+<div class="band">
+  <div class="bandContent mainPage">
+
+    <admin-menu location="location"></admin-menu>
+    <div class="sectionTitle">Metrics</div>
+
+<div ng-show="disabled">
+  <p>Metrics are disabled.</p>
+</div>
+
+<!-- TODO: Instead of using CSS positioning to bump this into the header, let controllers modify the header. -->
+<form ng-hide="disabled" role="form" name="graphSettings" class="form-inline metrics-settings">
+  <div>
+    <label for="range">Show history for</label>
+    <input id="number" type="number" min="1" max="1000" class="graph-number-input" ng-model="period.units" />
+    <select id="range" ng-model="period.type">
+      <option ng-repeat="duration in durations" value="{{duration}}">{{duration}}</option>
+    </select>
+  </div>
+</form>
+
+<div ng-hide="disabled" class="splitColumns metrics-bottom-spaced">
+  <div class="column50">
+    <div class="metrics-panel gauge-header">
+      <div class="metrics-panel-body">
+        <div class="gauge">
+          <div class="gaugeContainer">
+            <div class="gaugeFrame">
+              <div class="gaugeInnards">
+                <div ng-class="gauges.cpu.class" ng-style="gauges.cpu.style"></div>
+                <div class="gaugePunchout"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <h3>CPU</h3>
+          <p class="hideOnMobile">Using <strong id="sel_cpu">{{cpu | number: 2}}</strong> of <strong>{{maxCPU}}</strong> cores</p>
+      </div>
+    </div>
+    <div class="metrics-panel">
+      <div class="metrics-panel-body">
+        <div relink-event="relinkCpuGraph" class="metrics-graph">
+          <nvd3 options="graphs.cpu.options" data="graphs.cpu.data" ng-if="graphs.cpu.data"></nvd3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column50">
+    <div class="metrics-panel gauge-header">
+      <div class="metrics-panel-body">
+        <div class="gauge">
+          <div class="gaugeContainer">
+            <div class="gaugeFrame">
+              <div class="gaugeInnards">
+                <div ng-class="gauges.ram.class" ng-style="gauges.ram.style"></div>
+                <div class="gaugePunchout"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3>RAM</h3>
+        <p class="hideOnMobile">Using <strong id="sel_ram">{{ramDisplay}}</strong> of <strong>{{maxRAM}}GB</strong></p>
+      </div>
+    </div>
+    <div class="metrics-panel">
+      <div class="metrics-panel-body">
+        <div relink-event="relinkRamGraph" class="metrics-graph">
+          <nvd3 options="graphs.ram.options" data="graphs.ram.data" ng-if="graphs.ram.data"></nvd3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="splitColumns">
+<div class="metrics-bottom-spaced column50">
+  <div class="metrics-fill">
+    <div class="metrics-panel gauge-header shiny" ng-class="{'nogauge' : maxUsers <= 0}">
+      <div class="metrics-panel-body formSection">
+        <div ng-if="maxUsers > 0" class="gauge shiny">
+          <div class="gaugeContainer">
+            <div class="gaugeFrame">
+              <div class="gaugeInnards">
+                <div ng-class="gauges.users.class" ng-style="gauges.users.style"></div>
+                <div class="gaugePunchout"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>Users<i class="infoToggle" ng-click="toggleInfo(1)"></i></h3>
+        <p ng-if="maxUsers > 0">Using <strong>{{users.users}}</strong> of <strong>{{maxUsers}}</strong> allowed {{maxUsers !== 1 ? 'users' : 'user'}}</p>
+        <p ng-if="maxUsers <= 0">{{users.users}} {{users.users !== 1 ? 'users' : 'user'}}</p>
+        </div>
+      </div>
+      <div ng-show="infoToggleState[1]" class="metrics-info">
+        <p class="settingsNote">Tracks all Connect accounts that are not locked regardless of privilege level.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="metrics-bottom-spaced column50">
+  <div class="metrics-fill">
+    <div class="metrics-panel gauge-header shiny" ng-class="{'nogauge' : maxShinyUsers <= 0}">
+      <div class="metrics-panel-body formSection">
+        <div ng-if="maxShinyUsers > 0" class="gauge shiny">
+          <div class="gaugeContainer">
+            <div class="gaugeFrame">
+              <div class="gaugeInnards">
+                <div ng-class="gauges.shiny.class" ng-style="gauges.shiny.style"></div>
+                <div class="gaugePunchout"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>Shiny Users<i class="infoToggle" ng-click="toggleInfo(3)"></i></h3>
+          <p ng-if="maxShinyUsers > 0"><span>Using <strong>{{shinyUsers}}</strong> of <strong>{{maxShinyUsers}}</strong> allowed {{maxShinyUsers !== 1 ? 'users' : 'user'}}</span></p>
+          <p ng-if="maxShinyUsers <= 0"><span><strong>{{shinyUsers}}</strong> {{shinyUsers !== 1 ? 'users' : 'user'}}</span></p>
+        </div>
+      </div>
+      <div ng-show="infoToggleState[3]" class="metrics-info">
+        <p class="settingsNote">Connect restricts new anonymous Shiny
+          users when the number of total concurrent Shiny users is in excess
+          of this limit.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="splitColumns metrics-bottom-spaced">
+  <div class="metrics-fill">
+    <div class="metrics-panel">
+      <div class="metrics-panel-body metrics-process-table">
+        <h3>Processes</h3>
+
+        <table class="contentListing clickableRows">
+          <thead>
+            <tr>
+              <th>PID</th>
+              <th class="hideOnMobile">Content Name</th>
+              <th class="hideOnMobile">Type</th>
+              <th>CPU</th>
+              <th>RAM</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr ng-if="noProcs">
+            <td colspan="5" class="empty-table-content">No R processes running.</td>
+          </tr>
+          <tr ng-repeat="(pid, proc) in procs" ng-click="openApp(proc.appId, $event)">
+            <td>{{pid}}</td>
+            <td class="hideOnMobile">{{proc.appName}}</a></td>
+            <td class="hideOnMobile">{{procType(proc.type)}}</td>
+            <td>{{proc.cpuCurrent | number: 2}}</td>
+            <td>{{proc.ram | bytes}}</td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>

@@ -1,0 +1,140 @@
+<div ng-controller="VariantController">
+  <div ng-show="!loaded" class="variant-loading text-center">
+    <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span><br/>
+    Loading Variant...
+  </div>
+
+  <save-settings-panel
+      show="showSave()"
+      save-action="save"
+      cancel-action="cancelSave"
+      save-title="'Save'"
+      save-disabled="scheduleInvalid(form.appSchedule)"></save-settings-panel>
+
+  <div ng-show="loaded">
+<form role="form" name="form.appSchedule" novalidate>
+
+  <fieldset ng-disabled="!privileges.canScheduleVariant(app)">
+
+    <div class="form-group">
+
+      <div class="formSection">
+
+        <div class="rsc-row allowWrap">
+          <input type="checkbox" id="schedule" ng-checked="currentSchedType.s !== 'None'" ng-click="showScheduleChange()">
+          Schedule output for {{variant.name}}
+        </div>
+        <div ng-if="currentSchedType.s !== 'None'">
+
+          <!-- Start date/time -->
+          <div class="rsc-row">Start date &amp; time</div>
+          <div class="rsc-row" style="position: relative;">
+            <div class="dropdown margin-bottom">
+              <a class="dropdown-toggle" id="start-time-{{variant.id}}" role="button" data-toggle="dropdown">
+                <div class="input-group start-time-input">
+                  <input type="text" class="appScheduleStartTime" ng-model="sched.start_time" ng-focus="startSTUpdate()" ng-blur="endSTUpdate();" ng-keydown="processSTKey($event);"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+              </a>
+              <ul ng-show="privileges.canScheduleVariant(app)" class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <!-- TODO: We can migrate this to use angular-bootstrap now that we have it -->
+                <datetimepicker class="appSchedule" data-ng-model="sched.start_time" data-datetimepicker-config="{ dropdownSelector: '#start-time-{{variant.id}}' }" tabindex="20" ng-focus="startSTUpdate();" ng-blur="endSTUpdate();"/>
+              </ul>
+            </div>
+          </div>
+          <div class="rsc-row" style="text-align:right;" ng-show="privileges.canScheduleVariant(app) && startTime.suspended"><a ng-click="resetStartTime()">Set to Now</a></div>
+
+          <!-- Repeat -->
+          <div class="rsc-row">Schedule type</div>
+          <div class="rsc-row">
+            <select name="sched-type" id="sched-type-{{variant.id}}" class="form-control" ng-model="currentSchedType.s" ng-options="sch.name as sch.name for sch in scheduleTypes | filter: { show: true}"></select>
+          </div>
+        </div>
+
+        <!-- Schedule editor -->
+        <div class="sched-col">
+
+          <div class="sched-choice" ng-if="currentSchedType.s === 'By Minute'">
+            <minute-schedule ng-model="activeScheds['By Minute']"> </minute-schedule>
+          </div>
+
+          <div class="sched-choice" ng-if="currentSchedType.s === 'Hourly'">
+            <hour-schedule ng-model="activeScheds.Hourly"> </hour-schedule>
+          </div>
+
+          <div class="sched-choice" ng-if="currentSchedType.s === 'Daily'">
+            <daily-schedule ng-model="activeScheds.Daily"> </daily-schedule>
+          </div>
+
+          <div class="sched-choice" ng-if="currentSchedType.s === 'Weekly'">
+            <weekly-schedule ng-model="activeScheds.Weekly"> </weekly-schedule>
+          </div>
+
+          <div class="sched-choice" ng-if="currentSchedType.s === 'Semimonthly'">
+            <semimonthly-schedule ng-model="activeScheds.Semimonthly"> </semimonthly-schedule>
+          </div>
+
+          <div class="sched-choice" ng-if="currentSchedType.s === 'Monthly'">
+            <monthly-schedule ng-model="activeScheds.Monthly"> </monthly-schedule>
+          </div>
+
+          <div class="sched-choice" ng-if="currentSchedType.s === 'Yearly'">
+            <year-schedule ng-model="activeScheds.Yearly"> </year-schedule>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Publication -->
+      <div class="formSection" ng-show="currentSchedType.s !== 'None'">
+
+        <div class="rsc-row header">
+          <input ng-if="!app.isSite()" id="publication-enabled-checkbox" type="checkbox" ng-model="sched.activate" name="publication-enabled">
+          <label for="publication-enabled-checkbox" ng-if="!app.isSite()">Publish output after it is generated</label>
+          <label ng-if="app.isSite()">The new output will be published after it is generated</label>
+        </div>
+
+      </div>
+
+      <!-- Email -->
+      <div class="formSection" ng-show="currentSchedType.s !== 'None'">
+
+        <div class="rsc-row header">
+          <input ng-disabled="!privileges.canEditVariants(app)" id="send-email-checkbox" type="checkbox" ng-model="sched.email" name="send-enabled">
+          <label for="send-email-checkbox">Send email after update</label>
+        </div>
+
+        <div ng-show="sched.email">
+          <span> ({{ subscriberCount }} recipient{{ subscriberCount != 1 ? "s" : ""  }})</span>
+          <div>
+            <div class="sched-email-col" ng-show="variant.visibility != 'private'">
+              <div class="form-info" ng-show="privileges.canEditVariants(app)">
+                Owners are always notified<span ng-show="iOwn()"> unless they <a href="" ng-click="unsubscribe()">opt-out</a></span>.
+              </div>
+              <label class="light-label"><input ng-disabled="!privileges.canEditVariants(app)" type="checkbox" ng-model="cached.email_collaborators" name="send-collaborators"/> Send to all collaborators</label>
+              <span title="{{ !mailAll ? 'Email broadcasts are disabled and this content is viewable by all users.' : '' }}">
+                <label class="light-label" ng-class="{disabled: !mailAll}"><input ng-disabled="!privileges.canEditVariants(app) || !mailAll" type="checkbox" ng-model="cached.email_viewers" name="send-viewers"/> Send to all viewers</label>
+              </span>
+              <div class="panel-title">Additional Recipients</div>
+              <div class="indented">
+                <ul class="accessList" principal-list="subscribers"
+                    can-delete="privileges.canEditVariants(app)"
+                    delete-icon="times" delete-action="removeSubscriber"
+                    placeholder="No additional recipients."></ul>
+                <div class="rsc-row"
+                    id="subscriber-search-{{variant.id}}"
+                    ng-if="privileges.canEditVariants(app)"
+                    principal-search="searchUsers"
+                    accept="addSubscriber"
+                    placeholder="Add recipient"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+
+</form>
+</div>
+</div>

@@ -1,0 +1,136 @@
+<app-tab id="access-settings">
+  <save-settings-panel
+      show="sc.showSave()"
+      save-action="sc.saveSettings"
+      cancel-action="sc.cancelSave"
+      save-title="sc.saveTitle()"
+      save-disabled="scheduleInvalid(sc.appSettings)"
+      discard-disabled="sc.getPristine"></save-settings-panel>
+
+  <form role="form" name="sc.appSharing" class="form-horizontal" novalidate>
+  <fieldset ng-disabled="!sc.enableEditing()">
+
+    <div class="formSection">
+      <div class="rsc-row header">Who can view this {{sc.appCategory.prose}}</div>
+      <div class="rsc-row">
+        <select id="sel_viewership_select"
+                ng-model="sc.access_type"
+                name="access_type"
+                ng-disabled="!sc.privileges.canEditAppSettings(sc.app)" 
+                ng-class="{ disabled : !sc.privileges.canEditAppSettings(sc.app) }"
+                id="access_type" class="full"
+                ng-options="v.key as v.label for v in sc.viewershipOptions"
+        >
+        </select>
+        <div ng-if="sc.access_type === 'acl'">
+          <div class="accessList"
+               principal-list="sc.viewerPrincipals"
+               can-delete="sc.privileges.canRemoveAppUserFunc(sc.app)"
+               delete-icon="times"
+               delete-action="sc.removeAppPrincipal"
+               placeholder=""
+          ></div>
+          <div ng-if="sc.privileges.canEditAppPermissions(sc.app)"
+               id="viewerPrincipalSearch"
+               principal-search="sc.viewerSearcher"
+               accept="sc.addViewerPrincipal"
+               placeholder="Add viewer"
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="formSection">
+      <div class="rsc-row header">Who can change this {{sc.appCategory.prose}}</div>
+      <div>
+        <div class="accessList"
+             principal-list="sc.allCollabs"
+             can-delete="sc.canDeleteCollab"
+             delete-icon="times"
+             delete-action="sc.removeAppPrincipal"
+             placeholder=""
+        >
+        </div>
+        <div class="rsc-row"
+             ng-if="sc.privileges.canEditAppPermissions(sc.app)"
+             id="collabPrincipalSearch"
+             principal-search="sc.collaboratorSearcher"
+             accept="sc.addCollabPrincipal"
+             placeholder="Add collaborator"
+        >
+        </div>
+      </div>
+    </div>
+
+    <div class="formSection" ng-show="sc.isExecutable()">
+      <div class="rsc-row header flex">
+        <div>Who runs this {{sc.appCategory.prose}} on the server</div>
+        <div class="infoToggle" ng-click="sc.toggleInfo()"></div>
+      </div>
+      <div id="runasSettingsNote" class="subPanel" ng-show="sc.infoToggleState">
+        <div class="settingsNote" ng-show="sc.privileges.ltRole('administrator')">
+          By default, this {{sc.appCategory.prose}} will run on the server as the default server <span class="inlineUserName">RunAs</span> user.
+          Administrators can specify an alternate user depending on resource permissions and constraints. Please contact an administrator if you need to change this setting.
+        </div>
+        <div class="settingsNote" ng-show="!sc.privileges.ltRole('administrator')">
+          By default, this {{sc.appCategory.prose}} will run on the server as the user <span class="inlineUserName">{{sc.form.runas.runAsDefault}}</span>.
+          You may need to use an alternate user depending on resource permissions and constraints.
+          If you specify a user, they must be a member of the Unix group that is the primary group of <span class="inlineUserName">{{sc.form.runas.runAsDefault}}</span>.
+        </div>
+      </div>
+      <div class="rsc-row">
+        <select
+          ng-options="o.value as o.label for o in sc.form.runas.primaryOptions"
+          ng-class="{ disabled : sc.privileges.ltRole('administrator')}"
+          ng-disabled="sc.privileges.ltRole('administrator')"
+          class="full"
+          name="runAsPrimaryMode"
+          ng-model="sc.form.runas.runAsPrimaryMode"
+          id="runAsPrimaryMode">
+        </select>
+      </div>
+      <div ng-show="sc.form.runas.runAsPrimaryMode==='current'">
+        <div class="rsc-row header allowWrap">
+          The {{sc.appCategory.prose}} will run as the
+          current user when viewed by a logged in user. When scheduled or
+          when viewed by someone who is not logged in, it will run as:
+        </div>
+        <div class="rsc-row">
+          <select ng-options="o.value as o.label for o in sc.form.runas.secondaryOptions" ng-class="{ disabled : sc.privileges.ltRole('administrator')}" ng-disabled="sc.privileges.ltRole('administrator')" class="full" name="runAsSecondaryMode" ng-model="sc.form.runas.runAsSecondaryMode" id="runAsSecondaryMode">
+          </select>
+        </div>
+      </div>
+      <div class="rsc-row" ng-show="(sc.form.runas.runAsPrimaryMode==='alternate' || (sc.form.runas.runAsPrimaryMode==='current' && sc.form.runas.runAsSecondaryMode==='alternate')) && !sc.privileges.ltRole('administrator')"><input type="text" name="runAsAlternateUser" placeholder="Enter the Unix user name" ng-model="sc.form.runas.runAsAlternateUser" id="runAsAlternateUser"></div>
+    </div>
+
+    <div class="formSection">
+      <div class="subPanel">
+        <div class="instructions">Administrators can create a custom "vanity" url to access this {{sc.appCategory.prose}}. Your custom URL will be appended to your domain to form the complete path to your {{sc.appCategory.prose}}.</div>
+        <div class="formSection noSeparator">
+          <div class="rsc-row">
+            <input ng-hide="sc.privileges.ltRole('administrator')" type="text" ng-model="sc.form.vanityPath">
+          </div>
+        </div>
+        <div class="formSection noSeparator">
+          <div ng-show="vanityURL !== ''" class="instructions topSpacing" >Your custom url:</div>
+          <div ng-show="sc.privileges.ltRole('administrator') && vanityURL === ''" class="instructions topSpacing" >No custom url defined</div>
+          <div class="rsc-row">
+            <input ng-show="vanityURL !== ''" type="text" class="smallText vanityUrl" readonly="true" ng-model="vanityURL">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" ng-if="publishing">
+      <div class="form-vpad">&nbsp;</div>
+      <div class="form-group">
+        <div class="col-md-offset-3 col-md-7">
+          <p class="lead"><img src="images/progress-spinner-24.gif" /> Publishing ... </p>
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+</form>
+</app-tab>

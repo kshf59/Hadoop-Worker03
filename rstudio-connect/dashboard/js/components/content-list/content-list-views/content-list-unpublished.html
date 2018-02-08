@@ -1,0 +1,39 @@
+<div class="band">
+  <div class="bandContent mainPage">
+
+    <admin-menu location="location"></admin-menu>
+    <div class="sectionTitle">Unpublished Content</div>
+
+<div class="standardPadding listing" ng-show="$ctrl.loaded">
+  <div class="description" ng-class="{showing : $ctrl.showInfo}">
+    <div>
+      <p>
+        Unpublished content has been deployed to RStudio Connect but is not available for viewing.
+        Sometimes, a collaborator simply needs to confirm the sharing configuration for that content.
+        Other items encountered errors while deploying; that content needs to be republished.
+      </p>
+    </div>
+  </div>
+  <content-list-table
+    ng-show="$ctrl.loaded && $ctrl.haveApps"
+    custom-filters="['needs_config:1','min_role:owner']"
+    show-owner="true"
+    show-icon="true"
+    load-on-init="true"
+  >
+  </content-list-table>
+  <div >
+  </div>
+</div>
+<div ng-show="$ctrl.loaded && !$ctrl.haveApps">
+  <div class="standardPadding">
+    <div help-connect="help-connect">
+      <p class="empty-search text-center">
+        <i class="fa fa-search"></i><br />
+        All content has been published.
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+</div>

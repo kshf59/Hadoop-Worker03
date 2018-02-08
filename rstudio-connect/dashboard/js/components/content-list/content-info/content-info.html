@@ -1,0 +1,31 @@
+<div ng-if="loaded" class="description" ng-class="{showing : showInfo }">
+  <div id="sel_recent_list">
+    <p ng-if="counts.any() && !viewerMode()">
+      You have created
+      <span ng-if="counts.apps"><a ui-sref="content.apps">{{counts.renderApps()}}</a>{{acp(counts.documents, counts.plots, counts.apis)}}</span>
+      <span ng-if="counts.documents"><a ui-sref="content.documents">{{counts.renderDocuments()}}</a>{{acp(counts.plots, counts.apis)}}</span>
+      <span ng-if="counts.plots"><a ui-sref="content.plots">{{counts.renderPlots()}}</a>{{acp(counts.apis)}}</span>
+      <span ng-if="counts.apis"><a ui-sref="content.apis">{{counts.renderAPIs()}}</a>.</span>
+      <span ng-if="!counts.all()">
+        Learn how to deploy
+        <span ng-if="!counts.apps"><a target="_blank" ng-href="{{publishingDocs()}}">Shiny applications</a>{{acp(!counts.documents, !counts.plots, !counts.apis)}}</span>
+        <span ng-if="!counts.documents"><a target="_blank" ng-href="{{publishingDocs()}}">R Markdown documents</a>{{acp(!counts.plots, !counts.apis)}}</span>
+        <span ng-if="!counts.plots"><a target="_blank" ng-href="{{publishingDocs()}}">plots</a>{{acp(!counts.apis)}}</span>
+        <span ng-if="!counts.apis"><a target="_blank" ng-href="{{publishingDocs()}}">APIs</a>.</span>
+      </span>
+    </p>
+    <p ng-if="!counts.any() && !kioskMode()">
+      RStudio Connect can help you publish and share
+      <a target="_blank" ng-href="{{publishingDocs()}}">Shiny applications</a>,
+      <a target="_blank" ng-href="{{publishingDocs()}}">R Markdown documents</a>,
+      <a target="_blank" ng-href="{{publishingDocs()}}">plots and graphs</a>, and
+      <span><a target="_blank" ng-href="{{publishingDocs()}}">APIs</a>.</span>
+    </p>
+    <p ng-if="viewerMode() && !kioskMode()">
+      You currently have a "viewer" account. If you'd like to be able to publish your own content to this server, <a href="" ng-click="requestPermissions()">request permission to publish your own content</a>.
+    </p>
+    <p ng-if="!equalCounts(all, counts) && !kioskMode()">
+      There {{all.total()==1 ? "is" : "are"}} {{all.renderSummary()}} published to this server.
+    </p>
+  </div>
+</div>

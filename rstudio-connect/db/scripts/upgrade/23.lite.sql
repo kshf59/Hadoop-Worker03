@@ -1,0 +1,1 @@
+ALTER TABLE apps ADD COLUMN has_parameters BOOLEAN DEFAULT 0;

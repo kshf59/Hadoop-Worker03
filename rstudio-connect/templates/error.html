@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>{{.Title}}</title>
+    <style type="text/css">
+        body {
+        font-family: Helvetica, Arial, sans-serif;
+        }
+        pre, tt, code, .code, #detail {
+        font-family: 'Consolas', 'Courier New', 'Courier', monospace;
+        }
+        h1 {
+        font-size: 40px;
+        }
+        #message {
+        font-size: 18px;
+        }
+        #detail {
+        font-size: 14px;
+        }
+        #console {
+        white-space: pre;
+        background-color: #2A2A2A;
+        color: #4F4;
+        padding: 12px;
+        border-radius: 4px;
+        overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<h1>An error has occurred</h1>
+{{if .Error}}
+<p id="message">{{.Error}}</p>
+{{end}}
+{{if .Detail}}
+<p id="detail">{{.Detail}}</p>
+{{end}}
+{{if and .LinkHref .LinkText}}
+<a target="_parent" href="{{.LinkHref}}">{{.LinkText}}</a>
+{{end}}
+{{if .Console}}
+<p id="console"><code>{{.Console}}</code></p>
+{{end}}
+{{if .DashboardMessage}}
+<script>
+    parent.postMessage('{{.DashboardMessage}}', window.location.protocol+'//'+window.location.host);
+</script>
+{{end}}
+</body>
+</html>

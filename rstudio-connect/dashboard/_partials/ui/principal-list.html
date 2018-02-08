@@ -1,0 +1,66 @@
+<div ng-controller="PrincipalListController" class="accessList">
+  <li ng-show="principals.length == 0 && placeholder" class="list-group-item placeholder">
+    {{placeholder}}
+  </li>
+  <div ng-repeat="principal in principals" class="userWrapper">
+    <div class="user">
+      <span ng-switch="!!principal.provider_key">
+        <!-- user/group not in the database OR we can't deterministically predict the provider_key -->
+        <span ng-switch-when="false">
+          <span ng-if="principal.username">
+            <div class="userIcon">
+              <gravatar-image style="margin: 0 1px; width: 16px; display: inline-block"
+                              data-gravatar-hash="principal.email_hash"
+                              data-gravatar-size="16" data-gravatar-rating="pg"
+                              data-gravatar-default="identicon"
+                              data-gravatar-secure="true"></gravatar-image>
+            </div>
+            <div class="userFullName userName">{{principal.name}}</div>
+            <div class="userName">{{principal.username}}</div>
+            <small ng-if="principal.locked" class="username">({{principal.locked}})</small>
+          </span>
+          <span ng-if="!principal.username">
+            <div class="userIcon">
+              <img ng-src="images/principal-{{principal.type}}.png" />
+            </div>
+            <div class="userFullName userName">{{principal.name}}</div>
+          </span>
+        </span>
+
+        <!-- user/group already in the the database OR we are able to deterministically predict the provider_key -->
+        <span ng-switch-when="true">
+          <span ng-if="principal.type=='user'">
+            <a href="{{paths.users_or_groups_page(principal)}}">
+              <div class="userIcon">
+                <gravatar-image style="margin: 0 1px; width: 16px; display: inline-block"
+                                data-gravatar-hash="principal.email_hash"
+                                data-gravatar-size="16" data-gravatar-rating="pg"
+                                data-gravatar-default="identicon"
+                                data-gravatar-secure="true"></gravatar-image></div></a>
+            <div ng-show="!principal.name" class="userFullName userName"><a href="{{paths.users_or_groups_page(principal)}}">{{principal.username}}</a></div>
+            <div ng-show="principal.name" class="userFullName userName"><a href="{{paths.users_or_groups_page(principal)}}">{{principal.name}}</a></div>
+            <div ng-show="principal.name" class="userName">{{principal.username}}</div>
+            <small ng-if="principal.locked" class="username text-danger">(locked)</small>
+          </span>
+          <span ng-if="principal.type=='group'">
+            <span ng-switch="server.authentication.name==='LDAP'">
+              <span ng-switch-when="false">
+                <a href="{{paths.users_or_groups_page(principal)}}">
+                  <div class="userIcon">
+                    <img ng-src="images/principal-{{principal.type}}.png" />
+                </div></a>
+                <a href="{{paths.users_or_groups_page(principal)}}">{{principal.name}}</a>
+              </span>
+              <span ng-switch-when="true">
+                <div class="userIcon">
+                  <img ng-src="images/principal-{{principal.type}}.png" />
+                </div> {{principal.name}}
+              </span>
+            </span>
+        </span>
+      </span>
+    </div>
+    <div ng-show="canDelete === true || (canDelete && canDelete(principal))"
+         href="#" id="sel_remove_principal_{{principal.name | lowercase}}" class="sel_remove_principal removeUser" ng-click="$event.preventDefault();removePrincipal(principal);"></div>
+  </div>
+</div>

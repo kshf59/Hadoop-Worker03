@@ -1,0 +1,52 @@
+<div class="band">
+  <div class="bandContent mainPage">
+    <admin-menu location="location"></admin-menu>
+
+    <div class="sectionTitle">Queue</div>
+
+    <div ng-if="$ctrl.loaded">
+      <table class="contentListing">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Queue</th>
+            <th>Priority</th>
+            <th>Type</th>
+            <th>Active</th>
+            <th>Payload</th>
+            <th>Permit</th>
+            <th>Permit Expiration</th>
+            <th>Hostname</th>
+            <th>Created Time</th>
+            <th class="tightRight"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="i in $ctrl.items">
+            <td>{{i.id}}</td>
+            <td>{{i.queue}}</td>
+            <td>{{i.priority}}</td>
+            <td>{{i.type}}</td>
+            <td>{{i.active}}</td>
+            <td><pre class="queue-payload">{{i.item}}</pre></td>
+            <td>{{i.permit}}</td>
+            <td>{{i.heartbeat}}</td>
+            <td>{{i.hostname}}</td>
+            <td>{{i.created_time}}</td>
+            <td class="tightRight">
+              <div class="actionBar inline">
+                <button ng-click="$ctrl.removeItem(i.id)" class="action delete"></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div ng-if="$ctrl.items.length === 0" class="noContentMessage">
+        No results
+      </div>
+
+    </div>
+
+  </div>
+</div>

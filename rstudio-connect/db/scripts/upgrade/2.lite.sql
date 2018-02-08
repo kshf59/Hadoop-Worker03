@@ -1,0 +1,3 @@
+CREATE TABLE upgrade_example (
+   id INTEGER NOT NULL PRIMARY KEY);
+

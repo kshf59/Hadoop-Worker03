@@ -1,0 +1,137 @@
+<div class="band">
+  <div class="bandContent mainPage">
+
+    <div class="incomplete-panel">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title">Complete your RStudio Connect account</h2>
+        </div>
+        <div class="panel-body">
+          <div ng-show="!profile_complete">
+            <p>
+              We need a bit more information to finish setting up your account.
+            </p>
+
+            <form role="form" name="completeProfileForm" ng-submit="update();">
+              <div ng-show="needs.username || invalidDisabled.username"
+                   class="form-group textInputContainer"
+                   ng-class="{ 'hasError' : completeProfileForm.username.$invalid && !completeProfileForm.username.$pristine }"
+              >
+                <label for="username">Username</label>
+                <input type="text"
+                       class="form-control"
+                       name="username"
+                       ng-model="user.username"
+                       valid-username
+                       not-blank='{"disabled": {{disabledProps.username}}}'
+                       autofocus
+                       ng-disabled="disabledProps.username"
+                />
+                <span ng-hide="completeProfileForm.username.$pristine">
+                  <p ng-show="completeProfileForm.username.$error.shortUsername" class="textInputError">{{usernameError.isShort}}</p>
+                  <p ng-show="completeProfileForm.username.$error.longUsername" class="textInputError">{{usernameError.isLong}}</p>
+                  <p ng-show="completeProfileForm.username.$error.firstCharacter" class="textInputError">{{usernameError.badFirstChar}}</p>
+                  <p ng-show="completeProfileForm.username.$error.validCharacters" class="textInputError">{{usernameError.badChar}}</p>
+                  <p ng-show="completeProfileForm.username.$error.blacklisted" class="textInputError">{{usernameError.blacklisted}}</p>
+                  <p ng-show="completeProfileForm.username.$error.blankValue" class="textInputError">{{valueError.isBlank}}</p>
+                  <p ng-show="completeProfileForm.username.$error.admin"
+                     class="textInputError"
+                  >
+                    {{valueError.admin}}
+                  </p>
+                </span>
+              </div>
+              <div ng-show="needs.first_name || invalidDisabled.first_name"
+                   class="form-group textInputContainer"
+                   ng-class="{ 'hasError' : completeProfileForm.first_name.$invalid && !completeProfileForm.first_name.$pristine }"
+              >
+                <label for="first_name">First name</label>
+                <input type="text"
+                       class="form-control"
+                       name="first_name"
+                       ng-model="user.first_name"
+                       not-blank='{"disabled": {{disabledProps.first_name}}}'
+                       ng-disabled="disabledProps.first_name"
+                />
+                <span ng-hide="completeProfileForm.first_name.$pristine">
+                  <p ng-show="completeProfileForm.first_name.$error.blankValue" class="textInputError">{{valueError.isBlank}}</p>
+                  <p ng-show="completeProfileForm.first_name.$error.admin"
+                     class="textInputError"
+                  >
+                    {{valueError.admin}}
+                  </p>
+                </span>
+              </div>
+              <div ng-show="needs.last_name || invalidDisabled.last_name"
+                   class="form-group textInputContainer"
+                   ng-class="{ 'hasError' : completeProfileForm.last_name.$invalid && !completeProfileForm.last_name.$pristine }"
+              >
+                <label for="last_name">Last name</label>
+                <input type="text"
+                       class="form-control"
+                       name="last_name"
+                       ng-model="user.last_name"
+                       not-blank='{"disabled": {{disabledProps.last_name}}}'
+                       ng-disabled="disabledProps.last_name"
+                />
+                <span ng-hide="completeProfileForm.last_name.$pristine">
+                  <p ng-show="completeProfileForm.last_name.$error.blankValue" class="textInputError">{{valueError.isBlank}}</p>
+                  <p ng-show="completeProfileForm.last_name.$error.admin"
+                     class="textInputError"
+                  >
+                    {{valueError.admin}}
+                  </p>
+                </span>
+              </div>
+              <div ng-show="needs.email || invalidDisabled.email"
+                   class="form-group textInputContainer"
+                   ng-class="{ 'hasError' : completeProfileForm.email.$invalid && !completeProfileForm.email.$pristine }"
+              >
+                <label for="email">Email</label>
+                <input type="text"
+                       class="form-control"
+                       name="email" ng-model="user.email"
+                       valid-email='{"disabled": {{disabledProps.email}}}'
+                       not-blank='{"disabled": {{disabledProps.email}}}'
+                       ng-disabled='disabledProps.email'
+                />
+                <span ng-hide="completeProfileForm.email.$pristine">
+                  <p ng-show="completeProfileForm.email.$error.validEmail" class="textInputError">{{validEmailErrorMessage}}</p>
+                  <p ng-show="completeProfileForm.email.$error.blankValue" class="textInputError">{{valueError.isBlank}}</p>
+                  <p ng-show="completeProfileForm.email.$error.admin"
+                     class="textInputError"
+                  >
+                    {{valueError.admin}}
+                  </p>
+                </span>
+              </div>
+              <input type="submit"
+                     class="btn btn-primary"
+                     ng-disabled="saving"
+                     value="Save"
+                     ng-if="!isExternalUser"
+              />
+              <input type="submit"
+                     class="btn"
+                     ng-class="{disabled: saving || !completeProfileForm.$valid, 'btn-primary': !saving && completeProfileForm.$valid}"
+                     ng-disabled="saving || !completeProfileForm.$valid"
+                     value="Save"
+                     ng-if="isExternalUser"
+              />
+            </form>
+          </div>
+
+          <div ng-show="profile_complete">
+            <p>
+              All set! Your profile is now complete.
+            </p>
+            <p>
+              <button id="sel_proceeed" type="button" ng-click="complete()" class="btn btn-primary">Proceed to RStudio Connect</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

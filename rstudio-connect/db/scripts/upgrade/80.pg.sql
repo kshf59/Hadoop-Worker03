@@ -1,0 +1,1 @@
+ALTER TABLE ONLY variants ALTER COLUMN render_duration SET DEFAULT NULL;

@@ -1,0 +1,16 @@
+<div class="formSection">
+  <div class="itemTitle">{{sc.app.getTitle(22)}}</div>
+  <div class="typeAndFormat">
+    <div class="type">{{sc.app.getDescription()}}</div>
+  </div>
+  <div class="author">
+    <user user="sc.app.owner" link-to-profile="true"/>
+  </div>
+  <!--<div class="itemImage" style={{backgroundImage: 'url(' + content.thumbnail_url + ')' }} ></div>-->
+  <!--<div class="itemDescription">{content.description}</div>-->
+  <div ng-show="sc.app.r_version" class="rversion">R version {{sc.app.r_version}}</div>
+  <div class="itemDate">
+    <div class="created">Created {{sc.app.created_time | date : "mediumDate"}} {{sc.app.created_time | date : "mediumTime"}}</div>
+    <div class="updated">Updated {{sc.app.last_deployed_time | date : "mediumDate"}} {{sc.app.last_deployed_time | date : "mediumTime"}}</div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="band">
+  <div class="bandContent mainPage">
+
+  <div class="col-sm-10 col-md-6">
+    <h2>Connect to R</h2>
+    <div ng-if="$ctrl.tokenControllerState == 'unactivated' && !$ctrl.canPublish">
+      <p class="lead">Insufficient Privileges</p>
+      <p>
+        Your user account (<strong>{{$ctrl.username}}</strong>) has insufficient
+        privileges to publish content to Connect. Please contact an
+        administrator if you need publishing privileges.
+      </p>
+    </div>
+    <div ng-if="$ctrl.tokenControllerState == 'unactivated' && $ctrl.canPublish">
+      <p class="lead">Confirm package connection.</p>
+      <p>
+        You're almost done configuring R to publish content to RStudio
+        Connect. Click the Connect button below to link your RStudio
+        Connect account (<strong>{{$ctrl.username}}</strong>) to the
+        <strong>rsconnect</strong> R package.
+      </p>
+      <p>
+        If you didn't reach this screen by initiating an account link from R
+        via <code>connectUser</code>, click Cancel.
+      </p>
+      <br />
+      <button class="btn btn-primary" ng-click="$ctrl.activate();">Connect</button>
+      <button class="btn btn-danger" ng-click="$ctrl.cancel();">Cancel</button>
+    </div>
+    <div ng-if="$ctrl.tokenControllerState == 'failed'">
+      <p class="lead">Connection failed.</p>
+      <p>
+        We couldn't connect your account. Try connecting again, and contact
+        your administrator if the problem persists.
+      </p>
+    </div>
+    <div ng-if="$ctrl.tokenControllerState == 'succeeded'">
+      <p class="lead">Connection succeeded.</p>
+      <p>
+        You've successfully connected the <strong>rsconnect</strong> package
+        to RStudio Connect! If you're using the RStudio IDE, click the 
+        "Connect Account" button to finish adding this account.
+      </p>
+      <p>
+        Now you are ready to publish a <a target="_blank" ng-href="{{$ctrl.publishingDocs}}">Shiny
+          application</a>, <a target="_blank" ng-href="{{$ctrl.publishingDocs}}">R Markdown documents</a>
+        or <a target="_blank" ng-href="{{$ctrl.publishingDocs}}">any plot</a> created with R.
+      </p>
+    </div>
+    <div ng-if="$ctrl.tokenControllerState == 'cancelled'">
+      <p class="lead">Connection cancelled.</p>
+      <p>
+        If this was in error, please read
+        the <a target="_blank" ng-href="{{$ctrl.connectingDocs}}">documentation</a> for help getting
+        the RStudio IDE connected to your account.
+      </p>
+    </div>
+  </div>
+
+</div>
+</div>

@@ -1,0 +1,16 @@
+<div class="popupButtonAndMenuContainer" ng-if="link.menuButton">
+
+  <div ng-show="link.show(link)" id="sel_menuitem_{{link.tip | lowercase}}" title="{{link.tip}}" class="{{'action ' + link.key}}" ng-class="{'menuButton' : link.menuButton, 'current' : link.current()}" ng-click="clickCallback(link)">
+    <span class="actionTitle"></span>
+  </div>
+  <div ng-show="link.menuButton" class="popupMenu">
+    <div ng-repeat="subitem in link.subitems" ng-show="subitem.show(subitem)" id="sel_menuitem_{{subitem.tip | lowercase}}" title="{{subitem.tip}}" class="{{subitem.key}}" ng-class="{'separator' : subitem.separator, 'action' : !subitem.separator}" ng-click="clickCallback(subitem)">
+      <span ng-show="!subitem.separator" class="actionTitle">{{subitem.label}}</span>
+    </div>
+  </div>
+
+</div>
+
+<div ng-if="!link.menuButton" ng-show="link.show(link)" id="sel_menuitem_{{link.tip | lowercase}}" title="{{link.tip}}" class="{{'action ' + link.key}}" ng-class="{'menuButton' : link.menuButton, 'current' : link.current()}" ng-click="clickCallback(link)">
+  <span class="actionTitle"></span>
+</div>

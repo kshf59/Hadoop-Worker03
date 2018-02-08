@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>RStudio Connect: Sign in with Google</title>
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto" />
+    <link rel="stylesheet" type="text/css" href="{{.Prefix}}__assets__/login-oauth.css" />
+    <script src="{{.Prefix}}__assets__/jquery-3.1.0.slim.min.js"></script>
+    {{if .Tos}}
+    <script type="text/javascript" src="{{.Prefix}}__assets__/tos.js"></script>
+    {{end}}
+  </head>
+  <body>
+    <div id="content">
+      <h1>RStudio Connect</h1>
+
+      {{if .Err}}
+      <div class="alert"><strong>Error:</strong> {{.Err}}</div>
+      {{end}}
+
+      <div id="gSignInWrapper">
+        <form action="__login__/doauth" method="POST" id="gSignIn">
+          {{if .Tos}}
+          <div id="tos">
+            <label><input id="ckbkAgree" type="checkbox" name="agree" value="agree"> I agree to the <a href="https://www.rstudio.com/about/connect-terms-of-use/" target="_blank">Terms of Service</a></label><br/>
+          </div>
+          {{end}}
+          <input type="checkbox" name="prompt" value="1" {{ if .Prompt }}checked{{ end }} style="display:none;">
+          <input type="hidden" name="url" value="{{ .Url }}">
+          <div id="signInButton">
+            <div id="customBtn" class="customGPlusSignIn" onclick="$('#gSignIn').submit()" title="Sign in with Google">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

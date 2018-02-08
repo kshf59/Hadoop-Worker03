@@ -1,0 +1,54 @@
+<options-panel>
+
+  <div class="sectionSubtitle flex">
+    Options
+    <div class="paneCloser" ng-click="$ctrl.toggleOptions()"></div>
+  </div>
+
+  <div class="section">
+    <div class="sectionTitle tight">Search</div>
+    <div class="searchContainer">
+      <input type="text"
+             ng-model="$ctrl.searchQuery"
+             ng-keyup="$event.keyCode == 13 && $ctrl.applySearchFilter($ctrl.searchQuery)"
+             value=""
+             placeholder="Search for a name..."
+      />
+      <div ng-if="$ctrl.searchQuery" class="searchKiller" ng-click="$ctrl.applySearchFilter('')"></div>
+    </div>
+  </div>
+
+  <div class="section uppercaseControlGroupTitles" ng-if="$ctrl.showFilterControls">
+    <div class="sectionTitle tight">Filter</div>
+
+    <div ng-repeat="filter in $ctrl.ownerFilters track by $index">
+      <radio-group
+        group-title-key="{{filter.groupTitleKey}}"
+        group-id="filter.groupId"
+        group-value="filter.groupValue"
+        options="filter.options"
+        on-user-input="$ctrl.onFilterChange"
+      />
+    </div>
+
+    <tag-filter></tag-filter>
+
+    <div ng-repeat="filter in $ctrl.filters track by $index">
+      <radio-group
+          group-title-key="{{filter.groupTitleKey}}"
+          group-id="filter.groupId"
+          group-value="filter.groupValue"
+          options="filter.options"
+          on-user-input="$ctrl.onFilterChange"
+      />
+    </div>
+  </div>
+
+  <div class="section uppercaseControlGroupTitles" ng-if="$ctrl.showInfo">
+    <div class="sectionTitle tight">Info</div>
+    <div class="sectionBlurb">
+      <content-info></content-info>
+    </div>
+  </div>
+
+</options-panel>

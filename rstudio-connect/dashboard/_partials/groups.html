@@ -1,0 +1,65 @@
+<div class="band">
+  <div class="bandContent mainPage">
+
+    <people-menu></people-menu>
+
+    <div class="contentWithOptionsPanel" ng-class="{'hideOptionsPanel' : !showOptionsPanel}">
+
+      <div class="majorColumn">
+        <div class="sectionTitle flex">
+          <div ng-if="search.searched.length === 0">All groups</div>
+          <div ng-if="search.searched.length > 0">Matching groups</div>
+
+          <div class="actionBar inline showTitles">
+            <button ng-show="privileges.canCreateGroup()" id="sel_add_group" type="button" class="action new" ng-click="createGroup()">
+              <span class="actionTitle">Add Group</span>
+            </button>
+            <div ng-if="!showOptionsPanel" class="action toggleOptions" ng-click="toggleOptions()">
+              <span class="actionTitle">Options</span>
+            </div>
+          </div>
+
+        </div>
+
+        <groups-list group-list="pager.visible_items" getting-list="true" allow-delete="privileges.canDeleteGroup" remove-group="deleteGroup" />
+
+        <div class="center-pager">
+          <pager-controls class="userPager" our-pager="pager" css-class="people-pager"/>
+        </div>
+
+      </div>
+
+      <div class="minorColumn">
+        <div class="optionsPositioner">
+          <div class="band">
+            <div class="innards bandContent">
+              <options-panel>
+
+                <div class="sectionSubtitle flex">
+                  <span class="actionTitle">Options</span>
+                  <div class="paneCloser" ng-click="toggleOptions()"></div>
+                </div>
+
+                <div class="section">
+                  <div class="sectionTitle tight">Search</div>
+                  <div class="searchContainer">
+                    <input type="text" ng-model="search.text" ng-keydown="handleSearchStringKeyDown($event)"/>
+                    <div ng-if="!!search.text" class="searchKiller" ng-click="clearSearch()"></div>
+                  </div>
+                </div>
+
+                <div class="section">
+                  <div class="sectionTitle">Info</div>
+                  <div class="sectionBlurb"><p>Use the Search field to search for groups. <span ng-if="privileges.canCreateGroup()">You can add a new group with the Add Group button.</span></p></div>
+                </div>
+
+              </options-panel>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+</div>
+</div>

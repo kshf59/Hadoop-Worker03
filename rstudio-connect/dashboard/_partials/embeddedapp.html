@@ -1,0 +1,27 @@
+<div class="pageContainer" ng-class="{'showingHistoryBar': isHistoryVisible}">
+
+  <params-panel ng-if="showParams || hintParams"></params-panel>
+
+  <div relink-event="deleteAppIframe">
+    <iframe-message-handler></iframe-message-handler>
+    <app-embedder id="contentContainer"
+                  show="show"
+                  app-url="appUrl"
+                  category-singular="categorySingular"
+                  category-prose="categoryProse"
+                  variant="variant"
+                  deployed="deployed"
+                  is-admin="isAdmin()"
+                  invalid="invalid"
+                  generating="generating"
+                  ng-class="{' showSettingsPanel' : showSettingsPanel(),
+                  'hintParamsPanel' : hintParams,
+                  'showParamsPanel' : showParams }"
+    >
+    </app-embedder>
+
+  </div>
+
+  <div id="settingsPanel" class="contentPanel" ui-view="appsettings"></div>
+
+</div>

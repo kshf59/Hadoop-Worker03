@@ -1,0 +1,2 @@
+ALTER TABLE cookies ALTER created_time DROP DEFAULT;
+ALTER TABLE cookies ALTER used_time DROP DEFAULT;

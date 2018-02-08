@@ -1,0 +1,124 @@
+<div id="paramsPanel"
+     class="contentPanel"
+     ng-class="{ 'closed' : !$ctrl.showParamsPanel}"
+     ng-if="$ctrl.canViewVariantPanel"
+>
+
+  <div ng-if="$ctrl.inProgress"
+       class="parameters-progress text-center"
+       ng-class="{'parameters-loading': $ctrl.inProgress}">
+    <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+    <br/>
+    <p>Processing ...</p>
+  </div>
+
+
+  <div class="settingsPane">
+
+    <div ng-hide="$ctrl.inProgress"> <!-- container -->
+
+      <div class="formSection">
+        <div>Parameters for {{$ctrl.variantName}}</div>
+      </div>
+
+
+      <!-- variant parameters -->
+
+      <params-editor ng-if="$ctrl.canEditOrTwiddle">
+      </params-editor>
+
+      <div class="description" ng-if="!$ctrl.canEditOrTwiddle">
+        You do not have privileges to customize parameters for this report.
+        The configured parameter values are displayed below.
+      </div>
+
+      <pre class="paramOverrides" ng-if="!$ctrl.canEditOrTwiddle">{{$ctrl.paramOverrideValues}}</pre>
+
+      <!-- end variant paramters -->
+
+
+      <!-- variant info -->
+
+      <div class="formSection">
+        <p class="text-muted">
+        <span ng-if="$ctrl.currentVariant.render_time">
+          Output last rendered on
+          <!--TODO: Timezone-->
+          {{$ctrl.currentVariant.render_time | date : "mediumDate"}}
+          {{$ctrl.currentVariant.render_time | date : "mediumTime"}}.
+        </span>
+          <span ng-if="!$ctrl.currentVariant.render_time">
+          Output using the current parameters not generated.
+        </span>
+        </p>
+      </div>
+
+      <!-- end variant info -->
+
+
+      <!-- actions -->
+
+      <div class="formSection" ng-if="$ctrl.canEditVariant || $ctrl.canViewOnDemand">
+        <div class="actions flex" ng-if="$ctrl.app.isDeployed()">
+          <button class="auxAction"
+                  ng-if="$ctrl.canPublish"
+                  ng-class="{disabled: !$ctrl.isSaveButtonEnabled}"
+                  ng-disabled="!$ctrl.isSaveButtonEnabled"
+                  ng-click="$ctrl.saveVariant()"
+          >
+            {{$ctrl.saveButtonText}}
+          </button>
+          <button ng-if="$ctrl.canPublish || $ctrl.canViewOnDemand"
+                  ng-class="{disabled: $ctrl.isRunButtonDisabled}"
+                  ng-disabled="$ctrl.isRunButtonDisabled"
+                  ng-click="$ctrl.runVariant()"
+          >
+            Run Report
+          </button>
+        </div>
+      </div>
+
+      <div class="formSection tight" ng-if="$ctrl.canEditVariant || $ctrl.canViewOnDemand">
+        <div class="actionBar panelActionBar">
+          <div class="action new"
+               ng-if="$ctrl.isNewButtonEnabled && $ctrl.canEditVariant"
+               data-ng-click="$ctrl.newVariantWithParamsEnabled()"
+          >
+            New
+          </div>
+          <div class="action rename"
+               ng-if="$ctrl.isRenameButtonEnabled && $ctrl.canEditVariant"
+               data-ng-click="$ctrl.renameVariant()"
+          >
+            Rename
+          </div>
+          <div class="action delete"
+               ng-if="$ctrl.isDeleteButtonEnabled && $ctrl.canEditVariant"
+               data-ng-click="$ctrl.deleteVariantWithParamsEnabled()"
+          >
+            Delete
+          </div>
+          <div class="action revert"
+               ng-if="$ctrl.isRevertButtonEnabled"
+               data-ng-click="$ctrl.revertVariantParamsPanel()"
+          >
+            Revert
+          </div>
+        </div>
+      </div>
+
+      <!-- end actions -->
+
+    </div> <!-- container -->
+
+
+    <div class="paramsPaneCloser" data-ng-click="$ctrl.toggleParamsPanel()"></div>
+
+  </div>
+
+
+  <div class="paramsPanelToggler" data-ng-click="$ctrl.toggleParamsPanel()">
+    <div class="overlayButton" />
+  </div>
+
+</div>

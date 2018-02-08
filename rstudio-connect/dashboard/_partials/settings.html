@@ -1,0 +1,97 @@
+<div class="band">
+  <div class="bandContent mainPage">
+
+    <admin-menu location="location"></admin-menu>
+
+    <div class="splitColumns withMobileMargins">
+      <div class="column50">
+        <div class="splitPageFormContainer">
+          <div class="formTitle">
+            Email Settings
+          </div>
+
+          <div>
+            <form role="form" name="emailSettings" class="form-horizontal" ng-hide="loading">
+
+              <div class="formSection">
+
+                <fieldset class="chunk">
+                  <label class="fieldLabel"><span>Send emails via</span></label>
+                  <select id="sendtype" class="full" ng-model="mail.type">
+                    <option value="sendmail">Sendmail</option>
+                    <option value="smtp">SMTP</option>
+                  </select>
+                </fieldset>
+
+                <span ng-show="mail.type === 'smtp'">
+
+                  <fieldset class="chunk">
+                      <label><span>Server Address</span></label>
+                    <input type="text" id="smtp-host" ng-model="mail.host" />
+                  </fieldset>
+
+                  <fieldset class="chunk">
+                      <label><span>Port</span></label>
+                    <input type="number" id="smtp-port" ng-model="mail.port" />
+                  </fieldset>
+
+                  <fieldset class="chunk">
+                    <input id="useSSL" component="input" type="checkbox" ng-model="mail.ssl" ng-change="onSSLChange();"></input>
+                    <label for="useSSL">Use SSL</label>
+                  </fieldset>
+
+                  <fieldset class="chunk" ng-show="!mail.ssl">
+                    <label class="fieldLabel"><span>StartTLS</span></label>
+                    <select class="full" id="smtp-auth" ng-model="mail.start_tls">
+                      <option value="">Use if available</option>
+                      <option value="always">Always Use</option>
+                      <option value="never">Never Use</option>
+                    </select>
+                  </fieldset>
+
+                  <fieldset class="chunk">
+                    <input id="auth" component="input" type="checkbox" ng-model="mail.auth"></input>
+                    <label for="auth">My mail server requires authentication</label>
+                  </fieldset>
+
+                  <span ng-show="mail.auth">
+
+                    <fieldset class="chunk">
+                      <label>
+                        <span>Username</span>
+                      </label>
+                      <input type="text" id="smtp-user" ng-model="mail.user" />
+                    </fieldset>
+
+                    <fieldset class="chunk">
+                      <label><span>Password</span></label>
+                      <button class="formFieldButton" type="button" ng-show="!showPassword" ng-click="showPassword = true;">Click to change password</button>
+                      <input type="password" id="smtp-password" ng-model="mail.password" ng-show="showPassword" />
+                      <a href="#" ng-show="showPassword" ng-click="showPassword=false;mail.password=null;$event.preventDefault();">
+                        Never mind, don't change password
+                      </a>
+                    </fieldset>
+                  </span>
+    	  	      </span>
+
+              </div>
+
+              <fieldset class="actions">
+                <button id="test-email-div" class="default" ng-disabled="!testEnabled" title="{{ !testEnabled ? 'You must save your updated settings before you can test.' : '' }}" ng-click="sendTest()">
+                  <span>Send Test Email</span>
+                </button>
+                <button type="submit" ng-disabled="!allowSave()" ng-click="saveMailSettings();">
+                  <span>Save</span>
+                </button>
+              </fieldset>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+      <div class="column50"></div>
+    </div>
+
+  </div>
+</div>

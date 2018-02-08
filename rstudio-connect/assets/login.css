@@ -1,0 +1,61 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: #F5F5F5;
+}
+
+pre, tt, code, .code, #detail {
+  font-family: 'Consolas', 'Courier New', 'Courier', monospace;
+}
+
+#content{
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 100px;
+  width: 350px;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+#message {
+  font-size: 18px;
+}
+
+.alert{
+  font-size: 14px;
+  width: 100%;
+  background-color: #FEE;
+  border: 1px solid #C11;
+  padding: 1em;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#login {
+  width: 100%;
+  background-color: #FFF;
+  border: 1px solid #CCC;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: .5em 1em .5em 1em;
+  -webkit-box-shadow: 1px 1px 8px 3px #DDD;
+  box-shadow: 1px 1px 8px 3px #DDD;
+  margin-top: 1em;
+}
+
+#login label {
+  font-size: 12px;
+}
+
+#login input[type="text"], input[type="password"] {
+  background-color: #F5F5F5;
+  line-height: 24px;
+  font-size: 16px;
+  border: 1px solid #CCC;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  padding: 2px;
+  width: 340px;
+  margin-right: 1em;
+}

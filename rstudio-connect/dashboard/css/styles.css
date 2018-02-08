@@ -1,0 +1,1090 @@
+/* Required by angular-bootstrap */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+
+/* This fixes a flicker of un-templated content. See
+ * http://weblog.west-wind.com/posts/2014/Jun/02/AngularJs-ngcloak-Problems-on-large-Pages
+ * for explanation. */
+[ng-cloak]
+{
+  display: none !important;
+}
+
+.principal-list {
+    /* principal-list is usually followed by a principal-search and we don't want a ton of spacing between them */
+    margin-bottom: 4px;
+}
+
+.principal-list .fa {
+  color: #C0C0C0;
+}
+.principal-list a:hover .fa {
+  color: #428bca;
+}
+
+.principal-list .remove-principal {
+  color: inherit;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+small.username {
+  margin-left: 3px;
+  opacity: 0.75;
+}
+
+.principal-list .list-group-item.placeholder {
+  font-style: italic;
+  color: #888;
+}
+
+.panel-title{
+    font-weight: 600;
+    padding-top: 8px;
+    padding-bottom: 4px;
+}
+
+.appsettings .indented {
+    padding-left: 5px;
+}
+
+.rendersender .indented {
+    padding-left: 2em;
+}
+
+.rendersender .site-confirm {
+    /* A hanging indent just in case our leader text wraps. */
+    text-indent: -2em;
+    padding-left: 2em;
+    /* Space between the confirmation text and email selector. */
+    padding-bottom:1em;
+}
+
+.subscriptions .indented {
+    padding-left: 2em;
+}
+
+.subscriptions fieldset[disabled] label {
+    color: #AAA;
+}
+
+.taskui-global {
+  position: fixed;
+  top: 69px;
+  left: 50%;
+  margin-left: -225px;
+  width: 450px;
+  height: 0;
+  opacity: 0.9;
+  z-index: 1050; /* More than toolbar */
+}
+body.vscrolled .taskui-global {
+  top: 5px;
+  -webkit-transition:all linear 0.05s;
+  transition:all linear 0.05s;
+}
+.taskui-global .alert {
+  border-radius: 0;
+  padding: 8px;
+}
+
+.taskui-global > div {
+  text-align: center;
+}
+
+/* Fix a bug that was causing the taskui close button to have a large min-width */
+.taskui-global button.close {
+    min-width: inherit;
+}
+
+.animate-hide.ng-hide.ng-hide-add {
+  display: block !important;
+  opacity: 1;
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.animate-hide.ng-hide.ng-hide-add-active {
+  display: block !important;
+  opacity: 0;
+}
+
+.app-thumbnail {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.app-thumbnail .screenshot, .appbox .screenshot {
+  background-color: #f0f0f0;
+  border: 1px solid #c0c0c0;
+  text-align: center;
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.screenshot p {
+  color: gray;
+  margin-top: 25%;
+}
+
+.screenshot .fa {
+  font-size: 40pt;
+}
+
+#documentation_ui img.shot {
+  padding-left: 20px;
+  width: 50%;
+  min-width: 500px;
+}
+
+#documentation_ui img.icon {
+  padding-right: 20px;
+}
+
+#documentation_ui .documentation_section {
+    margin-top: 1em;
+    margin-botton: 1em;
+    overflow: auto;
+}
+
+#documentation_ui dd {
+    padding-left: 2em;
+}
+
+h2.app-header {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.login-panel {
+  width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+}
+
+.register-panel {
+  width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+}
+
+.incomplete-panel {
+  width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+}
+
+.set-now-btn {
+  margin-top: 4px;
+}
+
+input.form-control-50 {
+  width: 50%;
+  display: inline;
+}
+
+.empty-search i {
+  font-size: 50pt;
+  color: #a0a0a0;
+  margin-bottom: 20px;
+}
+
+.empty-search {
+  font-size: 20pt;
+}
+
+.missing-rendering p {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.list-loading {
+  font-size: 20pt;
+}
+
+.list-loading .glyphicon {
+  font-size: 50pt;
+  color: #a0a0a0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.variant-loading {
+  font-size: 15pt;
+}
+
+.variant-loading .glyphicon {
+  font-size: 20pt;
+  color: #a0a0a0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* position principal search dropdown correctly */
+.principal-search .dropdown-menu  {
+    position: absolute;
+    top: 90%;
+}
+
+/* progress indicator for principal search */
+.principal-search input.busy {
+    background-image: url(../images/ajax-loader.gif);
+    background-repeat: no-repeat;
+    background-position: 97% 50%;
+}
+
+.form-info {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  font-size: 0.9em;
+}
+
+.light-label {
+  font-weight: normal;
+}
+
+.light-label.disabled {
+    color: #AAA;
+}
+
+.appsettings .light-label {
+    display: block;
+}
+
+.top-label {
+  padding-top: 7px;
+  display: inline-block;
+}
+
+.variant-parameters {
+    padding-top: 7px;
+}
+
+.sched-email-col {
+    margin-top: 4px;
+}
+
+.sched-email-col .form-info {
+    margin-top: 0px;
+}
+
+.sched-choice {
+  margin-top: 12px;
+}
+
+.sched-choice .time-counter {
+  width: 60px;
+}
+
+.schedule-block {
+  padding-top: 8px;
+  padding-left: 1em;
+}
+
+.schedule-block input{
+  margin-bottom: 3px;
+}
+
+.dow-day {
+  display: block;
+  line-height: 1.6em;
+}
+
+.dow-day input {
+  margin-left: 1.5em;
+  margin-right: 4px;
+}
+
+.dow-day label {
+  font-weight: normal;
+  margin-bottom: 3px;
+}
+
+.ng-invalid-day-of-week-selection .dow-day label {
+  color: #EA7380;
+}
+
+.app-action {
+    font-size: 1.2em;
+}
+
+.app-action-view {
+    margin-right: .5em;
+}
+
+.app-action-edit {
+}
+
+.form-vpad {
+  margin-top: 10px;
+}
+
+.time-counter {
+  width: 50px;
+}
+
+.btn-loadable.not-loading {
+  margin-left: 17px !important;
+}
+
+.btn-loadable.loading {
+  margin-left: 0 !important;
+}
+
+.btn-loading.glyphicon{
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin 1.5s infinite linear;
+    -webkit-animation: spin2 1.5s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+.title-button {
+  margin-top: 15px;
+}
+
+.parameters .modal-body {
+    padding: 0px 0px 0px 0px;
+}
+
+.parameters-loading {
+    position: absolute;
+    width: 100%;
+}
+
+.parameters-progress {
+    font-size: 20pt;
+    margin-bottom: 20px;
+}
+
+.parameters-progress .glyphicon {
+    font-size: 50pt;
+    color: #a0a0a0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#parameters-iframe {
+    overflow: scroll;
+    width: 100%;
+    height: 100%;
+    border: 0px;
+}
+
+.expiring {
+    padding: 0px;
+    pointer-events: none;
+    cursor: default;
+}
+
+.expiring a {
+    text-decoration: none;
+    color: #fff !important;
+}
+
+.landing-lead {
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 1.4;
+}
+.landing-lead ul, ul.docs {
+  padding-left: 40px;
+  list-style: inherit;
+}
+
+.warning-section {
+  font-size: 1.1em;
+}
+
+span.tab-label {
+  display: block;
+}
+
+.row.no-right-pad {
+  margin-right:0;
+}
+.row.no-right-pad > [class*='col-'] {
+  padding-right:0;
+}
+
+#empty-proc-list {
+  text-align: center;
+  padding-bottom: 2em;
+}
+
+@media (min-width: 768px) {
+    table.admin-table > tbody > tr > td .form-group {
+        margin: 7px auto;
+    }
+}
+
+.form-horizontal table.admin-table > tbody > tr > td .form-group {
+    margin: 7px auto;
+}
+
+.switcher-80 {
+    width: 80px;
+}
+
+/* Force correct widths for min/max/max-connections inputs on Performance tab */
+.form-control.utilization-input {
+    width: 60px;
+}
+
+.sharing-label {
+  width: 100%;
+  text-align: right;
+}
+
+#runtime-preface {
+  padding-bottom: 10px;
+}
+
+/* Don't display the Bootstrap table row border above utilization setting descriptions */
+.table tbody>tr>td.perf_description {
+    border-top: none;
+    padding-top: 0;
+}
+.table tbody>tr>td.perf_description:hover {
+    background-color: inherit;
+}
+
+.metrics-panel {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #c0c0c0;
+    position: relative;
+}
+
+.metrics-fill {
+    width: 100%;
+}
+
+.metrics-panel-body {
+    /* padding: 20px; */
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+.metrics-process-table {
+    padding: 20px;
+}
+
+/* Controls for graphs */
+@media (min-width: 768px) {
+    .graph-number-input {
+        width: 80px;
+    }
+    /* Position metrics settings up in the header of the page */
+}
+
+.metrics-settings {
+    padding-bottom: 1em;
+}
+
+/* Explicitly set height on container around graphs so we can re-render the graphs without scrolling inconsistencies. */
+.metrics-graph {
+    height: 250px;
+}
+
+
+/* Gauges: special panel styles for panel, metrics-panel-body, and h3 that surround the graph gauges */
+.metrics-panel.gauge-header {
+    margin-bottom: 3px;
+}
+.metrics-panel.gauge-header > .metrics-panel-body {
+    padding: 5px 20px;
+}
+.metrics-panel.gauge-header > .metrics-panel-body > h3 {
+    float: left;
+    font-size: 2.0em;
+}
+.metrics-panel.gauge-header.nogauge > .metrics-panel-body > h3 {
+    margin-left: 0;
+}
+.metrics-panel.gauge-header > .metrics-panel-body > p {
+    float: left;
+    line-height: 2.0em;
+    margin-top: 22px;
+    margin-left: 1em;
+}
+
+/* Gauges: Position the gauge in the panel */
+.metrics-panel.gauge-header > .metrics-panel-body > .gauge {
+    float: left;
+    width: 7.5em;
+    height: 60px;
+    position: relative;
+    top: 10px;
+    right: 10px;
+}
+
+/* Fix a rendering issue on Chrome/Safari that can _sometimes_ cause the gauge to be invisible */
+.metrics-panel.gauge-header > .metrics-panel-body > .gauge svg {
+    display: block;
+}
+
+.metrics-bottom-spaced {
+    margin-bottom: 22px;
+}
+
+/* Style the info toggles that appear with some gauges */
+.metrics-panel.gauge-header .subPanel {
+    margin-top: 4.0em;
+    padding-left: 0;
+    background: transparent;
+}
+.metrics-panel.gauge-header .subPanel .settingsNote {
+    font-size: 13px;
+    font-style: italic;
+    color: #999;
+}
+
+.metrics-info {
+    padding: 0px 25px 0px 25px;
+    color: #999999;
+}
+
+/* Special expiration message menu item */
+#mainNav a.expiration {
+    background-color: rgb(236, 96, 83);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    color: white;
+    line-height: 1.5em;
+    font-weight: bold;
+    margin-left: 0;
+    margin-top: 2em;
+    cursor: default;
+}
+
+/* Remove padding from sublistings for admin/help pages since we're using custom thumbnail icons here */
+.subListings.admin .subListing, .subListings.help .subListing {
+    padding-left: 0;
+}
+
+/* Large "thumbnail" icon styles for admin and help submenu pages */
+.subListings.admin .subListing a, .subListings.help .subListing a {
+    background-color: rgb(220,220,220);
+    width: 170px;
+    height: 170px;
+    display: block;
+    text-align: center;
+    line-height: 170px;
+    font-size: 35px;
+    color: #fff;
+}
+.subListings.admin .subListing .link-text, .subListings.help .subListing .link-text {
+    font-size: 16px;
+    color: #666;
+    line-height: 2em;
+    height: 2em;
+}
+
+.empty-table-content {
+  color: #999;
+  text-align: center;
+}
+
+/*
+ * Tab styles. We need to override these since the RSC-UI CSS does not assume that there will be
+ * an inner <a> element.
+ */
+.tabs .tab {
+    margin-right: 5px;
+    padding: 0;
+}
+#settingsPanel .tabs .tab {
+    padding: 0;
+}
+/* Preserve reports tab image from old RSC-UI project */
+.tabs .tab.reports {
+    background-image: url(../images/tabReports.svg);
+}
+.tabs .tab a {
+    color: #888;
+    display: block;
+    min-width: 40px;
+    padding: 25px 8px 0 8px;
+}
+.tabs .tab.current a {
+    color: #fff;
+}
+.tabs .tab a:hover {
+    text-decoration: none;
+}
+
+/*
+ * Override Robby's styles. These should be removed when we're finished porting to Robby's UI
+ */
+.formSection #runtime-preface, .formSection .form-info, .text-muted {
+    line-height: normal;
+}
+/* Prevents input elements with > 0 z-indexes from appearing over the
+ * save settings panel when scrolling down
+ */
+.saveSettingsPanel.showing {
+    z-index: 1001;
+    position: fixed;
+    right: 0;
+    left: auto;
+    top: 50px;
+    -webkit-transition-property: right;
+    -moz-transition-property: right;
+    -o-transition-property: right;
+    transition-property: right;
+    -webkit-transition-duration: 0.25s;
+    -moz-transition-duration: 0.25s;
+    -o-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+}
+/* Bump panel to the right when the nav panel is displayed */
+#app.showNavPanel .saveSettingsPanel.showing {
+    right: -240px;
+    -webkit-transition-property: right;
+    -moz-transition-property: right;
+    -o-transition-property: right;
+    transition-property: right;
+    -webkit-transition-duration: 0.25s;
+    -moz-transition-duration: 0.25s;
+    -o-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+}
+/* Bump panel to the left when the user panel is displayed */
+#app.showUserPanel .saveSettingsPanel.showing {
+    right: 240px;
+    -webkit-transition-property: right;
+    -moz-transition-property: right;
+    -o-transition-property: right;
+    transition-property: right;
+    -webkit-transition-duration: 0.25s;
+    -moz-transition-duration: 0.25s;
+    -o-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+}
+.saveSettingsPanel .actions button[disabled] {
+    color: #999;
+}
+/* Preserve black text for "legacy" buttons not in new prototype */
+button.legacy, button.legacy:focus {
+    color: #555;
+}
+button, input, select, textarea {
+    line-height: normal;
+}
+label, optgroup {
+    font-weight: normal;
+}
+.dropdown.margin-bottom {
+    margin-bottom: 10px;
+}
+.nothingEmbedded {
+    padding: 10px;
+}
+.formSection label {
+    font-weight: normal;
+}
+.formSection .jobsList .item {
+    color: #666;
+}
+.formSection .jobsList .item.selected {
+    color: #fff;
+}
+.formSection .jobsList .item:hover {
+    text-decoration: none;
+}
+.formSection .logOutput .logMessage.error {
+    color: #B55;
+}
+/* For the scheduled start time when scheduling a report variant.
+ * Makes the height of the input element consistent with the height of the
+ * button next to it.
+ */
+.formSection .rsc-row .start-time-input input[type=text].appScheduleStartTime {
+    margin: 0;
+}
+
+/* Makes the scheduled start time (variants) datetimepicker calendar
+ * appear with the correct width
+ */
+.appSchedule.datetimepicker {
+    width: 298px;
+}
+
+/* List box styles for "Output" tab
+ * These are necessary since the list items are <a> elements
+ */
+.listbox .item {
+    color: #666;
+}
+.listbox .item:hover {
+    text-decoration: none;
+}
+
+/*
+ * Styles for the runtime (nee performance) tab
+ */
+#access-settings .formSection .rsc-row .form-group,
+.formSection.performance .rsc-row .form-group {
+    /* bootstrap! */
+    margin-left: 0;
+    margin-right:0;
+}
+.formSection.performance .rsc-row .form-group input {
+    width: 100%;
+}
+.formSection.performance .help-block {
+    line-height: 1.5em;
+}
+.formSection.performance.disabled input {
+    color: #999;
+}
+.formSection.performance.disabled .rsc-row.header {
+    color: #999;
+}
+
+/* read-only vanity URL text box */
+input.vanityUrl {
+    background-color: #f8f8f8;
+    color: #555;
+}
+
+/*
+ * Support disabling the "Outputs" list
+ */
+.listbox.disabled .item {
+    color: #999;
+    cursor: default;
+}
+.listbox.disabled .item.selected {
+    background-color: #999;
+    color: #ccc;
+}
+
+/*
+ * Select list in breadcrumbs
+ */
+.path select {
+    font-size: 13px;
+}
+
+/*
+ * Disabled style for lists
+ */
+select.disabled {
+    color: #ccc; /* Grey out */
+}
+
+/*
+ * In the principal-list directive, we're still using some old icons
+ */
+.accessList .user .userInfo a i {
+    width: 29px;
+    height: 29px;
+}
+form .actions.left-align {
+    text-align: left;
+}
+
+/*
+ * Tweak the apps listing tables
+ */
+table.contentListing.clickableRows tbody tr a.active:hover {
+    text-decoration: underline;
+}
+table.contentListing td.unpub {
+    font-style: italic;
+}
+
+table.auditLogs {
+    table-layout: fixed;
+}
+
+table.auditLogs tbody td {
+    white-space: normal;
+    line-height: 1.4;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    word-break: break-word;
+
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+
+/*
+ * Styles for the unpublished, unrendered, and undeployed embedded-app messages
+ */
+h1.unpublished, h1.unrendered, h1.undeployed {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-left: 4rem;
+    margin-bottom: 1em;
+}
+h1.unpublished div, h1.unrendered div, h1.undeployed div {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    left: 1.6rem;
+    top: 24px;
+}
+p.unpublished, p.unrendered, p.undeployed {
+    margin: 0.75rem 1.2rem;
+}
+p.unpublished, p.unrendered, p.undeployed {
+    line-height: 1.25em;
+}
+p.unrendered em, p.undeployed em {
+    font-style: italic;
+}
+
+#reportProgress {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    background-color: #fff;
+    background-image: url(../images/ajax-loader.gif);
+    background-repeat: no-repeat;
+    background-position: 10px 50%;
+    opacity: .85;
+    padding: 10px 10px 0px 30px;
+    -moz-box-shadow: 0 5px 25px 0px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 5px 25px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 25px 0px rgba(0, 0, 0, 0.15);
+
+}
+
+/* Misc overrides */
+body.ng-scope {
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+}
+
+/* Fix disabled button color */
+.contentPanel .formSection .actions button:disabled, .contentPanel .formSection .actions a.button:disabled {
+    background-color: #ddd;
+    cursor: default;
+}
+
+.btn-primary:disabled {
+    border-color: #ddd;
+}
+
+.paramOverrides {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.wrapText {
+    max-width: 800px;
+}
+
+/* Fix radio button group styles */
+.controlGroup .controls label {
+    margin-bottom: 0;
+    font-weight: 300;
+}
+
+/* Needed because RSC resets button sizes */
+.tagEditor.actionBar {
+    font-size: 13px;
+}
+
+.tagEditor.majorColumn {
+    position: relative;
+}
+
+.tagEditor.contentMessageContainer {
+    z-index: 1000;
+}
+
+/* Since we're working to get rid of Bootstrap, I'm copying the necessary pager
+   styles here. Eventually, we'll figure out a good paging solution and incorporate
+   it in the prototype.
+ */
+.people-pager {
+    font-size: .8em;
+    margin: .75em 0 0 0;
+    display: inline-block;
+    *display: inline;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    *zoom: 1;
+}
+
+.people-pager > li {
+    display: inline;
+}
+
+.people-pager li > a,
+.people-pager li > span {
+    float: left;
+    padding: 4px 12px;
+    line-height: 20px;
+    text-decoration: none;
+    background-color: #ffffff;
+}
+
+.people-pager li.active > a:hover {
+    background-color: #75aadb;
+}
+
+.people-pager li > a:hover {
+    background-color: #f5f5f5;
+}
+
+.people-pager .active > a,
+.people-pager .active > span {
+    background-color: #75aadb;
+}
+
+.people-pager .active > a,
+.people-pager .active > span {
+    color: #fff;
+    cursor: default;
+}
+
+.people-pager .disabled > span,
+.people-pager .disabled > a,
+.people-pager .disabled > a:hover {
+    color: #999999;
+    cursor: default;
+    background-color: transparent;
+}
+
+/* class for a div that centers a pager */
+.center-pager {
+    text-align: center;
+}
+
+/* Tweaks for the view user panel. */
+/* Todo: Remove when bootstrap is gone. */
+.user-ui.panel {
+    border: none;
+}
+
+.user-ui.panel .formSection .actions a.button {
+    display: inline-block;
+    text-align: center;
+}
+
+/* Font override to make the app look more like the prototype */
+/* Todo: Remove when bootstrap is gone. */
+body, button, input, textarea {
+    font-family: 'Source Sans Pro', "Helvetica Neue", Helvetica Neue, Helvetica, Arial, sans-serif !important;
+}
+
+/* nvd3 overrides */
+
+.nvd3 .nv-axis text {
+    font-weight: normal !important;
+    fill: #919191 !important;
+    font-size: .8em  !important;
+}
+
+.nvd3 .nv-axis path {
+    stroke: #e5e5e5 !important;
+    stroke-opacity: 1 !important;
+    shape-rendering: crispEdges;
+}
+
+.nvd3 .nv-legend {
+    margin-bottom: 10px;
+}
+
+.nvtooltip td, .x-value {
+    font-weight: normal !important;
+}
+
+/* For the "Click to change password" button that appears as a form field in the Admin/Settings page */
+.formFieldButton {
+    width: 100%;
+    padding: 0 10px;
+    line-height: 34px;
+}
+
+
+/* unset PixelAdmin focus bug */
+a:focus {
+    outline: auto Highlight;
+}
+
+.screen-dimmer {
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: .5;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: screenDimmer 1s both;
+}
+
+@keyframes screenDimmer {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: .5;
+    }
+}
+
+#captcha-image {
+    width: 100%;
+}
+
+.queue-payload {
+    display: inline-block;
+    max-width: 20rem;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    position: relative;
+}
+
+.queue-payload::before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: #f5f5f5;
+}
+
+#homeContent {
+    padding-top: 140px;
+}

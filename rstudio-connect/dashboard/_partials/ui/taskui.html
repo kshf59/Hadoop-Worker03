@@ -1,0 +1,5 @@
+<!-- The ng-hide class seems to prevent the UI from flashing on during page load -->
+<div id="sel_alert" class="alert {{taskui.alertClass}} animate-hide ng-hide" ng-show="taskui.show">
+    <button type="button" class="close" ng-click="taskui.dismiss(true);"><span aria-hidden="true">&times;</span><span class="sr-only">Dismiss</span></button>
+    <span id="sel_task_message">{{taskui.message}}</span>
+</div>

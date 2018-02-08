@@ -1,0 +1,118 @@
+<modal-dialog key="$ctrl.key" on-cancel="$ctrl.onCancel()">
+  <div class="purpose">{{$ctrl.purpose}} </div>
+  <form name="$ctrl.editUserForm" id="editUserForm" ng-submit="$ctrl.handleSubmit($event, $ctrl.key)">
+
+    <!-- the main form -->
+    <div class="formSection">
+
+      <field
+             label="Username"
+             error="{{$ctrl.editUserForm.username.$invalid && !$ctrl.editUserForm.username.$pristine}}"
+      >
+        <input type="text"
+               name="username"
+               ng-model="$ctrl.state.user.username"
+               valid-username
+               ng-hide="$ctrl.disableUsername"
+               ng-disabled="$ctrl.disableUsername"
+        />
+        <span ng-hide="$ctrl.editUserForm.username.$pristine">
+          <!-- we should probably have created a component that reads through an array
+          of errors and renders them. Heck, we could have created a component that
+          renders this entire component from data-->
+          <div ng-show="$ctrl.editUserForm.username.$error.shortUsername" class="textInputError">{{usernameError.isShort}}</div>
+          <div ng-show="$ctrl.editUserForm.username.$error.blankUsername" class="textInputError">{{$ctrl.blankErrorMessage}}</div>
+          <div ng-show="$ctrl.editUserForm.username.$error.longUsername" class="textInputError">{{usernameError.isLong}}</div>
+          <div ng-show="$ctrl.editUserForm.username.$error.firstCharacter" class="textInputError">{{usernameError.badFirstChar}}</div>
+          <div ng-show="$ctrl.editUserForm.username.$error.validCharacters" class="textInputError">{{usernameError.badChar}}</div>
+          <div ng-show="$ctrl.editUserForm.username.$error.blacklisted" class="textInputError">{{usernameError.blacklisted}}</div>
+        </span>
+        <span ng-if="$ctrl.disableUsername">{{$ctrl.state.user.username}}</span>
+      </field>
+
+      <field label="First Name"
+             error="{{$ctrl.editUserForm.first_name.$invalid && !$ctrl.editUserForm.first_name.$pristine}}"
+      >
+        <input type="text"
+               name="first_name"
+               ng-model="$ctrl.state.user.first_name"
+               not-blank
+               ng-hide="$ctrl.disableName"
+               ng-disabled="$ctrl.disableName"
+               id="first_name"
+        />
+        <span ng-hide="$ctrl.editUserForm.first_name.$pristine">
+          <div ng-show="$ctrl.editUserForm.first_name.$error.blankValue"
+               class="textInputError"
+          >
+            {{valueError.isBlank}}
+          </div>
+        </span>
+        <span ng-if="$ctrl.disableName">{{$ctrl.state.user.first_name}}</span>
+      </field>
+
+      <field label="Last Name"
+             error="{{$ctrl.editUserForm.last_name.$invalid && !$ctrl.editUserForm.last_name.$pristine}}"
+      >
+        <input type="text"
+               name="last_name"
+               ng-model="$ctrl.state.user.last_name"
+               not-blank
+               ng-hide="$ctrl.disableName"
+               ng-disabled="$ctrl.disableName"
+               id="last_name"
+        />
+        <span ng-hide="$ctrl.editUserForm.last_name.$pristine">
+          <div ng-show="$ctrl.editUserForm.last_name.$error.blankValue"
+               class="textInputError"
+          >
+            {{valueError.isBlank}}
+          </div>
+        </span>
+        <span ng-if="$ctrl.disableName">{{$ctrl.state.user.last_name}}</span>
+      </field>
+
+      <field label="Email"
+             error="{{$ctrl.editUserForm.email.$invalid && !$ctrl.editUserForm.email.$pristine}}"
+      >
+        <input  type="text"
+                name="email"
+                ng-model="$ctrl.state.user.email"
+                valid-email
+                not-blank
+                ng-hide="$ctrl.disableEmail"
+                ng-disabled="$ctrl.disableEmail"
+        />
+        <span ng-hide="$ctrl.editUserForm.email.$pristine">
+          <div ng-show="$ctrl.editUserForm.email.$error.blankValue"
+               class="textInputError"
+          >
+            {{valueError.isBlank}}
+          </div>
+          <div ng-show="$ctrl.editUserForm.email.$error.validEmail"
+               class="textInputError"
+          >
+            {{$ctrl.validEmailErrorMessage}}
+          </div>
+        </span>
+        <span ng-if="$ctrl.disableEmail">
+          <a href="mailto:{{$ctrl.state.user.email}}">{{$ctrl.state.user.email}}</a>
+        </span>
+      </field>
+
+      <field label="Role">
+        <select ng-disabled="$ctrl.privileges.ltRole('manager')"
+                class="full"
+                id="user_role"
+                ng-model="$ctrl.state.user.user_role"
+                ng-options="role.value as role.name for role in $ctrl.roles"
+        ></select>
+      </field>
+
+    </div>
+
+    <div class="actions">
+      <button type="submit">{{$ctrl.button}}</button>
+    </div>
+  </form>
+</modal-dialog>

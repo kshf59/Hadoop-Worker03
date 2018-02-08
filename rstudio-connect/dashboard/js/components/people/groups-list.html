@@ -1,0 +1,30 @@
+<div class="tableContainer">
+  <table class="contentListing clickableRows">
+    <thead>
+    <tr>
+      <th colSpan="2">Group</th>
+      <th ng-if="$ctrl.allowDelete()"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-click="$ctrl.handleRowClick(principal)" ng-repeat="principal in $ctrl.groupList">
+
+      <td class="icon userIcon"><div class="user"><div class="userIcon">
+        <img ng-src="images/principal-group.png" />
+      </div></div></td>
+
+      <td><a ui-sref="people.groups_edit({groupId: principal.provider_key})" class="itemTitle">{{principal.name}}</a></td>
+
+      <td class="icon userIcon">
+        <div class="actionBar inline">
+          <button ng-if="$ctrl.allowDelete()(principal)" type="button" class="action delete" ng-click="$ctrl.remGroup($event, principal)">
+            <span class="actionTitle">Delete Group</span>
+          </button>
+        </div>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+  <div ng-if="!$ctrl.groupList.length" class="noContentMessage">No results</div>
+</div>

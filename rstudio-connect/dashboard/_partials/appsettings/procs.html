@@ -1,0 +1,53 @@
+<div ng-if="pc.loaded && !pc.executable" class="formSection infoSection">
+  <p>
+    The source code for this content was not published. It is not executable and
+    has no logs.
+  </p>
+</div>
+<div>
+  <div ng-if="pc.loaded && pc.executable">
+    <div class="formSection" ng-if="pc.jobs.length > 0">
+      <div class="rsc-row header">Jobs</div>
+      <div class="listbox jobsList">
+        <a class="item log {{pc.classFromState(proc.state())}}" title="{{proc.tagToText()}}" scroll-into-view="proc" preserve="['rightSidebar']" disable-on-click="pc.disableScrolling" ng-repeat="proc in pc.jobs | limitTo: pc.limitTo" ng-class="{selected : proc.active}" ng-click="pc.showLog(proc)" href="{{pc.getLink(proc)}}">
+          <div class="logId">
+            <span class="pId">{{proc.pid}}</span>
+            <span class="id">{{proc.key}}</span>
+          </div>
+          <div class="logOperation">{{pc.tagToText(proc)}} {{pc.getRanLine(proc)}}</div>
+        </a>
+      </div>
+      <div class="rsc-row" style="text-align:right;" ng-show="pc.jobs.length > pc.limitTo">Displaying  1-{{pc.limitTo}} of {{pc.jobs.length}}. <a ng-click="pc.showAll()">Show All</a></div>
+      <div class="rsc-row" style="text-align:right;" ng-show="pc.jobs.length <= pc.limitTo">{{pc.jobs.length}} jobs.</div>
+    </div>
+
+    <div class="formSection" ng-if="!pc.job.error && pc.jobs.length > 0">
+      <div ng-if="pc.jobState==='error'" class="logSummary error">This process ended with an error.</div>
+      <div ng-if="pc.jobState==='gone'" class="logSummary warning">This process didn't generate an error but ended unexpectedly.</div>
+      <div class="rsc-row header flex">
+        <div>Log</div>
+        <div class="actions small">
+          <a class="button" ng-href="{{ pc.downloadUrl }}">Download</a>
+        </div>
+      </div>
+      <div class="logOutput">
+        <div ng-bind-html="pc.logs"> </div>
+      </div>
+    </div>
+
+    <div class="formSection" ng-if="pc.job.error">
+      <h2>There was an error loading the selected job</h2>
+      <p>{{pc.job.error}}</p>
+    </div>
+
+    <div id="empty-proc-list" ng-if="pc.jobs.length === 0">
+      <h2>No logs found for this {{pc.category.prose}}</h2>
+      <div ng-if="pc.app.isWorker()">
+        Visit this {{pc.category.prose}} to run a process for it.
+      </div>
+      <div ng-if="pc.app.isRenderable()">
+        Regenerate this {{pc.category.prose}} to run a process for it.
+      </div>
+    </div>
+  </div>
+</div>

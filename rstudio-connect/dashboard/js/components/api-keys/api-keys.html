@@ -1,0 +1,81 @@
+<div class="band">
+  <div class="bandContent mainPage">
+
+    <div ng-if="$ctrl.isMe" class="menu">
+      <div class="menuItems">
+        <a ui-sref="people.users_view({ userId: $ctrl.me.provider_key })"
+           ui-sref-active="active"
+           class="menuItem"
+        >Profile</a>
+        <a ui-sref="people.users_apikeys({ userId: $ctrl.me.provider_key })"
+           ui-sref-active="active"
+           class="menuItem"
+        >API Keys</a>
+      </div>
+    </div>
+
+    <div ng-if="$ctrl.isMe" class="majorMinorColumnsContainer api-keys">
+      <div class="majorColumn">
+
+        <div class="sectionTitle flex">
+          <div>API Keys</div>
+          <div class="actionBar inline showTitles">
+            <button ng-click="$ctrl.newKeyClicked()" class="action new">
+              <span class="actionTitle">New API Key</span>
+            </button>
+          </div>
+        </div>
+
+        <div ng-if="$ctrl.keys.length > 0" class="tableContainer">
+          <table class="contentListing">
+            <thead>
+              <tr>
+                <th colspan="2">Name</th>
+                <th>Key</th>
+                <th>Created</th>
+                <th>Last Used</th>
+                <th class="tightRight"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="key in $ctrl.keys">
+                <td class="icon typeAPIKey"></td>
+                <td>{{key.name}}</td>
+                <td>{{key.key}}</td>
+                <td><time>{{key.created}}</time></td>
+                <td><time>{{key.last_used_time}}</time></td>
+                <td class="tightRight">
+                  <div class="actionBar inline">
+                    <button ng-click="$ctrl.deleteKeyClicked({key})" class="action delete"></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div ng-if="$ctrl.keys.length === 0" class="noListingMessage">
+          You don't have any API keys. To create one, click the 'New API Key' button above.
+        </div>
+
+      </div>
+      <div class="minorColumn">
+        <div class="section">
+          <div class="sectionTitle">About API Keys</div>
+          <div class="sectionBlurb">
+            <p>
+              <strong>
+                Treat your API Key like you treat your password. Anyone with your API Key can impersonate you.
+              </strong>
+              API keys enable you to send requests to RStudio Connect that have
+              all the same privileges that you have when logged in in a web
+              browser. For example, you could use these keys to automate
+              requests to hosted content that require authentication.
+            </p>
+            <p>See the <a target="blank" ng-href="{{$ctrl.apiKeyDocs}}">API Keys documentation</a> for more details.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

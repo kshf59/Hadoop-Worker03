@@ -1,0 +1,27 @@
+<div class="subscriptions">
+  <div class="modal-header">
+    <h3 class="modal-title">Your Subscriptions for "{{app.name}}"</h3>
+  </div>
+  <div class="modal-body">
+    <form role="form" name="subscriptions" class="form-horizontal" novalidate>
+      <fieldset>
+        I would like to receive email notifications when the following variants of
+        this document complete a scheduled execution.
+
+        <div class="indented">
+          <span ng-repeat="variant in variants">
+            <label><input type="checkbox" ng-model="variantOptIn[variant.id]">
+              {{variant.name}}
+            </label>
+            <br>
+          </span>
+
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

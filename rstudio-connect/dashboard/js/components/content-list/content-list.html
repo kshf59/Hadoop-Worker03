@@ -1,0 +1,87 @@
+<div class="band">
+  <div class="bandContent mainPage requiresAuth">
+
+    <div class="contentWithOptionsPanel" ng-class="{hideOptionsPanel : $ctrl.hideOptionsPanel}">
+
+      <div class="majorColumn">
+
+        <div class="sectionTitle flex">
+          <div>{{$ctrl.contentListTitle}}</div>
+
+          <div class="actionBar inline showTitles">
+            <div ng-show="$ctrl.hideOptionsPanel" title="Show Options Panel" class="action toggleOptions" ng-click="$ctrl.toggleOptions()">
+              <span class="actionTitle">Options</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="standardPadding listing">
+
+          <div ui-view="preContentList"></div>
+
+          <div class="alert alert-warning" ng-if="$ctrl.loggedInWarning">
+            <i class="fa fa-warning fa-2x pull-left"></i>
+            <p ng-bind-html="$ctrl.loggedInWarning"></p>
+            <div class="clearfix"></div>
+          </div>
+
+          <content-list-table
+            custom-filters="[]"
+            show-owner="true"
+            show-icon="true"
+            show-unpub="true"
+          >
+          </content-list-table>
+
+          <div ng-if="$ctrl.loaded && !$ctrl.haveApps" help-connect="help-connect">
+            <p class="empty-search text-center">
+              <i class="fa fa-search"></i><br />
+              No results.
+            </p>
+            <br />
+            <br />
+            <div ng-if="$ctrl.viewerMode()">
+              <p>
+                Either no content has been published, or none are visible to you. If you were expecting
+                to see something here, you should contact the author of the content you're looking for
+                and ask them to add you as a viewer.
+              </p>
+              <p ng-if="!$ctrl.kioskMode()">
+                If you'd like to publish your own content, you can
+                <a href="" ng-click="$ctrl.requestPermissions()">request publishing permissions</a>.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div> <!-- column -->
+
+
+      <div class="minorColumn">
+
+        <!-- TODO: search
+        <div class="section">
+          <div class="sectionTitle">Search</div>
+          <div><input type="text" class="search"/></div>
+        </div>
+        -->
+        <div class="optionsPositioner">
+          <div class="band">
+            <div class="innards bandContent">
+
+              <content-list-settings
+                show-filter-controls="$ctrl.canView"
+                show-owner-filters="$ctrl.canPublish"
+                show-info="$ctrl.includeInfo"
+              >
+              </content-list-settings>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

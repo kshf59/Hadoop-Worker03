@@ -1,0 +1,28 @@
+<div class="dropdown principal-search" ng-controller="PrincipalSearchController">
+  <form role="form" >
+    <div class="form-group textInputContainer"  ng-class="{ 'hasError' : query_error }">
+      <input type="text" class="sel_searcher {{addClass}} {{searching ? 'busy' : ''}}"
+                         placeholder="{{placeholder}}" ng-model="newprincipal" no-dirty
+                                                       ng-keypress="onSearchKeyPress($event);" />
+      <span>
+        <p ng-show="query_error" class="help-block">{{query_error}}</p>
+      </span>
+    </div>
+  </form>
+     
+        <ul id="{{ 'searchResults_' + hostid}}" class="dropdown-menu" role="menu">
+            <li ng-repeat="principal in searchResults" class="{{searchResults.length == 1 ? 'active' : ''}}">
+                <a href="#" class="sel_searcher_result" ng-click="$event.preventDefault();accept(principal);">
+                    <i class="fa fa-{{principal.type}} fa-fw"></i>
+                    <span ng-if="principal.username">
+                      {{principal.username}}
+                      <small class="username">{{principal.name}}</small>
+                    </span>
+                    <span ng-if="!principal.username">
+                      {{principal.name}}
+                    </span>
+                </a>
+            </li>
+        </ul>
+    
+</div>

@@ -1,0 +1,103 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: white;
+    text-align: center;
+    font-size: 13px;
+    line-height: 18px;
+    color: #555;
+}
+
+.alert{
+  font-size: 14px;
+  background-color: #FEE;
+  border: 1px solid #C11;
+  padding: 1em;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#content{
+    padding: 50px;
+    border: 1px solid #e2e2e2;
+    position: absolute;
+    margin-top: 50px;
+    left: 50%;
+    margin-right: -50%;
+    -webkit-transform: translate(-50%,0); /* Safari */
+    transform: translate(-50%,0);
+    text-align: center;
+}
+
+h1 {
+    white-space: nowrap;
+    margin-top: 0px;
+    font-weight: normal;
+    color: #555;
+    font-size: 2rem;
+}
+
+#customBtn {
+    display: inline-block;
+    background-image: url(./btn_google_signin_dark_normal_web.png);
+    width: 191px;
+    height: 46px;
+}
+
+#customBtn:hover {
+    cursor: hand;
+    background-image: url(./btn_google_signin_dark_focus_web.png);
+}
+
+#customBtn:active {
+    background: #efefef;
+    background-image: url(./btn_google_signin_dark_pressed_web.png);
+}
+
+span.label {
+    font-weight: bold;
+}
+
+span.icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 42px;
+    height: 42px;
+    border-right: #afafaf 1px solid;
+    padding: 5px 0px 0px 5px;
+}
+
+span.icon i {
+    font-size: 34px;
+    color: #dd4b39;
+}
+
+span.buttonText {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 42px;
+    padding-right: 42px;
+    font-size: 14px;
+    font-weight: bold;
+    /* Use the Roboto font that is loaded in the <head> */
+    font-family: 'Roboto', sans-serif;
+}
+
+div#tos {
+    padding-top: 8px;
+}
+
+a.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+}
+
+#customBtn {
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+label {
+  font-weight: normal;
+}

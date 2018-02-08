@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>RStudio Connect: Admin Guide</title>
+  <meta name="description" content="RStudio Connect: Admin Guide">
+  <meta name="generator" content="bookdown 0.3.18 and GitBook 2.6.7">
+
+  <meta property="og:title" content="RStudio Connect: Admin Guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="RStudio Connect: Admin Guide" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="metrics.html">
+<link rel="next" href="cli.html">
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#system-requirements"><i class="fa fa-check"></i><b>1.1</b> System Requirements</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a><ul>
+<li class="chapter" data-level="2.1" data-path="getting-started.html"><a href="getting-started.html#installation"><i class="fa fa-check"></i><b>2.1</b> Installation</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="getting-started.html"><a href="getting-started.html#installation-ubuntu"><i class="fa fa-check"></i><b>2.1.1</b> Ubuntu (12.04+)</a></li>
+<li class="chapter" data-level="2.1.2" data-path="getting-started.html"><a href="getting-started.html#installation-redhat"><i class="fa fa-check"></i><b>2.1.2</b> Red Hat Enterprise Linux/CentOS Linux (6.0+)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="getting-started.html"><a href="getting-started.html#initial-configuration"><i class="fa fa-check"></i><b>2.2</b> Initial Configuration</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="getting-started.html"><a href="getting-started.html#editing-config"><i class="fa fa-check"></i><b>2.2.1</b> Editing the Configuration File</a></li>
+<li class="chapter" data-level="2.2.2" data-path="getting-started.html"><a href="getting-started.html#getting-started-authentication"><i class="fa fa-check"></i><b>2.2.2</b> Authentication</a></li>
+<li class="chapter" data-level="2.2.3" data-path="getting-started.html"><a href="getting-started.html#getting-started-admin-account"><i class="fa fa-check"></i><b>2.2.3</b> Sign In!</a></li>
+<li class="chapter" data-level="2.2.4" data-path="getting-started.html"><a href="getting-started.html#getting-started-email"><i class="fa fa-check"></i><b>2.2.4</b> Email Sending</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="license-management.html"><a href="license-management.html"><i class="fa fa-check"></i><b>3</b> License Management</a><ul>
+<li class="chapter" data-level="3.1" data-path="license-management.html"><a href="license-management.html#capabilities"><i class="fa fa-check"></i><b>3.1</b> Capabilities</a></li>
+<li class="chapter" data-level="3.2" data-path="license-management.html"><a href="license-management.html#notification-of-expiration"><i class="fa fa-check"></i><b>3.2</b> Notification of Expiration</a></li>
+<li class="chapter" data-level="3.3" data-path="license-management.html"><a href="license-management.html#product-activation"><i class="fa fa-check"></i><b>3.3</b> Product Activation</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="license-management.html"><a href="license-management.html#activation-basics"><i class="fa fa-check"></i><b>3.3.1</b> Activation Basics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="license-management.html"><a href="license-management.html#connectivity-requirements"><i class="fa fa-check"></i><b>3.4</b> Connectivity Requirements</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="license-management.html"><a href="license-management.html#proxy-servers"><i class="fa fa-check"></i><b>3.4.1</b> Proxy Servers</a></li>
+<li class="chapter" data-level="3.4.2" data-path="license-management.html"><a href="license-management.html#offline-activation"><i class="fa fa-check"></i><b>3.4.2</b> Offline Activation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="license-management.html"><a href="license-management.html#evaluations"><i class="fa fa-check"></i><b>3.5</b> Evaluations</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="license-management.html"><a href="license-management.html#extending-evaluations"><i class="fa fa-check"></i><b>3.5.1</b> Extending Evaluations</a></li>
+<li class="chapter" data-level="3.5.2" data-path="license-management.html"><a href="license-management.html#connectivity-requirements-1"><i class="fa fa-check"></i><b>3.5.2</b> Connectivity Requirements</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="license-management.html"><a href="license-management.html#licensing-errors"><i class="fa fa-check"></i><b>3.6</b> Licensing Errors</a></li>
+<li class="chapter" data-level="3.7" data-path="license-management.html"><a href="license-management.html#floating-licensing"><i class="fa fa-check"></i><b>3.7</b> Floating Licensing</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="license-management.html"><a href="license-management.html#the-rstudio-connect-license-server"><i class="fa fa-check"></i><b>3.7.1</b> The RStudio Connect License Server</a></li>
+<li class="chapter" data-level="3.7.2" data-path="license-management.html"><a href="license-management.html#license-server-offline-activation"><i class="fa fa-check"></i><b>3.7.2</b> License Server Offline Activation</a></li>
+<li class="chapter" data-level="3.7.3" data-path="license-management.html"><a href="license-management.html#using-floating-licensing"><i class="fa fa-check"></i><b>3.7.3</b> Using Floating Licensing</a></li>
+<li class="chapter" data-level="3.7.4" data-path="license-management.html"><a href="license-management.html#configuring-license-leases"><i class="fa fa-check"></i><b>3.7.4</b> Configuring License Leases</a></li>
+<li class="chapter" data-level="3.7.5" data-path="license-management.html"><a href="license-management.html#lease-expiration-and-renewal"><i class="fa fa-check"></i><b>3.7.5</b> Lease Expiration and Renewal</a></li>
+<li class="chapter" data-level="3.7.6" data-path="license-management.html"><a href="license-management.html#troubleshooting-floating-licensing"><i class="fa fa-check"></i><b>3.7.6</b> Troubleshooting Floating Licensing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="files-directories.html"><a href="files-directories.html"><i class="fa fa-check"></i><b>4</b> Files &amp; Directories</a><ul>
+<li class="chapter" data-level="4.1" data-path="files-directories.html"><a href="files-directories.html#program-files"><i class="fa fa-check"></i><b>4.1</b> Program Files</a></li>
+<li class="chapter" data-level="4.2" data-path="files-directories.html"><a href="files-directories.html#configuration"><i class="fa fa-check"></i><b>4.2</b> Configuration</a></li>
+<li class="chapter" data-level="4.3" data-path="files-directories.html"><a href="files-directories.html#server-log"><i class="fa fa-check"></i><b>4.3</b> Server Log</a></li>
+<li class="chapter" data-level="4.4" data-path="files-directories.html"><a href="files-directories.html#access-logs"><i class="fa fa-check"></i><b>4.4</b> Access Logs</a></li>
+<li class="chapter" data-level="4.5" data-path="files-directories.html"><a href="files-directories.html#application-logs"><i class="fa fa-check"></i><b>4.5</b> Application Logs</a></li>
+<li class="chapter" data-level="4.6" data-path="files-directories.html"><a href="files-directories.html#variable-data"><i class="fa fa-check"></i><b>4.6</b> Variable Data</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="files-directories.html"><a href="files-directories.html#data-permissions"><i class="fa fa-check"></i><b>4.6.1</b> Permissions</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="files-directories.html"><a href="files-directories.html#backups"><i class="fa fa-check"></i><b>4.7</b> Backups</a></li>
+<li class="chapter" data-level="4.8" data-path="files-directories.html"><a href="files-directories.html#server-migrations"><i class="fa fa-check"></i><b>4.8</b> Server Migrations</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="server-management.html"><a href="server-management.html"><i class="fa fa-check"></i><b>5</b> Server Management</a><ul>
+<li class="chapter" data-level="5.1" data-path="server-management.html"><a href="server-management.html#stopping-starting"><i class="fa fa-check"></i><b>5.1</b> Stopping and Starting</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="server-management.html"><a href="server-management.html#systemd-red-hatcentos-7-ubuntu-16.04"><i class="fa fa-check"></i><b>5.1.1</b> systemd (Red Hat/CentOS 7, Ubuntu 16.04)</a></li>
+<li class="chapter" data-level="5.1.2" data-path="server-management.html"><a href="server-management.html#upstart-ubuntu-12.04-ubuntu-14.04-red-hat-6"><i class="fa fa-check"></i><b>5.1.2</b> Upstart (Ubuntu 12.04, Ubuntu 14.04, Red Hat 6)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="server-management.html"><a href="server-management.html#system-messages"><i class="fa fa-check"></i><b>5.2</b> System Messages</a></li>
+<li class="chapter" data-level="5.3" data-path="server-management.html"><a href="server-management.html#health-check"><i class="fa fa-check"></i><b>5.3</b> Health-Check</a></li>
+<li class="chapter" data-level="5.4" data-path="server-management.html"><a href="server-management.html#upgrading"><i class="fa fa-check"></i><b>5.4</b> Upgrading</a></li>
+<li class="chapter" data-level="5.5" data-path="server-management.html"><a href="server-management.html#purge"><i class="fa fa-check"></i><b>5.5</b> Purging RStudio Connect</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="high-availability.html"><a href="high-availability.html"><i class="fa fa-check"></i><b>6</b> High Availability and Load Balancing</a><ul>
+<li class="chapter" data-level="6.1" data-path="high-availability.html"><a href="high-availability.html#ha-checklist"><i class="fa fa-check"></i><b>6.1</b> HA Checklist</a></li>
+<li class="chapter" data-level="6.2" data-path="high-availability.html"><a href="high-availability.html#ha-limitations"><i class="fa fa-check"></i><b>6.2</b> HA Limitations</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="high-availability.html"><a href="high-availability.html#clock-synchronization"><i class="fa fa-check"></i><b>6.2.1</b> Clock Synchronization</a></li>
+<li class="chapter" data-level="6.2.2" data-path="high-availability.html"><a href="high-availability.html#node-management"><i class="fa fa-check"></i><b>6.2.2</b> Node Management</a></li>
+<li class="chapter" data-level="6.2.3" data-path="high-availability.html"><a href="high-availability.html#database-requirements"><i class="fa fa-check"></i><b>6.2.3</b> Database Requirements</a></li>
+<li class="chapter" data-level="6.2.4" data-path="high-availability.html"><a href="high-availability.html#ha-shared-directory"><i class="fa fa-check"></i><b>6.2.4</b> Shared Data Directory Requirements</a></li>
+<li class="chapter" data-level="6.2.5" data-path="high-availability.html"><a href="high-availability.html#metrics-requirements"><i class="fa fa-check"></i><b>6.2.5</b> Metrics Requirements</a></li>
+<li class="chapter" data-level="6.2.6" data-path="high-availability.html"><a href="high-availability.html#ha-shiny-apps"><i class="fa fa-check"></i><b>6.2.6</b> Shiny Applications</a></li>
+<li class="chapter" data-level="6.2.7" data-path="high-availability.html"><a href="high-availability.html#ha-rsconnect"><i class="fa fa-check"></i><b>6.2.7</b> rsconnect Cookie Support</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="high-availability.html"><a href="high-availability.html#updating-ha-nodes"><i class="fa fa-check"></i><b>6.3</b> Updating HA Nodes</a></li>
+<li class="chapter" data-level="6.4" data-path="high-availability.html"><a href="high-availability.html#downgrading"><i class="fa fa-check"></i><b>6.4</b> Downgrading</a></li>
+<li class="chapter" data-level="6.5" data-path="high-availability.html"><a href="high-availability.html#ha-details"><i class="fa fa-check"></i><b>6.5</b> HA Details</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="high-availability.html"><a href="high-availability.html#concurrent-scheduled-document-rendering"><i class="fa fa-check"></i><b>6.5.1</b> Concurrent Scheduled Document Rendering</a></li>
+<li class="chapter" data-level="6.5.2" data-path="high-availability.html"><a href="high-availability.html#concurrent-shiny-applications-and-ad-hoc-rendering"><i class="fa fa-check"></i><b>6.5.2</b> Concurrent Shiny Applications and Ad-Hoc Rendering</a></li>
+<li class="chapter" data-level="6.5.3" data-path="high-availability.html"><a href="high-availability.html#polling"><i class="fa fa-check"></i><b>6.5.3</b> Polling</a></li>
+<li class="chapter" data-level="6.5.4" data-path="high-availability.html"><a href="high-availability.html#abandoned-r-processes"><i class="fa fa-check"></i><b>6.5.4</b> Abandoned R Processes</a></li>
+<li class="chapter" data-level="6.5.5" data-path="high-availability.html"><a href="high-availability.html#abandoned-shiny-applications"><i class="fa fa-check"></i><b>6.5.5</b> Abandoned Shiny Applications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="running-a-proxy.html"><a href="running-a-proxy.html"><i class="fa fa-check"></i><b>7</b> Running with a Proxy</a><ul>
+<li class="chapter" data-level="7.1" data-path="running-a-proxy.html"><a href="running-a-proxy.html#nginx-configuration"><i class="fa fa-check"></i><b>7.1</b> Nginx Configuration</a></li>
+<li class="chapter" data-level="7.2" data-path="running-a-proxy.html"><a href="running-a-proxy.html#apache-configuration"><i class="fa fa-check"></i><b>7.2</b> Apache Configuration</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="security-auditing.html"><a href="security-auditing.html"><i class="fa fa-check"></i><b>8</b> Security &amp; Auditing</a><ul>
+<li class="chapter" data-level="8.1" data-path="security-auditing.html"><a href="security-auditing.html#api-security"><i class="fa fa-check"></i><b>8.1</b> API Security</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="security-auditing.html"><a href="security-auditing.html#preventing-brute-force-dictionary-attacks"><i class="fa fa-check"></i><b>8.1.1</b> Preventing Brute Force &amp; Dictionary Attacks</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="security-auditing.html"><a href="security-auditing.html#browser-security"><i class="fa fa-check"></i><b>8.2</b> Browser Security</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="security-auditing.html"><a href="security-auditing.html#guaranteeing-https"><i class="fa fa-check"></i><b>8.2.1</b> Guaranteeing HTTPS</a></li>
+<li class="chapter" data-level="8.2.2" data-path="security-auditing.html"><a href="security-auditing.html#content-sniffing"><i class="fa fa-check"></i><b>8.2.2</b> Content Sniffing</a></li>
+<li class="chapter" data-level="8.2.3" data-path="security-auditing.html"><a href="security-auditing.html#content-embedding"><i class="fa fa-check"></i><b>8.2.3</b> Content Embedding</a></li>
+<li class="chapter" data-level="8.2.4" data-path="security-auditing.html"><a href="security-auditing.html#custom-headers"><i class="fa fa-check"></i><b>8.2.4</b> Custom Headers</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="security-auditing.html"><a href="security-auditing.html#audit-logs"><i class="fa fa-check"></i><b>8.3</b> Audit Logs</a></li>
+<li class="chapter" data-level="8.4" data-path="security-auditing.html"><a href="security-auditing.html#audit-cli"><i class="fa fa-check"></i><b>8.4</b> Audit Logs Command-Line Interface</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="database-provider.html"><a href="database-provider.html"><i class="fa fa-check"></i><b>9</b> Database</a><ul>
+<li class="chapter" data-level="9.1" data-path="database-provider.html"><a href="database-provider.html#database-sqlite"><i class="fa fa-check"></i><b>9.1</b> SQLite</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="database-provider.html"><a href="database-provider.html#database-sqlite-backups"><i class="fa fa-check"></i><b>9.1.1</b> SQLite Backups</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="database-provider.html"><a href="database-provider.html#database-postgres"><i class="fa fa-check"></i><b>9.2</b> PostgreSQL</a></li>
+<li class="chapter" data-level="9.3" data-path="database-provider.html"><a href="database-provider.html#changing-database-provider"><i class="fa fa-check"></i><b>9.3</b> Changing Database Provider</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="database-provider.html"><a href="database-provider.html#database-migration-checklist"><i class="fa fa-check"></i><b>9.3.1</b> Database Migration Checklist</a></li>
+<li class="chapter" data-level="9.3.2" data-path="database-provider.html"><a href="database-provider.html#configuration-requirements"><i class="fa fa-check"></i><b>9.3.2</b> Configuration Requirements</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="authentication.html"><a href="authentication.html"><i class="fa fa-check"></i><b>10</b> Authentication</a><ul>
+<li class="chapter" data-level="10.1" data-path="authentication.html"><a href="authentication.html#changing-authentication-provider"><i class="fa fa-check"></i><b>10.1</b> Changing Authentication Provider</a></li>
+<li class="chapter" data-level="10.2" data-path="authentication.html"><a href="authentication.html#session-management"><i class="fa fa-check"></i><b>10.2</b> Session Management</a></li>
+<li class="chapter" data-level="10.3" data-path="authentication.html"><a href="authentication.html#auth-username-requirements"><i class="fa fa-check"></i><b>10.3</b> Username requirements</a></li>
+<li class="chapter" data-level="10.4" data-path="authentication.html"><a href="authentication.html#authentication-password"><i class="fa fa-check"></i><b>10.4</b> Password</a></li>
+<li class="chapter" data-level="10.5" data-path="authentication.html"><a href="authentication.html#authentication-ldap"><i class="fa fa-check"></i><b>10.5</b> LDAP and Active Directory</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="authentication.html"><a href="authentication.html#defining-an-ldap-or-ad-section"><i class="fa fa-check"></i><b>10.5.1</b> Defining an LDAP or AD section</a></li>
+<li class="chapter" data-level="10.5.2" data-path="authentication.html"><a href="authentication.html#complete-configuration-example"><i class="fa fa-check"></i><b>10.5.2</b> Complete Configuration Example</a></li>
+<li class="chapter" data-level="10.5.3" data-path="authentication.html"><a href="authentication.html#ldap-or-ad-configuration-settings"><i class="fa fa-check"></i><b>10.5.3</b> LDAP or AD Configuration Settings</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="authentication.html"><a href="authentication.html#authentication-oauth2"><i class="fa fa-check"></i><b>10.6</b> OAuth2 (Google)</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="authentication.html"><a href="authentication.html#obtaining-a-client-id-and-client-secret"><i class="fa fa-check"></i><b>10.6.1</b> Obtaining a Client ID and Client Secret</a></li>
+<li class="chapter" data-level="10.6.2" data-path="authentication.html"><a href="authentication.html#restricting-access"><i class="fa fa-check"></i><b>10.6.2</b> Restricting Access</a></li>
+<li class="chapter" data-level="10.6.3" data-path="authentication.html"><a href="authentication.html#searches"><i class="fa fa-check"></i><b>10.6.3</b> Searches</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="authentication.html"><a href="authentication.html#authentication-pam"><i class="fa fa-check"></i><b>10.7</b> PAM</a><ul>
+<li class="chapter" data-level="10.7.1" data-path="authentication.html"><a href="authentication.html#ubuntu"><i class="fa fa-check"></i><b>10.7.1</b> Ubuntu</a></li>
+<li class="chapter" data-level="10.7.2" data-path="authentication.html"><a href="authentication.html#red-hatcentos"><i class="fa fa-check"></i><b>10.7.2</b> Red Hat/CentOS</a></li>
+<li class="chapter" data-level="10.7.3" data-path="authentication.html"><a href="authentication.html#configuring-a-pam-service"><i class="fa fa-check"></i><b>10.7.3</b> Configuring a PAM service</a></li>
+<li class="chapter" data-level="10.7.4" data-path="authentication.html"><a href="authentication.html#groups"><i class="fa fa-check"></i><b>10.7.4</b> Groups</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="authentication.html"><a href="authentication.html#authentication-proxy"><i class="fa fa-check"></i><b>10.8</b> Proxied Authentication</a><ul>
+<li class="chapter" data-level="10.8.1" data-path="authentication.html"><a href="authentication.html#how-this-works"><i class="fa fa-check"></i><b>10.8.1</b> How this Works</a></li>
+<li class="chapter" data-level="10.8.2" data-path="authentication.html"><a href="authentication.html#deployment-from-the-rstudio-ide"><i class="fa fa-check"></i><b>10.8.2</b> Deployment from the RStudio IDE</a></li>
+<li class="chapter" data-level="10.8.3" data-path="authentication.html"><a href="authentication.html#configuring-proxied-authentication"><i class="fa fa-check"></i><b>10.8.3</b> Configuring Proxied Authentication</a></li>
+<li class="chapter" data-level="10.8.4" data-path="authentication.html"><a href="authentication.html#troubleshooting-proxied-authentication"><i class="fa fa-check"></i><b>10.8.4</b> Troubleshooting Proxied Authentication</a></li>
+<li class="chapter" data-level="10.8.5" data-path="authentication.html"><a href="authentication.html#groups-1"><i class="fa fa-check"></i><b>10.8.5</b> Groups</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="user-management.html"><a href="user-management.html"><i class="fa fa-check"></i><b>11</b> User Management</a><ul>
+<li class="chapter" data-level="11.1" data-path="user-management.html"><a href="user-management.html#self-registration"><i class="fa fa-check"></i><b>11.1</b> Self Registration</a></li>
+<li class="chapter" data-level="11.2" data-path="user-management.html"><a href="user-management.html#user-roles"><i class="fa fa-check"></i><b>11.2</b> User Roles</a></li>
+<li class="chapter" data-level="11.3" data-path="user-management.html"><a href="user-management.html#user-permissions"><i class="fa fa-check"></i><b>11.3</b> User Permissions</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="user-management.html"><a href="user-management.html#all-content"><i class="fa fa-check"></i><b>11.3.1</b> All Content</a></li>
+<li class="chapter" data-level="11.3.2" data-path="user-management.html"><a href="user-management.html#r-markdown-reports"><i class="fa fa-check"></i><b>11.3.2</b> R Markdown Reports</a></li>
+<li class="chapter" data-level="11.3.3" data-path="user-management.html"><a href="user-management.html#shiny-applications-plumber-apis"><i class="fa fa-check"></i><b>11.3.3</b> Shiny Applications &amp; Plumber APIs</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="user-management.html"><a href="user-management.html#admin-capabilities"><i class="fa fa-check"></i><b>11.4</b> Administrator Capabilities</a></li>
+<li class="chapter" data-level="11.5" data-path="user-management.html"><a href="user-management.html#locked-accounts"><i class="fa fa-check"></i><b>11.5</b> Locked Accounts</a></li>
+<li class="chapter" data-level="11.6" data-path="user-management.html"><a href="user-management.html#username-requirements"><i class="fa fa-check"></i><b>11.6</b> Username Requirements</a></li>
+<li class="chapter" data-level="11.7" data-path="user-management.html"><a href="user-management.html#user-renaming"><i class="fa fa-check"></i><b>11.7</b> User Renaming</a></li>
+<li class="chapter" data-level="11.8" data-path="user-management.html"><a href="user-management.html#user-cli"><i class="fa fa-check"></i><b>11.8</b> Command-Line Interface</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="process-management.html"><a href="process-management.html"><i class="fa fa-check"></i><b>12</b> Process Management</a><ul>
+<li class="chapter" data-level="12.1" data-path="process-management.html"><a href="process-management.html#process-management-sandboxing"><i class="fa fa-check"></i><b>12.1</b> Sandboxing</a></li>
+<li class="chapter" data-level="12.2" data-path="process-management.html"><a href="process-management.html#temp-directory"><i class="fa fa-check"></i><b>12.2</b> Temporary Directory</a></li>
+<li class="chapter" data-level="12.3" data-path="process-management.html"><a href="process-management.html#shiny-and-plumber"><i class="fa fa-check"></i><b>12.3</b> Shiny Applications &amp; Plumber APIs</a></li>
+<li class="chapter" data-level="12.4" data-path="process-management.html"><a href="process-management.html#process-management-runas"><i class="fa fa-check"></i><b>12.4</b> User Account for R Processes</a></li>
+<li class="chapter" data-level="12.5" data-path="process-management.html"><a href="process-management.html#process-management-runas-current"><i class="fa fa-check"></i><b>12.5</b> Current user execution</a></li>
+<li class="chapter" data-level="12.6" data-path="process-management.html"><a href="process-management.html#process-management-pam-sessions"><i class="fa fa-check"></i><b>12.6</b> PAM sessions</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="process-management.html"><a href="process-management.html#pam-credential-caching-kerberos"><i class="fa fa-check"></i><b>12.6.1</b> PAM Credential Caching (Kerberos)</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="process-management.html"><a href="process-management.html#path-rewriting"><i class="fa fa-check"></i><b>12.7</b> Path Rewriting</a></li>
+<li class="chapter" data-level="12.8" data-path="process-management.html"><a href="process-management.html#program-supervisors"><i class="fa fa-check"></i><b>12.8</b> Program Supervisors</a><ul>
+<li class="chapter" data-level="12.8.1" data-path="process-management.html"><a href="process-management.html#example-supervisors"><i class="fa fa-check"></i><b>12.8.1</b> Example Supervisors</a></li>
+</ul></li>
+<li class="chapter" data-level="12.9" data-path="process-management.html"><a href="process-management.html#using-the-config-package"><i class="fa fa-check"></i><b>12.9</b> Using the <code>config</code> Package</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="content-management.html"><a href="content-management.html"><i class="fa fa-check"></i><b>13</b> Content Management</a><ul>
+<li class="chapter" data-level="13.1" data-path="content-management.html"><a href="content-management.html#sharing-settings"><i class="fa fa-check"></i><b>13.1</b> Sharing Settings</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="content-management.html"><a href="content-management.html#collaborators"><i class="fa fa-check"></i><b>13.1.1</b> Collaborators</a></li>
+<li class="chapter" data-level="13.1.2" data-path="content-management.html"><a href="content-management.html#viewers"><i class="fa fa-check"></i><b>13.1.2</b> Viewers</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="content-management.html"><a href="content-management.html#vanity-paths"><i class="fa fa-check"></i><b>13.2</b> Vanity Paths</a></li>
+<li class="chapter" data-level="13.3" data-path="content-management.html"><a href="content-management.html#tags"><i class="fa fa-check"></i><b>13.3</b> Tags</a></li>
+<li class="chapter" data-level="13.4" data-path="content-management.html"><a href="content-management.html#bundle-management"><i class="fa fa-check"></i><b>13.4</b> Bundle Management</a></li>
+<li class="chapter" data-level="13.5" data-path="content-management.html"><a href="content-management.html#api-keys"><i class="fa fa-check"></i><b>13.5</b> API Keys</a><ul>
+<li class="chapter" data-level="13.5.1" data-path="content-management.html"><a href="content-management.html#how-this-works-1"><i class="fa fa-check"></i><b>13.5.1</b> How this Works</a></li>
+<li class="chapter" data-level="13.5.2" data-path="content-management.html"><a href="content-management.html#api-keys-configuration"><i class="fa fa-check"></i><b>13.5.2</b> Configuring API Keys</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>14</b> R</a><ul>
+<li class="chapter" data-level="14.1" data-path="r.html"><a href="r.html#installing-r"><i class="fa fa-check"></i><b>14.1</b> Installing R</a></li>
+<li class="chapter" data-level="14.2" data-path="r.html"><a href="r.html#upgrading-r"><i class="fa fa-check"></i><b>14.2</b> Upgrading R</a></li>
+<li class="chapter" data-level="14.3" data-path="r.html"><a href="r.html#r-versions"><i class="fa fa-check"></i><b>14.3</b> R Versions</a><ul>
+<li class="chapter" data-level="14.3.1" data-path="r.html"><a href="r.html#scanning"><i class="fa fa-check"></i><b>14.3.1</b> Scanning</a></li>
+<li class="chapter" data-level="14.3.2" data-path="r.html"><a href="r.html#r-versions-1"><i class="fa fa-check"></i><b>14.3.2</b> R Versions</a></li>
+<li class="chapter" data-level="14.3.3" data-path="r.html"><a href="r.html#etcrstudior-versions"><i class="fa fa-check"></i><b>14.3.3</b> /etc/rstudio/r-versions</a></li>
+<li class="chapter" data-level="14.3.4" data-path="r.html"><a href="r.html#excluding-versions"><i class="fa fa-check"></i><b>14.3.4</b> Excluding Versions</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="r.html"><a href="r.html#r-version-matching"><i class="fa fa-check"></i><b>14.4</b> R Version Matching</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="package-management.html"><a href="package-management.html"><i class="fa fa-check"></i><b>15</b> Package Management</a><ul>
+<li class="chapter" data-level="15.1" data-path="package-management.html"><a href="package-management.html#package-installation"><i class="fa fa-check"></i><b>15.1</b> Package Installation</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="package-management.html"><a href="package-management.html#external-package-installation"><i class="fa fa-check"></i><b>15.1.1</b> External Package Installation</a></li>
+<li class="chapter" data-level="15.1.2" data-path="package-management.html"><a href="package-management.html#proxy-configuration"><i class="fa fa-check"></i><b>15.1.2</b> Proxy Configuration</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="package-management.html"><a href="package-management.html#private-repositories"><i class="fa fa-check"></i><b>15.2</b> Private Repositories</a></li>
+<li class="chapter" data-level="15.3" data-path="package-management.html"><a href="package-management.html#private-packages"><i class="fa fa-check"></i><b>15.3</b> Private Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="metrics.html"><a href="metrics.html"><i class="fa fa-check"></i><b>16</b> Historical Metrics</a><ul>
+<li class="chapter" data-level="16.1" data-path="metrics.html"><a href="metrics.html#historical-metrics-settings"><i class="fa fa-check"></i><b>16.1</b> Historical Metrics Settings</a></li>
+<li class="chapter" data-level="16.2" data-path="metrics.html"><a href="metrics.html#historical-metrics-process-management"><i class="fa fa-check"></i><b>16.2</b> Historical Metrics Process Management</a></li>
+<li class="chapter" data-level="16.3" data-path="metrics.html"><a href="metrics.html#historical-metrics-process-logging"><i class="fa fa-check"></i><b>16.3</b> Historical Metrics Process Logging</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="appendix-configuration.html"><a href="appendix-configuration.html"><i class="fa fa-check"></i><b>A</b> Configuration Options</a><ul>
+<li class="chapter" data-level="A.1" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-basics"><i class="fa fa-check"></i><b>A.1</b> Configuration Basics</a><ul>
+<li class="chapter" data-level="A.1.1" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-file-format"><i class="fa fa-check"></i><b>A.1.1</b> File Format</a></li>
+<li class="chapter" data-level="A.1.2" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-multi-properties"><i class="fa fa-check"></i><b>A.1.2</b> Multi-value Properties</a></li>
+<li class="chapter" data-level="A.1.3" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-property-types"><i class="fa fa-check"></i><b>A.1.3</b> Property Types</a></li>
+<li class="chapter" data-level="A.1.4" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-reloadable-properties"><i class="fa fa-check"></i><b>A.1.4</b> Reloadable Properties</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-server"><i class="fa fa-check"></i><b>A.2</b> Server</a></li>
+<li class="chapter" data-level="A.3" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-http"><i class="fa fa-check"></i><b>A.3</b> Http</a></li>
+<li class="chapter" data-level="A.4" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-https"><i class="fa fa-check"></i><b>A.4</b> Https</a></li>
+<li class="chapter" data-level="A.5" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-httpredirect"><i class="fa fa-check"></i><b>A.5</b> HttpRedirect</a></li>
+<li class="chapter" data-level="A.6" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-licensing"><i class="fa fa-check"></i><b>A.6</b> Licensing</a></li>
+<li class="chapter" data-level="A.7" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-database"><i class="fa fa-check"></i><b>A.7</b> Database</a></li>
+<li class="chapter" data-level="A.8" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-sqlite"><i class="fa fa-check"></i><b>A.8</b> SQLite</a></li>
+<li class="chapter" data-level="A.9" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-postgres"><i class="fa fa-check"></i><b>A.9</b> Postgres</a></li>
+<li class="chapter" data-level="A.10" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-authentication"><i class="fa fa-check"></i><b>A.10</b> Authentication</a></li>
+<li class="chapter" data-level="A.11" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-password"><i class="fa fa-check"></i><b>A.11</b> Password</a></li>
+<li class="chapter" data-level="A.12" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-oauth2"><i class="fa fa-check"></i><b>A.12</b> OAuth2</a></li>
+<li class="chapter" data-level="A.13" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-ldap"><i class="fa fa-check"></i><b>A.13</b> LDAP</a></li>
+<li class="chapter" data-level="A.14" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-pam"><i class="fa fa-check"></i><b>A.14</b> PAM</a></li>
+<li class="chapter" data-level="A.15" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-authentication-proxy"><i class="fa fa-check"></i><b>A.15</b> Proxied Authentication</a></li>
+<li class="chapter" data-level="A.16" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-authorization"><i class="fa fa-check"></i><b>A.16</b> Authorization</a></li>
+<li class="chapter" data-level="A.17" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-applications"><i class="fa fa-check"></i><b>A.17</b> Applications</a></li>
+<li class="chapter" data-level="A.18" data-path="appendix-configuration.html"><a href="appendix-configuration.html#packages"><i class="fa fa-check"></i><b>A.18</b> Packages</a></li>
+<li class="chapter" data-level="A.19" data-path="appendix-configuration.html"><a href="appendix-configuration.html#client"><i class="fa fa-check"></i><b>A.19</b> Client</a></li>
+<li class="chapter" data-level="A.20" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-scheduler"><i class="fa fa-check"></i><b>A.20</b> Runtime/Scheduler</a></li>
+<li class="chapter" data-level="A.21" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-jobs"><i class="fa fa-check"></i><b>A.21</b> Jobs</a></li>
+<li class="chapter" data-level="A.22" data-path="appendix-configuration.html"><a href="appendix-configuration.html#appendix-configuration-metrics"><i class="fa fa-check"></i><b>A.22</b> Historical Metrics</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="cli.html"><a href="cli.html"><i class="fa fa-check"></i><b>B</b> Command-Line Interface</a><ul>
+<li class="chapter" data-level="B.1" data-path="cli.html"><a href="cli.html#user-management-1"><i class="fa fa-check"></i><b>B.1</b> User Management</a><ul>
+<li class="chapter" data-level="B.1.1" data-path="cli.html"><a href="cli.html#commands"><i class="fa fa-check"></i><b>B.1.1</b> Commands</a></li>
+<li class="chapter" data-level="B.1.2" data-path="cli.html"><a href="cli.html#flags"><i class="fa fa-check"></i><b>B.1.2</b> Flags</a></li>
+<li class="chapter" data-level="B.1.3" data-path="cli.html"><a href="cli.html#examples"><i class="fa fa-check"></i><b>B.1.3</b> Examples:</a></li>
+</ul></li>
+<li class="chapter" data-level="B.2" data-path="cli.html"><a href="cli.html#migration-cli"><i class="fa fa-check"></i><b>B.2</b> Migration Utility</a><ul>
+<li class="chapter" data-level="B.2.1" data-path="cli.html"><a href="cli.html#commands-1"><i class="fa fa-check"></i><b>B.2.1</b> Commands</a></li>
+<li class="chapter" data-level="B.2.2" data-path="cli.html"><a href="cli.html#flags-1"><i class="fa fa-check"></i><b>B.2.2</b> Flags</a></li>
+<li class="chapter" data-level="B.2.3" data-path="cli.html"><a href="cli.html#examples-1"><i class="fa fa-check"></i><b>B.2.3</b> Examples</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="custom-landing.html"><a href="custom-landing.html"><i class="fa fa-check"></i><b>C</b> Using a Custom Landing Page</a><ul>
+<li class="chapter" data-level="C.1" data-path="custom-landing.html"><a href="custom-landing.html#overview"><i class="fa fa-check"></i><b>C.1</b> Overview</a></li>
+<li class="chapter" data-level="C.2" data-path="custom-landing.html"><a href="custom-landing.html#configuration-1"><i class="fa fa-check"></i><b>C.2</b> Configuration</a></li>
+<li class="chapter" data-level="C.3" data-path="custom-landing.html"><a href="custom-landing.html#custom-landing-page-assets"><i class="fa fa-check"></i><b>C.3</b> Custom Landing Page Assets</a></li>
+<li class="chapter" data-level="C.4" data-path="custom-landing.html"><a href="custom-landing.html#example"><i class="fa fa-check"></i><b>C.4</b> Example</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="appendix-ldap-examples.html"><a href="appendix-ldap-examples.html"><i class="fa fa-check"></i><b>D</b> LDAP/AD Configuration Examples</a><ul>
+<li class="chapter" data-level="D.1" data-path="appendix-ldap-examples.html"><a href="appendix-ldap-examples.html#appendix-ldap-examples-single"><i class="fa fa-check"></i><b>D.1</b> Single Bind</a></li>
+<li class="chapter" data-level="D.2" data-path="appendix-ldap-examples.html"><a href="appendix-ldap-examples.html#appendix-ldap-examples-double"><i class="fa fa-check"></i><b>D.2</b> Double Bind</a></li>
+<li class="chapter" data-level="D.3" data-path="appendix-ldap-examples.html"><a href="appendix-ldap-examples.html#appendix-ldap-examples-ldif"><i class="fa fa-check"></i><b>D.3</b> LDIF</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html"><i class="fa fa-check"></i><b>E</b> RStudio Connect Deployment Guide</a><ul>
+<li class="chapter" data-level="E.1" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#overview-1"><i class="fa fa-check"></i><b>E.1</b> Overview</a></li>
+<li class="chapter" data-level="E.2" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#programmatic-deployment"><i class="fa fa-check"></i><b>E.2</b> Programmatic Deployment</a></li>
+<li class="chapter" data-level="E.3" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#step-1-building-the-bundle"><i class="fa fa-check"></i><b>E.3</b> Step 1: Building the Bundle</a><ul>
+<li class="chapter" data-level="E.3.1" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#application-metadata"><i class="fa fa-check"></i><b>E.3.1</b> Application Metadata</a></li>
+<li class="chapter" data-level="E.3.2" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#list-of-target-files"><i class="fa fa-check"></i><b>E.3.2</b> List of Target Files</a></li>
+<li class="chapter" data-level="E.3.3" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#lint"><i class="fa fa-check"></i><b>E.3.3</b> Lint</a></li>
+<li class="chapter" data-level="E.3.4" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#create-temporary-folder"><i class="fa fa-check"></i><b>E.3.4</b> Create Temporary Folder</a></li>
+<li class="chapter" data-level="E.3.5" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#library-dependencies"><i class="fa fa-check"></i><b>E.3.5</b> Library Dependencies</a></li>
+<li class="chapter" data-level="E.3.6" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#manifest"><i class="fa fa-check"></i><b>E.3.6</b> Manifest</a></li>
+</ul></li>
+<li class="chapter" data-level="E.4" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#step-2-push-bundle-to-connect"><i class="fa fa-check"></i><b>E.4</b> Step 2: Push Bundle to Connect</a></li>
+<li class="chapter" data-level="E.5" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#step-3-bundle-is-deployed-on-connect"><i class="fa fa-check"></i><b>E.5</b> Step 3: Bundle is deployed on Connect</a><ul>
+<li class="chapter" data-level="E.5.1" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#parse-the-manifest"><i class="fa fa-check"></i><b>E.5.1</b> Parse the Manifest</a></li>
+<li class="chapter" data-level="E.5.2" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#packrat-restore"><i class="fa fa-check"></i><b>E.5.2</b> Packrat Restore</a></li>
+<li class="chapter" data-level="E.5.3" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#r-markdown-render"><i class="fa fa-check"></i><b>E.5.3</b> R Markdown Render</a></li>
+</ul></li>
+<li class="chapter" data-level="E.6" data-path="appendix-deployment-guide.html"><a href="appendix-deployment-guide.html#other-frequently-asked-questions"><i class="fa fa-check"></i><b>E.6</b> Other Frequently Asked Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="appendix-ci.html"><a href="appendix-ci.html"><i class="fa fa-check"></i><b>F</b> Using Continuous Integration to Deploy Content</a><ul>
+<li class="chapter" data-level="F.1" data-path="appendix-ci.html"><a href="appendix-ci.html#overview-2"><i class="fa fa-check"></i><b>F.1</b> Overview</a></li>
+<li class="chapter" data-level="F.2" data-path="appendix-ci.html"><a href="appendix-ci.html#prerequisites"><i class="fa fa-check"></i><b>F.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="F.3" data-path="appendix-ci.html"><a href="appendix-ci.html#configuring-a-ci-server-to-deploy-content-to-connect"><i class="fa fa-check"></i><b>F.3</b> Configuring a CI Server to Deploy Content to Connect</a><ul>
+<li class="chapter" data-level="F.3.1" data-path="appendix-ci.html"><a href="appendix-ci.html#installing-rsconnect"><i class="fa fa-check"></i><b>F.3.1</b> Installing rsconnect</a></li>
+<li class="chapter" data-level="F.3.2" data-path="appendix-ci.html"><a href="appendix-ci.html#configuring-rsconnect"><i class="fa fa-check"></i><b>F.3.2</b> Configuring rsconnect</a></li>
+<li class="chapter" data-level="F.3.3" data-path="appendix-ci.html"><a href="appendix-ci.html#deploying-content-with-rsconnect"><i class="fa fa-check"></i><b>F.3.3</b> Deploying Content with rsconnect</a></li>
+<li class="chapter" data-level="F.3.4" data-path="appendix-ci.html"><a href="appendix-ci.html#package-and-r-version-compatibility"><i class="fa fa-check"></i><b>F.3.4</b> Package and R Version Compatibility</a></li>
+<li class="chapter" data-level="F.3.5" data-path="appendix-ci.html"><a href="appendix-ci.html#cran-note"><i class="fa fa-check"></i><b>F.3.5</b> CRAN Note</a></li>
+</ul></li>
+<li class="chapter" data-level="F.4" data-path="appendix-ci.html"><a href="appendix-ci.html#warning-and-security-information"><i class="fa fa-check"></i><b>F.4</b> Warning and Security Information</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html"><i class="fa fa-check"></i><b>G</b> Programmatic Deployment with rsconnect</a><ul>
+<li class="chapter" data-level="G.1" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#overview-3"><i class="fa fa-check"></i><b>G.1</b> Overview</a></li>
+<li class="chapter" data-level="G.2" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#use-case-a-shiny-application"><i class="fa fa-check"></i><b>G.2</b> Use Case: A Shiny Application</a><ul>
+<li class="chapter" data-level="G.2.1" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#use-case-scenario"><i class="fa fa-check"></i><b>G.2.1</b> Use Case Scenario</a></li>
+<li class="chapter" data-level="G.2.2" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#installing-rsconnect-1"><i class="fa fa-check"></i><b>G.2.2</b> Installing rsconnect</a></li>
+<li class="chapter" data-level="G.2.3" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#configuring-a-custom-runas-user"><i class="fa fa-check"></i><b>G.2.3</b> Configuring a Custom “RunAs” User</a></li>
+<li class="chapter" data-level="G.2.4" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#configuring-rsconnect-1"><i class="fa fa-check"></i><b>G.2.4</b> Configuring rsconnect</a></li>
+<li class="chapter" data-level="G.2.5" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#deploying-content-with-rsconnect-1"><i class="fa fa-check"></i><b>G.2.5</b> Deploying Content with rsconnect</a></li>
+<li class="chapter" data-level="G.2.6" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#cran-note-1"><i class="fa fa-check"></i><b>G.2.6</b> CRAN Note</a></li>
+</ul></li>
+<li class="chapter" data-level="G.3" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#warning-and-security-information-1"><i class="fa fa-check"></i><b>G.3</b> Warning and Security Information</a></li>
+<li class="chapter" data-level="G.4" data-path="appendix-rsconnect.html"><a href="appendix-rsconnect.html#appendix-rsconnect-example"><i class="fa fa-check"></i><b>G.4</b> Example Shiny Application</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RStudio Connect: Admin Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="appendix-configuration" class="section level1">
+<h1><span class="header-section-number">A</span> Configuration Options</h1>
+<p>This appendix documents the RStudio Connect configuration file format and enumerates the user-configurable options.</p>
+<div id="appendix-configuration-basics" class="section level2">
+<h2><span class="header-section-number">A.1</span> Configuration Basics</h2>
+<p>The RStudio Connect configuration file is located at <code>/etc/rstudio-connect/rstudio-connect.gcfg</code>. This configuration is read at startup and controls the operation of the service.</p>
+<div id="appendix-configuration-file-format" class="section level3">
+<h3><span class="header-section-number">A.1.1</span> File Format</h3>
+<p>The RStudio Connect configuration file uses the <strong>gcfg</strong> (<a href="https://gopkg.in/gcfg.v1">Go Config</a>) format, which is derived from the <a href="http://git-scm.com/docs/git-config#_syntax">Git Config</a> format.</p>
+<p>Here is an example of that format showing the different property types:</p>
+<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="co">; Comment</span>
+<span class="kw">[BooleanExamples]</span>
+<span class="dt">property1 </span><span class="ot">=</span><span class="st"> </span><span class="kw">true</span>
+<span class="dt">property2 </span><span class="ot">=</span><span class="st"> </span><span class="kw">off</span>
+<span class="dt">property3 </span><span class="ot">=</span><span class="st"> </span><span class="dv">1</span>
+
+<span class="kw">[IntegerExamples]</span>
+<span class="dt">Property1 </span><span class="ot">=</span><span class="st"> </span><span class="dv">42</span>
+<span class="dt">Property2 </span><span class="ot">=</span><span class="st"> -</span><span class="dv">123</span>
+
+<span class="kw">[DecimalExamples]</span>
+<span class="dt">Property1 </span><span class="ot">=</span><span class="st"> </span><span class="fl">3.14</span>
+<span class="dt">Property2 </span><span class="ot">=</span><span class="st"> </span><span class="dv">7</span><span class="st">.</span>
+<span class="dt">Property3 </span><span class="ot">=</span><span class="st"> </span><span class="dv">2</span>
+<span class="dt">Property4 </span><span class="ot">=</span><span class="st"> .</span><span class="dv">217</span>
+
+<span class="kw">[StringExamples]</span>
+<span class="dt">Property1 </span><span class="ot">=</span><span class="st"> simple</span>
+<span class="dt">Property2 </span><span class="ot">=</span><span class="st"> &quot;quoted string&quot;</span>
+<span class="dt">Property3 </span><span class="ot">=</span><span class="st"> &quot;escaped \&quot;quote\&quot; string&quot;</span>
+
+<span class="kw">[MultiStringExamples]</span>
+<span class="dt">ListProperty </span><span class="ot">=</span><span class="st"> black</span>
+<span class="dt">ListProperty </span><span class="ot">=</span><span class="st"> blue</span>
+<span class="dt">ListProperty </span><span class="ot">=</span><span class="st"> green</span>
+
+<span class="kw">[DurationExamples]</span>
+<span class="dt">Property1 </span><span class="ot">=</span><span class="st"> </span><span class="dv">1000000000</span>
+<span class="dt">Property2 </span><span class="ot">=</span><span class="st"> 500ms</span>
+<span class="dt">Property3 </span><span class="ot">=</span><span class="st"> 1m15s  </span><span class="co">; comment with a property</span></code></pre></div>
+<p>Comments always start with a semi-colon (<code>;</code>) and continue to the end of the line. Comments can be on lines by themselves or on a line with a property or section definition.</p>
+<p>Configuration sections always begin with the name of the section bounded by square brackets. A section may appear multiple times and are additive with the last value for any property being retained. The following two configuration examples are equivalent.</p>
+<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="kw">[Example]</span>
+<span class="dt">A </span><span class="ot">=</span><span class="st"> aligator</span>
+<span class="dt">B </span><span class="ot">=</span><span class="st"> </span><span class="dv">2</span>
+
+<span class="kw">[Example]</span>
+<span class="dt">A </span><span class="ot">=</span><span class="st"> aardvark</span>
+<span class="dt">C </span><span class="ot">=</span><span class="st"> shining</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="kw">[Example]</span>
+<span class="dt">A </span><span class="ot">=</span><span class="st"> aardvark</span>
+<span class="dt">B </span><span class="ot">=</span><span class="st"> </span><span class="dv">2</span>
+<span class="dt">C </span><span class="ot">=</span><span class="st"> shining</span></code></pre></div>
+<p>Each configuration property must be included in its appropriate section. Property and section names are interpreted case-insensitively.</p>
+<p>Property definitions always have the form:</p>
+<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="dt">Name </span><span class="ot">=</span><span class="st"> value</span></code></pre></div>
+<p>The equals sign (<code>=</code>) is mandatory.</p>
+</div>
+<div id="appendix-configuration-multi-properties" class="section level3">
+<h3><span class="header-section-number">A.1.2</span> Multi-value Properties</h3>
+<p>If a property happens to to be given more than once, only the last value is retained. The “multi” properties are an exception to this rule; multiple entries are aggregated into a list.</p>
+<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="kw">[MultiExample]</span>
+<span class="dt">Color </span><span class="ot">=</span><span class="st"> black</span>
+<span class="dt">Color </span><span class="ot">=</span><span class="st"> blue</span>
+
+<span class="kw">[NonMulti]</span>
+<span class="dt">Animal </span><span class="ot">=</span><span class="st"> cat</span>
+<span class="dt">Animal </span><span class="ot">=</span><span class="st"> dog</span></code></pre></div>
+<p>If <code>Color</code> is a multi-string property, both the “black” and “blue” values are used. If <code>Animal</code> is a normal string property, only the value “dog” is retained.</p>
+</div>
+<div id="appendix-configuration-property-types" class="section level3">
+<h3><span class="header-section-number">A.1.3</span> Property Types</h3>
+<p>Configuration properties all have one of the following types:</p>
+<dl>
+<dt>string</dt>
+<dd><p>A sequence of characters. The value is taken as all characters from the first non-whitespace character after equal sign to the last non-whitespace character before the end-of-line or start of a comment. Double-quotes (<code>&quot;</code>) are supported, but usually unnecessary. A literal double-quote MUST be escaped and quoted itself like <code>QuotedValue = &quot;J.R. \&quot;Bob\&quot; Dobbs&quot;</code>.</p>
+</dd>
+<dt>multi-string</dt>
+<dd><p>A property that takes multiple string values. The property name is listed with each individual input value. For example, providing <code>Color = black</code> and <code>Color = blue</code> results in two separate values.</p>
+</dd>
+<dt>boolean</dt>
+<dd><p>A truth value. The values <code>true</code>, <code>yes</code>, <code>on</code>, and <code>1</code> are interpreted as true. The values <code>false</code>, <code>no</code>, <code>off</code>, and <code>0</code> are interpreted as false.</p>
+</dd>
+<dt>integer</dt>
+<dd><p>An integral value.</p>
+</dd>
+<dt>decimal</dt>
+<dd><p>A numeric value with an optional fractional component. Values with and without a decimal point are allowed.</p>
+</dd>
+<dt>duration</dt>
+<dd><p>A value specifying a length of time. When provided as a raw number, the value is interpreted as nanoseconds. Duration values can also be specified as a sequence of decimal numbers, each with optional fraction and unit suffix, such as <code>300ms</code>, <code>1.5h</code>, or <code>1m30s</code>.</p>
+<p>Valid time units are <code>ns</code> (nanoseconds), <code>us</code> (microseconds), <code>ms</code> (milliseconds), <code>s</code> (seconds), <code>m</code> (minutes), and <code>h</code> (hours).</p>
+</dd>
+<dt>version</dt>
+<dd><p>A string representing a version. A version may have one to four numeric components, separated by periods or hyphens. Examples include <code>2</code>, <code>2.5</code>, <code>2.5.6</code>, <code>2.5.6.1</code>, and <code>2.5-6-11</code>.</p>
+</dd>
+</dl>
+<p>Each configuration property documented in this appendix includes its description, data type, and default value.</p>
+</div>
+<div id="appendix-configuration-reloadable-properties" class="section level3">
+<h3><span class="header-section-number">A.1.4</span> Reloadable Properties</h3>
+<p>Some properties are marked as “reloadable”. Sending a <code>HUP</code> signal to the Connect process causes the on-disk configuration to be reread. The server is reconfigured with the latest values of these reloadable properties. See <a href="server-management.html#stopping-starting">5.1</a> for details about sending a <code>HUP</code> signal to your Connect process.</p>
+<blockquote>
+<p>Use a <code>HUP</code> signal when your configuration changes are limited to properties marked as reloadable. Perform a full restart of RStudio Connect when changing other properties.</p>
+</blockquote>
+</div>
+</div>
+<div id="appendix-configuration-server" class="section level2">
+<h2><span class="header-section-number">A.2</span> Server</h2>
+<p>The <code>Server</code> section contains configuration properties which apply across the whole of RStudio Connect and are not appropriate for the other sections, which are generally narrower.</p>
+<p>The properties which follow all must appear after <code>[Server]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>DataDir</code></dt>
+<dd><p>The directory where RStudio Connect will store its variable data.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>/var/lib/rstudio-connect</code></p>
+</dd>
+<dt><code>TempDir</code></dt>
+<dd><p>The directory that will contain all temporary directories needed by R processes.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>TMPDIR</code> environment variable if defined, else <code>/tmp</code>.</p>
+</dd>
+<dt><code>LandingDir</code></dt>
+<dd><p>Specifies an optional path from which a customized landing page is served to logged-out users. See <code>examples/landing-page</code> for a directory containing a sample landing page.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>EnableSitemap</code></dt>
+<dd><p>Specifies if RStudio Connect should provide a <code>/sitemap.xml</code> file enumerating the publicly available apps.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>RVersionMatching</code></dt>
+<dd><p>Specifies how RStudio Connect attempts to match R version associated with uploaded content with the R versions available on the system. Allows values of <code>nearest</code> or <code>exact</code>.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>nearest</code></p>
+</dd>
+<dt><code>RVersion</code></dt>
+<dd><p>Path to an R installation root. Multiple definitions can be used to provide multiple locations with R.</p>
+</dd>
+<dd><p>Type: multi-string</p>
+</dd>
+<dd><p>Default: <em>unspecified</em></p>
+</dd>
+<dt><code>RVersionScanning</code></dt>
+<dd><p>Scan for R installations in well-known locations.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>true</code></p>
+</dd>
+<dt><code>CompilationConcurrency</code></dt>
+<dd><p>The amount of parallelism allowed to <code>make</code> during R package installs. This value is passed to <code>make</code> as the value given to the <code>-jNUM</code> flag.</p>
+</dd>
+<dd><p>Type: integer</p>
+</dd>
+<dd><p>Default: <code>4</code></p>
+</dd>
+<dt><code>SourcePackageDir</code></dt>
+<dd><p>A directory containing source bundles for packages that are unavailable on either CRAN or a public GitHub repository. Must be readable by the <code>Applications.RunAs</code> user.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>Address</code></dt>
+<dd><p>A public URL for this RStudio Connect server. Must be configured to enable features like including links to your content in emails.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>SenderEmail</code></dt>
+<dd><p>An email address used by RStudio Connect to send outbound email. The system will not be able to send administrative email until this setting is configured.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>EmailSubjectPrefix</code></dt>
+<dd><p>A leading subject prefix for all mail sent by RStudio Connect.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: [RStudio Connect]</p>
+</dd>
+<dt><code>ViewerKiosk</code></dt>
+<dd><p>When enabled, RStudio Connect does not prompt view-only users to request elevated privileges when attempting to access restricted resources.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>HideEmailAddresses</code></dt>
+<dd><p>When enabled, RStudio Connect will not expose email addresses in API requests or its dashboard.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>MailAll</code></dt>
+<dd><p>When enabled, RStudio Connect will allow scheduled and on-demand documents to send email to all users of the system.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>PublicWarning</code></dt>
+<dd><p>An HTML snippet used to inject a message into the RStudio Connect dashboard welcome pages.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dd><p>Reloadable: true</p>
+</dd>
+<dt><code>LoggedInWarning</code></dt>
+<dd><p>An HTML snippet used to inject a message into the RStudio Connect recent views.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dd><p>Reloadable: true</p>
+</dd>
+<dt><code>ContentTypeSniffing</code></dt>
+<dd><p>If disabled, sets the <code>X-Content-Type-Options</code> HTTP header to <code>nosniff</code>. When enabled, removes that header, allowing browsers to mime-sniff responses.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>ServerName</code></dt>
+<dd><p>By default, Connect sets the <code>Server</code> HTTP header to something like <code>RStudio Connect v1.2.3</code>. This setting allows you to override that value.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>AccessLog</code></dt>
+<dd><p>Path to the file that RStudio Connect will use for its access logs. Disabled when empty.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>/var/log/rstudio-connect.access.log</code></p>
+</dd>
+<dt><code>CustomHeader</code></dt>
+<dd><p>Custom HTTP header that should be added to responses from Connect in the format of <code>key: value</code>. The left side of the first colon in the string will become the header name; everything after the first colon will be the header value. Both will be trimmed of leading/trailing whitespace. This will always add a new header with the specified value; it will never override a header that Connect would otherwise have set. Multiple definitions can be used to provide multiple custom headers.</p>
+</dd>
+<dd><p>Type: multi-string</p>
+</dd>
+<dd><p>Default: <em>unspecified</em></p>
+</dd>
+<dt><code>FrameOptionsContent</code></dt>
+<dd><p>The value for the <code>X-Frame-Options</code> HTTP header for all user-uploaded content (Shiny apps, RMDs, etc.). If empty, no header will be added.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>FrameOptionsDashboard</code></dt>
+<dd><p>The value for the <code>X-Frame-Options</code> HTTP header for the Connect dashboard and all other Connect pages. If empty, no header will be added.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>DENY</code></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-http" class="section level2">
+<h2><span class="header-section-number">A.3</span> Http</h2>
+<p>The <code>Http</code> section contains configuration properties which control the ability of RStudio Connect to listen for HTTP requests. RStudio Connect must be configured to listen for either HTTP or HTTPS requests (allowing both is acceptable).</p>
+<p>These properties must appear after <code>[Http]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>Listen</code></dt>
+<dd><p>RStudio Connect will listen on this network address for HTTP connections. The network address can be of the form <code>:80</code> or <code>192.168.0.1:80</code>. Either <code>Http.Listen</code> or <code>Https.Listen</code> is required.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>NoWarning</code></dt>
+<dd><p>Disables warnings about insecure (HTTP) connections.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-https" class="section level2">
+<h2><span class="header-section-number">A.4</span> Https</h2>
+<p>The <code>Https</code> section contains configuration properties which control the ability of RStudio Connect to listen for HTTPS requests. RStudio Connect must be configured to listen for either HTTP or HTTPS requests (allowing both is acceptable).</p>
+<p>These properties must appear after <code>[Https]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>Listen</code></dt>
+<dd><p>RStudio Connect will listen on this network address for HTTPS connections. The network address can be of the form <code>:443</code> or <code>192.168.0.1:443</code>. Either <code>Http.Listen</code> or <code>Https.Listen</code> is required.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>Key</code></dt>
+<dd><p>Path to a private key file corresponding to the certificate specified with <code>Https.Certificate</code>. Required when <code>Https.Certificate</code> is specified.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>Certificate</code></dt>
+<dd><p>Path to a TLS certificate file. If the certificate is signed by a certificate authority, the certificate file should be the concatenation of the server’s certificate followed by the CA’s certificate. Must be paired with <code>Https.Key</code>.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>Permanent</code></dt>
+<dd><p>Advertises to all visitors that this server should only ever be hosted securely via HTTPS. WARNING: if this is set to true – even temporarily – visitors may be permanently denied access to your server over an unsecured (non-HTTPS) protocol. This sets the <code>secure</code> flag on all session cookies and adds a <code>Strict-Transport-Security</code> HTTP header with a value of 30 days.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-httpredirect" class="section level2">
+<h2><span class="header-section-number">A.5</span> HttpRedirect</h2>
+<p>The <code>HttpRedirect</code> section contains configuration properties which control the ability of RStudio Connect to listen for HTTP requests and then redirect all traffic to some alternate location. This is useful when paired with an <code>Https.Listen</code> configuration.</p>
+<p>These properties must appear after <code>[HttpRedirect]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>Listen</code></dt>
+<dd><p>RStudio Connect will listen on this network address for HTTP connection and redirect to either the <code>HttpRedirect.Target</code> or <code>Server.Address</code> target location. The network address can be of the form <code>:8080</code> or <code>192.168.0.1:8080</code>. Useful when you wish all requests to be served over HTTPS and send users to that location should they accidentally visit via an HTTP URL. Must be paired with either <code>HttpRedirect.Target</code> or <code>Server.Address</code>.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>Target</code></dt>
+<dd><p>The target for redirects when users visit the <code>HttpRedirect.Listen</code> HTTP service. <code>Server.Address</code> is used as a redirect target if this property is not specified.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-licensing" class="section level2">
+<h2><span class="header-section-number">A.6</span> Licensing</h2>
+<p>The <code>Licensing</code> section contains configuration properties which control how RStudio Connect interacts with its licensing system.</p>
+<p>These properties must appear after <code>[Licensing]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>LicenseType</code></dt>
+<dd><p>Enable remote or local validation. <code>local</code> is traditional activation, whereas <code>remote</code> uses floating licensing.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>local</code></p>
+</dd>
+<dt><code>RemoteRetryFrequency</code></dt>
+<dd><p>When Connect loses its lease, it will begin automatically attempting to acquire a lease by <code>RemoteRetryFrequency</code>. Use a value of <code>0</code> to disable retries.</p>
+</dd>
+<dd><p>Type: duration</p>
+</dd>
+<dd><p>Default: <code>10</code></p>
+</dd>
+<dt><code>ExpirationEmail</code></dt>
+<dd><p>Enables sending of email when the license approaches expiration.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>true</code></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-database" class="section level2">
+<h2><span class="header-section-number">A.7</span> Database</h2>
+<p>The <code>Database</code> section contains configuration properties which control the location of and how RStudio Connect interacts with its database.</p>
+<p>These properties must appear after <code>[Database]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>Provider</code></dt>
+<dd><p>The type of database to use</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: sqlite</p>
+</dd>
+<dt><code>Dir</code></dt>
+<dd><p>This property is deprecated. Please use Sqlite.Dir instead.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>MaxIdleConnections</code></dt>
+<dd><p>The maximum number of database connections that should be retained after they become idle. If this value is less-than or equal-to zero, no idle connections are retained.</p>
+</dd>
+<dd><p>Type: integer</p>
+</dd>
+<dd><p>Default: <code>0</code></p>
+</dd>
+<dt><code>MaxOpenConnections</code></dt>
+<dd><p>The maximum number of open connections to the database. If this value is less-than or equal-to zero, then there is no limit to the number of open connections.</p>
+</dd>
+<dd><p>Type: integer</p>
+</dd>
+<dd><p>Default: <code>0</code></p>
+</dd>
+<dt><code>ConnectionMaxLifetime</code></dt>
+<dd><p>The maximum amount of time a connection to the database may be reused. If this value is less-than or equal-to zero, then connections are reused forever.</p>
+</dd>
+<dd><p>Type: duration</p>
+</dd>
+<dd><p>Default: <code>0</code></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-sqlite" class="section level2">
+<h2><span class="header-section-number">A.8</span> SQLite</h2>
+<p>The <code>SQLite</code> section contains configuration properties which control the location of and how RStudio Connect interacts with the SQLite database.</p>
+<p>These properties must appear after <code>[SQLite]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>Dir</code></dt>
+<dd><p>The directory containing the RStudio Connect database. Must reference a directory on the local filesystem and not on a networked volume like NFS.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>{Server.DataDir}/db</code></p>
+</dd>
+<dt><code>Backup</code></dt>
+<dd><p>When enabled and Provider is <code>sqlite</code>, periodically backs up the database</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>true</code></p>
+</dd>
+<dt><code>BackupFrequency</code></dt>
+<dd><p>How often to back up the sqlite database</p>
+</dd>
+<dd><p>Type: duration</p>
+</dd>
+<dd><p>Default: <code>24h</code></p>
+</dd>
+<dt><code>BackupRetentionLimit</code></dt>
+<dd><p>Connect will periodically delete backups older than this number. Set to <code>0</code> to disable sweeping, for example, if you plan to manage your backups with an external task.</p>
+</dd>
+<dd><p>Type: integer</p>
+</dd>
+<dd><p>Default: <code>3</code></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-postgres" class="section level2">
+<h2><span class="header-section-number">A.9</span> Postgres</h2>
+<p>The <code>Postgres</code> section contains configuration properties which control the location of and how RStudio Connect interacts with its postgres.</p>
+<p>These properties must appear after <code>[Postgres]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>URL</code></dt>
+<dd><p>The fully qualified URL to connect to a Postgres database</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-authentication" class="section level2">
+<h2><span class="header-section-number">A.10</span> Authentication</h2>
+<p>The <code>Authentication</code> section contains configuration properties which control how users will log into RStudio Connect.</p>
+<p>These properties must appear after <code>[Authentication]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>Provider</code></dt>
+<dd><p>Specifies the type of user authentication. Allows values of <code>password</code>, <code>oauth2</code>, <code>ldap</code>, <code>pam</code>, or <code>proxy</code>.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>password</code></p>
+</dd>
+<dt><code>Name</code></dt>
+<dd><p>Specifies a meaningful name for your authentication provider. This presented on the sign-in page and gives users context about the credentials being requested. If unspecified, RStudio Connect will use a generic name for the chosen provider. Just using your company name is often a good choice.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>Lifetime</code></dt>
+<dd><p>The lifetime of an authenticated session.</p>
+</dd>
+<dd><p>Type: duration</p>
+</dd>
+<dd><p>Default: <code>720h</code> (30 days)</p>
+</dd>
+<dt><code>Inactivity</code></dt>
+<dd><p>The period of time after which inactive sessions are considered idle and therefore invalid. Effective only when non-zero and less than <code>Authentication.Lifetime</code>.</p>
+</dd>
+<dd><p>Type: duration</p>
+</dd>
+<dd><p>Default: <code>0</code></p>
+</dd>
+<dt><code>APIKeyAuth</code></dt>
+<dd><p>Whether API key authentication is enabled.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: true</p>
+</dd>
+<dt><code>ChallengeResponseEnabled</code></dt>
+<dd><p>Whether a second factor challenge-response is enabled</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>CookieSweepDuration</code></dt>
+<dd><p>Duration between sweeps of expired cookies</p>
+</dd>
+<dd><p>Type: duration</p>
+</dd>
+<dd><p>Default: 1hr</p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-password" class="section level2">
+<h2><span class="header-section-number">A.11</span> Password</h2>
+<p>The <code>Password</code> section contains configuration properties which control how RStudio Connect’s default password authentication provider behaves.</p>
+<p>See Section <a href="authentication.html#authentication-password">10.4</a> for details about configuring password authentication for RStudio connect.</p>
+<p>These properties must appear after <code>[Password]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>SelfRegistration</code></dt>
+<dd><p>Allow users to self-register. Self-registered users will be created using the role specified in the <code>Authorization.DefaultUserRole</code> setting.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>true</code></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-oauth2" class="section level2">
+<h2><span class="header-section-number">A.12</span> OAuth2</h2>
+<p>The <code>OAuth2</code> section contains configuration properties which control how RStudio Connect communicates with Google OAuth2 servers in order to authenticate users.</p>
+<p>Section <a href="authentication.html#authentication-oauth2">10.6</a> contains more information about configuring RStudio Connect to use Google for authentication.</p>
+<p>The <code>DiscoveryEndpoint</code> property should be configured as:</p>
+<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="kw">[OAuth2]</span>
+<span class="dt">DiscoveryEndpoint </span><span class="ot">=</span><span class="st"> https://accounts.google.com/.well-known/openid-configuration</span></code></pre></div>
+<p>These properties must appear after <code>[OAuth2]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>DiscoveryEndpoint</code></dt>
+<dd><p>Specifies a URL for the OAuth2 discovery endpoint. Required for all OAuth2 configurations.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>ClientId</code></dt>
+<dd><p>Identifier for OAuth2 client. Required for all OAuth2 configurations.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>ClientSecret</code></dt>
+<dd><p>Client secret for the configured client ID. One of <code>OAuth2.ClientSecret</code> or <code>OAuth2.ClientSecretFile</code> must be specified when using OAuth2.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>ClientSecretFile</code></dt>
+<dd><p>Path to file containing the client secret for the configured client ID. One of <code>OAuth2.ClientSecret</code> or <code>OAuth2.ClientSecretFile</code> must be specified when using OAuth2.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>AllowedDomains</code></dt>
+<dd><p>Space-separated list of domains permitted to authenticate.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dd><p>Reloadable: true</p>
+</dd>
+<dt><code>AllowedEmails</code></dt>
+<dd><p>Space-separated list of email addresses permitted to authenticate. When used without <code>OAuth2.AllowedDomains</code>, only the email addresses listed here will be allowed access. When used with <code>OAuth2.AllowedDomains</code>, the email addresses listed here will be <strong>added</strong> to those with valid domains.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dd><p>Reloadable: true</p>
+</dd>
+<dt><code>DemoteSearchErrors</code></dt>
+<dd><p>Disables logging of user search errors. Recommended only for public servers where gmail.com accounts or accounts from multiple, unrelated Google Apps domains appear.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-ldap" class="section level2">
+<h2><span class="header-section-number">A.13</span> LDAP</h2>
+<p>The <code>LDAP</code> section contains configuration properties which control how RStudio Connect communicates with an LDAP or Active Directory server.</p>
+<p>See Section <a href="authentication.html#authentication-ldap">10.5</a> for details about how to configure RStudio Connect with LDAP authentication. Section <a href="appendix-ldap-examples.html#appendix-ldap-examples">D</a> contains many configuration examples.</p>
+<p>The <code>LDAP</code> section is different from many other configuration sections, as it allows multiple, distinctly named configuration instances. This name is <em>case sensitive</em>. A named section looks like:</p>
+<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="kw">[LDAP &quot;European LDAP Server&quot;]</span></code></pre></div>
+<p>All of the LDAP configuration properties must appear after <code>[LDAP &quot;&lt;name&gt;&quot;]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>RequireExternalUsernames</code></dt>
+<dd><p>Require LDAP, Proxy, and PAM authentication providers to provide valid usernames. User completion will be disabled; if an invalid username is received from the provider, we will throw an error. Note that this setting cannot be set when <code>Authorization.AdminEditableUsernames</code> is set. If you are using LDAP and have multiple configurations, they must all share the same RequireExternalUsernames setting.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>true</code></p>
+</dd>
+<dt><code>ServerAddress</code></dt>
+<dd><p>Specifies the location of the LDAP/AD server. This should be of the form <code>&lt;host&gt;:&lt;port&gt;</code>. The <code>host</code> may be either an IP or DNS address. Most LDAP/AD servers operate on port <code>389</code> or <code>636</code>.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>TLS</code></dt>
+<dd><p>When enabled, all connections to your LDAP/AD server will use TLS (SSL).</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>StartTLS</code></dt>
+<dd><p>When enabled, the connection will initially be made on an insecure port then the channel will be upgraded to TLS using StartTLS.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>ServerTLSInsecure</code></dt>
+<dd><p>This option controls if RStudio connect will verify the server’s certificate chain and host name. When enabled, RStudio Connect will accept any certificate presented by the server and any host name in that certificate. Setting to <code>true</code> is susceptible to man-in-the-middle attacks but is required in some circumstances, such as when using a self-signed certificate.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>TLSCACertificate</code></dt>
+<dd><p>Path to a certificate authority used to connect an LDAP server.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>UserObjectClass</code></dt>
+<dd><p>The name of the LDAP <code>objectClass</code> used to define users.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>UserFilterBase</code></dt>
+<dd><p>An LDAP filter clause used to select user objects. Defaults to <code>objectClass={UserObjectClass}</code>.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>UserFirstNameAttribute</code></dt>
+<dd><p>The LDAP user attribute containing a user’s first name. This is often the <code>givenName</code> attribute. This attribute is case-sensitive.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>UserLastNameAttribute</code></dt>
+<dd><p>The LDAP user attribute containing a user’s last name. The <code>sn</code> attribute will usually contain last name. This attribute is case-sensitive.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>UserEmailAttribute</code></dt>
+<dd><p>The LDAP user attribute containing a user’s email address. Many systems use the <code>mail</code> attribute. This attribute is case-sensitive.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>UsernameAttribute</code></dt>
+<dd><p>The LDAP user attribute containing a user’s username. Commonly used attributes include <code>uid</code>, <code>cn</code>, and <code>sAMAccountName</code>. This attribute is case-sensitive.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>BindDN</code></dt>
+<dd><p>A DN for a read-only admin account that is used during double-bind authentication and for certain operations that do not occur during the login sequence (such as searching). Must be paired with <code>BindPassword</code>.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>BindPassword</code></dt>
+<dd><p>The password for the <code>BindDN</code> account.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>BindPasswordFile</code></dt>
+<dd><p>Path to file containing the bind password. Either <code>BindPassword</code> or <code>BindPasswordFile</code> may be specified when using LDAP, but if both are set, it is an error.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>AnonymousBind</code></dt>
+<dd><p>Enable anonymous bind. An anonymous user must have rights to search and view all pertinent groups, group memberships, and users.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>UserSearchBaseDN</code></dt>
+<dd><p>The base DN used when performing user searches.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>WhitelistedLoginGroup</code></dt>
+<dd><p>Limit who can log into Connect by specifying a group DN. Multiple definitions can be used to provide multiple groups.</p>
+</dd>
+<dd><p>Type: multi-string</p>
+</dd>
+<dd><p>Default: <em>unspecified</em></p>
+</dd>
+<dt><code>GroupFilterBase</code></dt>
+<dd><p>An LDAP filter clause used to select group objects. Defaults to <code>objectClass={GroupObjectClass}</code>.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-pam" class="section level2">
+<h2><span class="header-section-number">A.14</span> PAM</h2>
+<p>The <code>PAM</code> section contains configuration properties which control how RStudio Connect interacts with the PAM (Pluggable Authentication Module) API.</p>
+<p>See Section <a href="authentication.html#authentication-pam">10.7</a> for details about configuring an appropriate PAM authentication profile for RStudio connect.</p>
+<p>See Section <a href="process-management.html#process-management-pam-sessions">12.6</a> for information about using PAM sessions when launching R processes.</p>
+<p>These properties must appear after <code>[PAM]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>RequireExternalUsernames</code></dt>
+<dd><p>Require LDAP, Proxy, and PAM authentication providers to provide valid usernames. User completion will be disabled; if an invalid username is received from the provider, we will throw an error. Note that this setting cannot be set when <code>Authorization.AdminEditableUsernames</code> is set. If you are using LDAP and have multiple configurations, they must all share the same RequireExternalUsernames setting.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>true</code></p>
+</dd>
+<dt><code>Service</code></dt>
+<dd><p>Specifies the PAM service name that RStudio Connect will use when authenticating users.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>rstudio-connect</code></p>
+</dd>
+<dt><code>UseSession</code></dt>
+<dd><p>Use PAM sessions when launching R processes.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>SessionService</code></dt>
+<dd><p>Specifies the PAM service name that RStudio Connect will use for running R processes. This PAM service cannot require user credentials when executed by root, or all R processes run by Connect will fail yielding error code 70.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>su</code></p>
+</dd>
+<dt><code>AuthenticatedSessionService</code></dt>
+<dd><p>Specifies the PAM service name that RStudio Connect will use for running R processes with cached user credentials. This can be used with a Kerberized PAM service if Kerberos exposes certain resources to the R process.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>su</code></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-authentication-proxy" class="section level2">
+<h2><span class="header-section-number">A.15</span> Proxied Authentication</h2>
+<p>The <code>ProxyAuth</code> section contains configuration properties which control how RStudio Connect utilizes an external authentication server which proxies all requests.</p>
+<p>See Section <a href="authentication.html#authentication-proxy">10.8</a> for details about configuring an appropriate proxied authentication for RStudio connect.</p>
+<hr />
+<dl>
+<dt><code>RequireExternalUsernames</code></dt>
+<dd><p>Require LDAP, Proxy, and PAM authentication providers to provide valid usernames. User completion will be disabled; if an invalid username is received from the provider, we will throw an error. Note that this setting cannot be set when <code>Authorization.AdminEditableUsernames</code> is set. If you are using LDAP and have multiple configurations, they must all share the same RequireExternalUsernames setting.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>true</code></p>
+</dd>
+<dt><code>UsernameHeader</code></dt>
+<dd><p>Specifices the name of the header that will contain a username provided by the proxy.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>X-Auth-Username</code></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-authorization" class="section level2">
+<h2><span class="header-section-number">A.16</span> Authorization</h2>
+<p>The <code>Authorization</code> section contains configuration properties which control permissions and privileges when accessing RStudio Connect.</p>
+<p>These properties must appear after <code>[Authorization]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>DefaultUserRole</code></dt>
+<dd><p>Specifies what abilities given to a newly created user. Allows values <code>viewer</code>, <code>publisher</code>, or <code>administrator</code>.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>viewer</code></p>
+</dd>
+<dt><code>AdminEditableUsernames</code></dt>
+<dd><p>Allows administrators to edit usernames if using LDAP, PAM, or Proxy authentication. Prohibited if <code>RequireExternalUsernames</code> is enabled. This setting is not applicable for the Password and OAuth2 authentication providers.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-applications" class="section level2">
+<h2><span class="header-section-number">A.17</span> Applications</h2>
+<p>The <code>Applications</code> section contains configuration properties which control how RStudio Connect communicates with R processes.</p>
+<p>These properties must appear after <code>[Applications]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>RunAs</code></dt>
+<dd><p>User used to invoke R.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>rstudio-connect</code></p>
+</dd>
+<dt><code>RunAsCurrentUser</code></dt>
+<dd><p>Allows content to execute as the logged-in user when using PAM authentication.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>RConfigActive</code></dt>
+<dd><p>Specifies a value for the <code>R_CONFIG_ACTIVE</code> environment variable for R processes; supported by the <code>config</code> package.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>rsconnect</code></p>
+</dd>
+<dt><code>Supervisor</code></dt>
+<dd><p>Specifies a command to wrap the execution of R.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>HomeMounting</code></dt>
+<dd><p>Specifies that the contents of <code>/home</code> should be hidden from R processes with additional bind mounts. The existing <code>/home</code> will have the home directory of the <code>RunAs</code> user mounted over it. If <code>RunAs</code> does not have a home directory, an empty temporary directory will mask <code>/home</code> instead. Launched R processes can discover this location through the the <code>HOME</code> environment variable.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>ShinyBookmarking</code></dt>
+<dd><p>Toggles support for on-disk Shiny bookmarking state. Configuring Shiny applications to use server bookmarking is described in <a href="https://shiny.rstudio.com/articles/bookmarking-state.html">this article</a>.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>true</code></p>
+</dd>
+<dt><code>ShinyErrorSanitization</code></dt>
+<dd><p>Toggles support for Shiny error sanitization as described in <a href="https://shiny.rstudio.com/articles/sanitize-errors.html">this article</a>.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>true</code></p>
+</dd>
+<dt><code>ExplicitPublishing</code></dt>
+<dd><p>Content requires an explicit publication step after creation.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>ViewerOnDemandReports</code></dt>
+<dd><p>Allow logged in report viewers to generate an ad-hoc rendering. The <code>ViewerCustomizedReports</code> property is implicitly disabled when this property is disabled.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>ViewerCustomizedReports</code></dt>
+<dd><p>Allow logged in report viewers to customize the parameters of an ad-hoc rendering.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>BundleReapFrequency</code></dt>
+<dd><p>Time between the worker that deletes filesystem data for bundles in excess of our retention limit.</p>
+</dd>
+<dd><p>Type: duration</p>
+</dd>
+<dd><p>Default: <code>24 hours</code></p>
+</dd>
+<dt><code>BundleRetentionLimit</code></dt>
+<dd><p>Maximum number of bundles per app for which we want to retain filesystem data. The default is 0, which means retain everything.</p>
+</dd>
+<dd><p>Type: integer</p>
+</dd>
+<dd><p>Default: <code>0</code></p>
+</dd>
+<dt><code>ScheduleConcurrency</code></dt>
+<dd><p>Number of scheduled reports permitted to execute in parallel.</p>
+</dd>
+<dd><p>Type: integer</p>
+</dd>
+<dd><p>Default: <code>2</code></p>
+</dd>
+<dt><code>ConnectionTimeout</code></dt>
+<dd><p>Maximum time allowed without data sent or received across a client connection. A value of <code>0</code> means connections will never time-out (not recommended).</p>
+</dd>
+<dd><p>Type: duration</p>
+</dd>
+<dd><p>Default: <code>1h</code></p>
+</dd>
+<dt><code>ReadTimeout</code></dt>
+<dd><p>Maximum time allowed without data received from a client connection. A value of <code>0</code> means a lack of client (browser) interaction will never cause the connection to close. This is useful when deploying dashboard applications which send regular updates but have no need for interactivity.</p>
+</dd>
+<dd><p>Type: duration</p>
+</dd>
+<dd><p>Default: <code>1h</code></p>
+</dd>
+<dt><code>DisabledProtocols</code></dt>
+<dd><p>List of comma-delimited protocols to disable on the SockJS client. Allows values of <code>websocket</code>, <code>xhr-streaming</code>, <code>iframe-eventsource</code>, <code>iframe-htmlfile</code>, <code>xhr-polling</code>, <code>iframe-xhr-polling</code>, or <code>jsonp-polling</code>. Protocols <code>xdr-streaming</code> and <code>xdr-polling</code> are always disabled.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+</dl>
+</div>
+<div id="packages" class="section level2">
+<h2><span class="header-section-number">A.18</span> Packages</h2>
+<p>The <code>Packages</code> section contains configuration properties which alter how R packages are installed and managed. See Section <a href="package-management.html#package-management">15</a> for details.</p>
+<p>These properties must appear after <code>[Packages]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>HttpProxy</code></dt>
+<dd><p>Value to be set for the <code>http_proxy</code> environment variable during package installation when content is deployed. When set, this will override the <code>http_proxy</code> environment variable only when content is built by connect.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>HttpsProxy</code></dt>
+<dd><p>Value to be set for the <code>https_proxy</code> environment variable during package installation when content is deployed. When set, this will override the <code>https_proxy</code> environment variable only when content is built by connect.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+<dt><code>External</code></dt>
+<dd><p>Package to be excluded from packrat build. This can be provided multiple times, once for each package. You will need this package available in your library path.</p>
+</dd>
+<dd><p>Type: multi-string</p>
+</dd>
+<dd><p>Default: <em>unspecified</em></p>
+</dd>
+</dl>
+</div>
+<div id="client" class="section level2">
+<h2><span class="header-section-number">A.19</span> Client</h2>
+<p>The <code>Client</code> section contains configuration properties which control the behavior of browsers when interacting with applications. Interactive Shiny applications are the primary example.</p>
+<p>These properties must appear after <code>[Client]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>ReconnectTimeout</code></dt>
+<dd><p>The amount of time to allow a user connection to be restored. If a zero value, reconnects will be disabled. Disabling reconnects can cause instability with the <code>session$allowReconnects(TRUE)</code> feature in Shiny.</p>
+</dd>
+<dd><p>Type: duration</p>
+</dd>
+<dd><p>Default: <code>0</code></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-scheduler" class="section level2">
+<h2><span class="header-section-number">A.20</span> Runtime/Scheduler</h2>
+<p>The <code>Scheduler</code> section contains configuration properties which control how RStudio Connect manages R processes for deployed Shiny applications and Plumber APIs. These properties are managed on an individual application under the <code>Runtime</code> tab.</p>
+<p>RStudio Connect makes a determination on each new client connection about whether or not it needs to spawn an additional R process. That computation analyzes the number of current R processes and the number of active connections against those processes. If a substantial percentage of connections are consumed, RStudio Connect will create a new process rather than causing the existing processes to become more busy. That percentage of connection use is called the “load factor”.</p>
+<p>The algorithm that considers the current load factor looks like the following pseudocode.</p>
+<div class="sourceCode"><pre class="sourceCode go"><code class="sourceCode go"><span class="co">// Given:</span>
+<span class="co">//   numProcesses</span>
+<span class="co">//     - The number of R processes for the current application.</span>
+<span class="co">//   numConnections</span>
+<span class="co">//     - The number of connections across all R processes associated</span>
+<span class="co">//       with the current application.</span>
+allowedConnections = numProcesses * Scheduler.MaxConnsPerProcess
+currentLoadFactor = numConnections / allowedConnections
+<span class="kw">if</span> currentLoadFactor &gt; Scheduler.LoadFactor {
+    <span class="co">// Create a new process if the new process will not exceed </span>
+    <span class="co">// Scheduler.MaxProcesses</span>
+}</code></pre></div>
+<p>The <code>Scheduler.InitTimeout</code> and <code>Scheduler.IdleTimeout</code> properties may need adjusting when a Shiny application takes a very long time to startup. Increasing <code>InitTimeout</code> will allow more time for the Shiny application to start. An increase to <code>IdleTimeout</code> lets idle R processes linger longer so they are available the next time a request arrives - avoiding the startup penalty.</p>
+<p>The scheduler properties can be changed in the configuration file and apply to all Shiny applictions. The RStudio Connect dashboard allows custom scheduler settings for individual applications.</p>
+<p>We recommend that <code>Scheduler</code> property adjustment be done gradually.</p>
+<p>These properties must appear after <code>[Scheduler]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>MaxProcesses</code></dt>
+<dd><p>Specifies the total number of concurrent R processes allowed for a single application.</p>
+</dd>
+<dd><p>Type: integer</p>
+</dd>
+<dd><p>Default: <code>3</code></p>
+</dd>
+<dt><code>MaxConnsPerProcess</code></dt>
+<dd><p>Specifies the maximum number of client connections allowed to an individual R process. Incoming connections which will exceed this limit are routed to a new R process or rejected.</p>
+</dd>
+<dd><p>Type: integer</p>
+</dd>
+<dd><p>Default: <code>20</code></p>
+</dd>
+<dt><code>LoadFactor</code></dt>
+<dd><p>Controls how aggressively new R processes will be spawned.</p>
+</dd>
+<dd><p>Type: decimal</p>
+</dd>
+<dd><p>Default: <code>0.5</code></p>
+</dd>
+<dt><code>InitTimeout</code></dt>
+<dd><p>Maximum time to wait for an app to start.</p>
+</dd>
+<dd><p>Type: duration</p>
+</dd>
+<dd><p>Default: <code>60s</code></p>
+</dd>
+<dt><code>IdleTimeout</code></dt>
+<dd><p>Minimum time to keep a worker process alive after it goes idle.</p>
+</dd>
+<dd><p>Type: duration</p>
+</dd>
+<dd><p>Default: <code>5s</code></p>
+</dd>
+<dt><code>MinProcessesLimit</code></dt>
+<dd><p>Maximum value allowed for the <code>MinProcesses</code> setting on an application level. All applications default to <code>MinProcesses=0</code>, but <code>MinProcesses</code> can be increased to this limit per application.</p>
+</dd>
+<dd><p>Type: integer</p>
+</dd>
+<dd><p>Default: <code>20</code></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-jobs" class="section level2">
+<h2><span class="header-section-number">A.21</span> Jobs</h2>
+<p>The <code>Jobs</code> section contains configuration properties which control the retention of metadata associated with R process execution.</p>
+<p>These properties must appear after <code>[Jobs]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>MaxCompleted</code></dt>
+<dd><p>The maximum number of completed jobs preserved on disk for any one application. When this limit is reached, the oldest completed jobs for an application will be deleted as new jobs are launched. On-disk job metadata is removed if either the <code>MaxCompleted</code> or <code>OldestCompleted</code> restrictions are violated.</p>
+</dd>
+<dd><p>Type: integer</p>
+</dd>
+<dd><p>Default: <code>1000</code></p>
+</dd>
+<dt><code>OldestCompleted</code></dt>
+<dd><p>The maximum age of a completed job retained on disk. Jobs older than this setting will be deleted. Set to zero to remove restrictions on the age of a completed job. On-disk job metadata is removed if either the <code>MaxCompleted</code> or <code>OldestCompleted</code> restrictions are violated.</p>
+</dd>
+<dd><p>Type: duration</p>
+</dd>
+<dd><p>Default: <code>720h</code></p>
+</dd>
+</dl>
+</div>
+<div id="appendix-configuration-metrics" class="section level2">
+<h2><span class="header-section-number">A.22</span> Historical Metrics</h2>
+<p>The <code>Metrics</code> section contains configuration properties which control how RStudio Connect manages the <code>rserver-monitor</code> process for monitoring the use of resources (CPU, memory, etc.) for historical metrics.</p>
+<p>See Section <a href="metrics.html#metrics">16</a> for more details about historical metrics in Connect.</p>
+<p>These properties must appear after <code>[Metrics]</code> in the configuration file.</p>
+<hr />
+<dl>
+<dt><code>Enabled</code></dt>
+<dd><p>Specifies whether or not the <code>rserver-monitor</code> process that collects historical metrics will be started.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>true</code></p>
+</dd>
+<dt><code>User</code></dt>
+<dd><p>The user for the <code>rserver-monitor</code> process.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>{Applications.RunAs}</code></p>
+</dd>
+<dt><code>DataPath</code></dt>
+<dd><p>The path for writing log entries and RRD database files.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <code>{Server.DataDir}</code>/metrics</p>
+</dd>
+<dt><code>Interval</code></dt>
+<dd><p>The frequency of historical metrics collection.</p>
+</dd>
+<dd><p>Type: duration</p>
+</dd>
+<dd><p>Default: 60s</p>
+</dd>
+<dt><code>RRDEnabled</code></dt>
+<dd><p>Enable logging of historical metrics to RRD.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>true</code></p>
+</dd>
+<dt><code>GraphiteEnabled</code></dt>
+<dd><p>Enable logging of historical metrics to Graphite.</p>
+</dd>
+<dd><p>Type: boolean</p>
+</dd>
+<dd><p>Default: <code>false</code></p>
+</dd>
+<dt><code>GraphiteHost</code></dt>
+<dd><p>Host to which to send Graphite historical metrics.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: 127.0.0.1</p>
+</dd>
+<dt><code>GraphitePort</code></dt>
+<dd><p>Port to which to send Graphite historical metrics.</p>
+</dd>
+<dd><p>Type: integer</p>
+</dd>
+<dd><p>Default: 2003</p>
+</dd>
+<dt><code>GraphiteClientId</code></dt>
+<dd><p>Optional Client ID to include along with Graphite historical metrics.</p>
+</dd>
+<dd><p>Type: string</p>
+</dd>
+<dd><p>Default: <em>&lt;empty-string&gt;</em></p>
+</dd>
+</dl>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="metrics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cli.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["rstudio-connect-admin-guide-1.5.10-6.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<div class="band">
+  <div class="bandContent mainPage">
+    <div ng-if="$ctrl.isMe" class="menu">
+      <div class="menuItems">
+        <a class="menuItem active" ui-sref="people.users_view({ userId: $ctrl.providerKey })">Profile</a>
+        <a class="menuItem" ui-sref="people.users_apikeys({ userId: $ctrl.providerKey })">API Keys</a>
+      </div>
+    </div>
+
+    <div class="majorMinorColumnsContainer minorLeft">
+      <div class="minorColumn">
+        <div class="sectionTitle">
+          <div class="user" ng-if="$ctrl.userId">
+            <div class="userIcon">
+              <gravatar-image
+                data-gravatar-hash="$ctrl.emailHash"
+                data-gravatar-size="120"
+                data-gravatar-rating="pg"
+                data-gravatar-default="identicon"
+                data-gravatar-secure="true"
+              ></gravatar-image>
+            </div>
+          </div>
+          <span id="sel_username">
+            {{$ctrl.username}}
+          </span>
+        </div>
+        <div class="panel user-ui">
+          <div class="formSection" ng-if="$ctrl.userId">
+            <div class="rsc-row" id="sel_user_name">
+              {{ $ctrl.firstName }} {{ $ctrl.lastName }}
+              <span ng-if="$ctrl.locked" class="text-danger">(locked)</span>
+            </div>
+            <div class="rsc-row">
+              <span id="sel_user_role" ng-if="$ctrl.userRole">{{$ctrl.userRole | sentenceCase}}</span>
+            </div>
+            <div class="rsc-row" ng-if="$ctrl.email">
+              <a href="mailto:{{ $ctrl.email }}" id="sel_user_email">{{ $ctrl.email }}</a><br/>
+              Joined {{ $ctrl.createdTime | date: "mediumDate" }}
+            </div>
+          </div>
+          <div class="formSection" ng-if="$ctrl.userId && $ctrl.canEditUser">
+            <div class="rsc-row">
+              <div class="actions alignRight">
+                <button id="sel_{{$ctrl.password}}" ng-if="$ctrl.canChangePassword" ng-click="$ctrl.goChangePassword()">Change Password</button>
+                <button id="sel_{{$ctrl.lock}}" ng-if="$ctrl.canLockUser" ng-click="$ctrl.onLockUserPress()">{{$ctrl.locked ? 'Unlock' : 'Lock'}}</button>
+                <button id="sel_edit_user" ng-click="$ctrl.goEditUser()">Edit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="majorColumn">
+        <div class="sectionTitle flex">
+          <div>Published Content</div>
+        </div>
+
+        <content-list-table
+          ng-if="$ctrl.userId"
+          show-owner="false"
+          custom-filters="$ctrl.customFilters"
+          show-icon="true"
+          on-total-change="$ctrl.onTotalAppChange"
+          on-loaded="$ctrl.onLoaded"
+          load-on-init="true"
+        >
+        </content-list-table>
+        <div ng-if="$ctrl.loaded && !$ctrl.haveApps" class="text-center">
+          <p class="empty-search" id="sel_empty_search">
+            <i class="fa fa-search"></i><br />
+            No content found.
+          </p>
+          <p>This user hasn't published anything yet.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

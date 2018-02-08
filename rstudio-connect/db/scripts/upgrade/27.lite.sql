@@ -1,0 +1,1 @@
+ALTER TABLE apps ADD COLUMN read_timeout INTEGER NULL;

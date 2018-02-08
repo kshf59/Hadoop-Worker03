@@ -1,0 +1,83 @@
+<div class="band pushFooter">
+  <div class="bandContent mainPage">
+    <div class="fullPageFormContainer">
+      <div class="formTitle">Sign Up</div>
+      <form class="signup" name="registrationForm" ng-submit="submitRegisterForm()" novalidate>
+
+        <fieldset class="chunk">
+          <div class="textInputContainer" ng-class="{'labelAbove': registrationForm.username.$viewValue, 'hasFocus': focus.username, 'hasError': registrationForm.username.$invalid && !registrationForm.username.$pristine}">
+            <input id="username" name="username" type="text" autofocus="autofocus" ng-focus="handleOnFocus('username')" ng-blur="handleOnBlur('username')" ng-model="user.username" valid-username not-blank/>
+            <div class="textInputLabel" ng-click="setFocus('username')">Username</div>
+            <span ng-hide="registrationForm.username.$pristine" ng-switch="firstError(registrationForm.username.$error)">
+              <div ng-switch-when="blankValue" class="textInputError error" title="{{valueError.isBlank}}">{{valueError.isBlank}}</div>
+              <div ng-switch-when="shortUsername" class="textInputError error" title="{{usernameError.isShort}}">{{usernameError.isShort}}</div>
+              <div ng-switch-when="longUsername" class="textInputError error" title="{{usernameError.isLong}}">{{usernameError.isLong}}</div>
+              <div ng-switch-when="firstCharacter" class="textInputError error" title="{{usernameError.badFirstChar}}">{{usernameError.badFirstChar}}</div>
+              <div ng-switch-when="validCharacters" class="textInputError error" title="{{usernameError.badChar}}">{{usernameError.badChar}}</div>
+              <div ng-switch-when="blacklisted" class="textInputError error" title="{{usernameError.blacklisted}}">{{usernameError.blacklisted}}</div>
+            </span>
+          </div>
+        </fieldset>
+
+        <fieldset class="chunk">
+          <div class="textInputContainer" ng-class="{'labelAbove': registrationForm.first_name.$viewValue, 'hasFocus': focus.first_name, 'hasError': registrationForm.first_name.$invalid && !registrationForm.first_name.$pristine}">
+            <input id="first_name" name="first_name" type="text" ng-focus="handleOnFocus('first_name')" ng-blur="handleOnBlur('first_name')" ng-model="user.first_name" not-blank/>
+            <div class="textInputLabel" ng-click="setFocus('first_name')">First Name</div>
+            <span ng-hide="registrationForm.first_name.$pristine" ng-switch="firstError(registrationForm.first_name.$error)">
+              <div ng-switch-when="blankValue" class="textInputError error" title="{{valueError.isBlank}}">{{valueError.isBlank}}</div>
+            </span>
+          </div>
+        </fieldset>
+
+        <fieldset class="chunk">
+          <div class="textInputContainer" ng-class="{'labelAbove': registrationForm.last_name.$viewValue, 'hasFocus': focus.last_name, 'hasError': registrationForm.last_name.$invalid && !registrationForm.last_name.$pristine}">
+            <input id="last_name" name="last_name" type="text" ng-focus="handleOnFocus('last_name')" ng-blur="handleOnBlur('last_name')" ng-model="user.last_name" not-blank/>
+            <div class="textInputLabel" ng-click="setFocus('last_name')">Last Name</div>
+            <span ng-hide="registrationForm.last_name.$pristine" ng-switch="firstError(registrationForm.last_name.$error)">
+              <div ng-switch-when="blankValue" class="textInputError error" title="{{valueError.isBlank}}">{{valueError.isBlank}}</div>
+            </span>
+          </div>
+        </fieldset>
+
+        <fieldset class="chunk">
+          <div class="textInputContainer" ng-class="{'labelAbove': registrationForm.email.$viewValue, 'hasFocus': focus.email, 'hasError': registrationForm.email.$invalid && !registrationForm.email.$pristine}">
+            <input id="email" name="email" type="text" ng-focus="handleOnFocus('email')" ng-blur="handleOnBlur('email')" ng-model="user.email" valid-email not-blank/>
+            <div class="textInputLabel" ng-click="setFocus('email')">Email</div>
+            <span ng-hide="registrationForm.email.$pristine" ng-switch="firstError(registrationForm.email.$error)">
+              <div ng-switch-when="blankValue" class="textInputError error" title="{{valueError.isBlank}}">{{valueError.isBlank}}</div>
+              <div ng-switch-when="validEmail" class="textInputError error" title="{{validEmailErrorMessage}}">{{validEmailErrorMessage}}</div>
+            </span>
+          </div>
+        </fieldset>
+
+        <fieldset class="chunk">
+          <div class="textInputContainer" ng-class="{'labelAbove': registrationForm.password.$viewValue, 'hasFocus': focus.password, 'hasError': registrationForm.password.$invalid && !registrationForm.password.$pristine }">
+            <input id="password" name="password" type="password" ng-focus="handleOnFocus('password')" ng-blur="handleOnBlur('password')" ng-model="user.password" valid-password not-blank/>
+            <div class="textInputLabel" ng-click="setFocus('password')">Password</div>
+            <span ng-hide="registrationForm.password.$pristine" ng-switch="firstError(registrationForm.password.$error)">
+              <div ng-switch-when="blankValue" class="textInputError error" title="{{valueError.isBlank}}">{{valueError.isBlank}}</div>
+              <div ng-switch-when="validPassword" class="textInputError error" title="{{validPasswordErrorMessage}}">{{validPasswordErrorMessage}}</div>
+            </span>
+          </div>
+        </fieldset>
+
+        <fieldset class="chunk">
+          <div class="textInputContainer" ng-class="{'labelAbove': registrationForm.password2.$viewValue, 'hasFocus': focus.password2, 'hasError': registrationForm.password2.$invalid && !registrationForm.password2.$pristine }">
+            <input id="password2" name="password2" type="password" ng-focus="handleOnFocus('password2')" ng-blur="handleOnBlur('password2')" ng-model="user.password2" password-match="user.password" not-blank/>
+            <div class="textInputLabel" ng-click="setFocus('password2')">Password (Again)</div>
+            <span ng-hide="registrationForm.password2.$pristine" ng-switch="firstError(registrationForm.password2.$error)">
+              <div ng-switch-when="blankValue" class="textInputError error" title="{{valueError.isBlank}}">{{valueError.isBlank}}</div>
+              <div ng-switch-when="passwordmatch" class="textInputError error" title="Passwords must match exactly.">Passwords must match exactly.</div>
+            </span>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="submit" ng-disabled="creating">{{submitBtnText}}</button>
+        </div>
+
+      </form>
+      <div class="formFooter">Already have an account? <a ng-href="{{loginUrl()}}">Log In</a></div>
+    </div>
+  </div>
+</div>

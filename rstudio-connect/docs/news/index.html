@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>RStudio Connect: News</title>
+  <meta name="description" content="RStudio Connect: News">
+  <meta name="generator" content="bookdown 0.3.18 and GitBook 2.6.7">
+
+  <meta property="og:title" content="RStudio Connect: News" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="RStudio Connect: News" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="#section"></a><ul>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.5.10"><i class="fa fa-check"></i>RStudio Connect 1.5.10</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.5.8"><i class="fa fa-check"></i>RStudio Connect 1.5.8</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.5.6.2"><i class="fa fa-check"></i>RStudio Connect 1.5.6.2</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.5.6.1"><i class="fa fa-check"></i>RStudio Connect 1.5.6.1</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.5.6"><i class="fa fa-check"></i>RStudio Connect 1.5.6</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.5.4"><i class="fa fa-check"></i>RStudio Connect 1.5.4</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.5.2"><i class="fa fa-check"></i>RStudio Connect 1.5.2</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.5.0"><i class="fa fa-check"></i>RStudio Connect 1.5.0</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.4.6"><i class="fa fa-check"></i>RStudio Connect 1.4.6</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.4.4.1"><i class="fa fa-check"></i>RStudio Connect 1.4.4.1</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.4.4"><i class="fa fa-check"></i>RStudio Connect 1.4.4</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.4.2"><i class="fa fa-check"></i>RStudio Connect 1.4.2</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.4.0"><i class="fa fa-check"></i>RStudio Connect 1.4.0</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.2.1"><i class="fa fa-check"></i>RStudio Connect 1.2.1</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.2.0"><i class="fa fa-check"></i>RStudio Connect 1.2.0</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-1.0.0"><i class="fa fa-check"></i>RStudio Connect 1.0.0</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-0.5.0"><i class="fa fa-check"></i>RStudio Connect 0.5.0</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-0.4.5"><i class="fa fa-check"></i>RStudio Connect 0.4.5</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-0.4.4"><i class="fa fa-check"></i>RStudio Connect 0.4.4</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-0.4.3"><i class="fa fa-check"></i>RStudio Connect 0.4.3</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-0.4.2-1218"><i class="fa fa-check"></i>RStudio Connect 0.4.2-1218</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#rstudio-connect-0.4.2-1093"><i class="fa fa-check"></i>RStudio Connect 0.4.2-1093</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RStudio Connect: News</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">RStudio Connect: News</h1>
+</div>
+<div id="section" class="section level1">
+<h1></h1>
+<div id="rstudio-connect-1.5.10" class="section level2">
+<h2>RStudio Connect 1.5.10</h2>
+<ul>
+<li>BREAKING: Shiny R Markdown documents are executed with a cleaner R environment. RStudio Connect 1.5.8 and earlier define variables in the environment used to execute Shiny R Markdown documents. Together with <code>rmarkdown</code> version 1.7, this could cause the definitions of some functions to be incorrectly masked (such as <code>dplyr::filter</code>). Users of these RStudio Connect versions should use <code>rmarkdown</code> versions prior to 1.7, as earlier <code>rmarkdown</code> versions did not expose its calling environment. The change to how <code>rmarkdown</code> prepares its environment was tracked by <a href="https://github.com/rstudio/rmarkdown/issues/1124" class="uri">https://github.com/rstudio/rmarkdown/issues/1124</a></li>
+<li>BREAKING: Enabling both <code>Authorization.AdminEditableUsernames</code> and the provider-specific <code>RequireExternalUsernames</code> flag is an invalid configuration and will cause RStudio Connect to fail to start. <code>Authorization.AdminEditableUsernames</code> is now disabled by default.</li>
+<li>Due to a change in the way RStudio Connect tracks web sessions, users will be required to log in again after upgrading RStudio Connect because their sessions will be invalidated. Connections to RStudio Desktop, RStudio Server, and RStudio Server Pro are unaffected.</li>
+<li>The <code>/tmp</code> and <code>/var/tmp</code> directories are no longer fully masked during R execution. Processes each use a distinct temporary directory that is available via the <code>TMPDIR</code> environment variable. Applications requiring a temporary file or directory are encouraged to utilize this environment variable or the R functions <code>tempdir</code> and <code>tempfile</code>. See <a href="http://docs.rstudio.com/connect/1.5.10/admin/process-management.html#process-management-sandboxing" class="uri">http://docs.rstudio.com/connect/1.5.10/admin/process-management.html#process-management-sandboxing</a> to learn more about the R execution environment.</li>
+<li>Connect can be made to use an alternative temporary directory by setting <code>Server.TempDir</code>. A common reason to set this flag is when <code>/tmp</code> or equivalent is mounted with the <a href="http://man7.org/linux/man-pages/man8/mount.8.html">noexec</a> option. The default value for this setting is to use the directory specified by the <code>TMPDIR</code> environment variable, falling back to <code>/tmp</code>. See <a href="http://docs.rstudio.com/connect/1.5.10/admin/process-management.html#temp-directory" class="uri">http://docs.rstudio.com/connect/1.5.10/admin/process-management.html#temp-directory</a> for more information about the temporary directory given to R processes.</li>
+<li>BREAKING: There was an issue where the RStudio IDE could fail to deploy to an RStudio Connect server behind an authenticated proxy (<code>Authentication.Provider</code> configured as <code>proxy</code>). Users deploying to this server configuration must update to use at least version <code>0.8.7</code> of the <code>rsconnect</code> package. Server administrators should ensure that the authentication proxy is configured according to the rules laid forth in the admin guide. See: <a href="http://docs.rstudio.com/connect/1.5.10/admin/authentication.html#authentication-proxy" class="uri">http://docs.rstudio.com/connect/1.5.10/admin/authentication.html#authentication-proxy</a></li>
+<li>Proxied authentication supports anonymous access by treating requests with no authentication information as an anonymous user. Also reject any request that contains both <code>X-Auth-Token</code> and <code>X-Auth-Username</code> which might indicate a malicious/forged request.</li>
+<li>Improved scheduled report processing. If Connect or its server is halted while a report is running, work is re-attempted once Connect is restarted or on another Connect node (in a cluster).</li>
+<li>Configuration error messages include the section and field name which fails to process.</li>
+<li>Fixed issues where links in some Shiny applications and Shiny R Markdown documents were broken or caused application load issues.</li>
+<li>The SQLite database provider now periodically snapshots the database while running. By default, 3 backups are retained and a new backup is taken every 24 hours. To disable this, change the <code>Sqlite.Backup</code> configuration option to <code>false</code>.</li>
+<li>BUGFIX: Do not permit partial database initialization. The RStudio Connect database could be incompletely initialized if the server was stopped immediately after installation (as is common in some provisioning environments).</li>
+<li>Improved error logging for OAuth and configuration file issues.</li>
+<li>BUGFIX: Don’t display the <code>Sign Up</code> link if <code>Password.SelfRegistration</code> is false.</li>
+<li>BUGFIX: Properly capture the standard output and standard error for R processes that emit very long lines (longer than 64k characters).</li>
+</ul>
+</div>
+<div id="rstudio-connect-1.5.8" class="section level2">
+<h2>RStudio Connect 1.5.8</h2>
+<ul>
+<li>BREAKING: The format of the RStudio Connect package file names have changed. Debian package file names have the form <code>rstudio-connect_1.2.3-7_amd64.deb</code>. RPM package file names have the form <code>rstudio-connect-1.2.3-7.x86_64.rpm</code>. In addition, the RPM meta-data will have a “version” of “1.2.3” and a “release” of “7” for this file name. Previously, the RPM would have had a “version” of “1.2.3-7”.</li>
+<li>Enabled support for Shiny reconnects. Users of shiny applications are less likely to be interrupted during brief network hiccups. The <code>Client.ReconnectTimeout</code> property specifies how long that session is maintained when there is connectivity trouble. The default setting is <code>15s</code>. See <a href="https://shiny.rstudio.com/articles/reconnecting.html" class="uri">https://shiny.rstudio.com/articles/reconnecting.html</a> to learn more about reconnecting to Shiny applications. Disable this feature by giving the <code>Client.ReconnectTimeout</code> property a value of <code>0</code>.</li>
+<li>The <code>browseURL</code> R function is disabled when executing deployed content. Use techniques like the Shiny <code>shiny::tags$a</code> function to expose links to application visitors.</li>
+<li><p>The <code>LDAP.UserFilterBase</code> and <code>LDAP.GroupFilterBase</code> settings allow more flexibility when searching for user and group objects in complicated LDAP hierarchies. They default to the LDAP filter clauses <code>objectClass={UserObjectClass}</code> and <code>objectClass={GroupObjectClass}</code>, respectively.</p>
+<p>If users are identified by two separate <code>objectClass</code> values, you might use the configuration:</p>
+<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="kw">[LDAP]</span>
+<span class="dt">UserFilterBase </span><span class="ot">=</span><span class="st"> &amp;(objectClass=user)(objectClass=statistician)</span></code></pre></div>
+<p>You can disqualify an <code>objectClass</code> value with the configuration:</p>
+<div class="sourceCode"><pre class="sourceCode ini"><code class="sourceCode ini"><span class="kw">[LDAP]</span>
+<span class="dt">UserFilterBase </span><span class="ot">=</span><span class="st"> &amp;(objectClass=user)(!(objectClass=computer))</span></code></pre></div></li>
+<li>The <code>OAuth2.ClientSecret</code> and <code>OAuth2.ClientSecretFile</code> properties are now mutually exclusive. It is an error if both are configured.</li>
+<li>LDAP configuration’s <code>BindDN</code> password can now be stored in an external file using the new <code>BindPasswordFile</code> field. The file specified in that field can be given more restricted permissions (e.g., <code>0600</code> on Unix) for added security.</li>
+<li>Previously, usernames could not be edited when using the LDAP authentication provider by default or if the <code>Authentication.RequireExternalUsernames</code> flag was set to <code>true</code>. Now, user email, first name, and last name are also not editable for this configuration.</li>
+<li>KNOWN ISSUE: Using the LDAP authentication provider, with <code>Authentication.RequireExternalUsernames</code> set to false, a user will not be able to create an account if the authentication provider has no entry for the user’s <code>LDAP.UsernameAttribute</code> field.</li>
+<li>Connect administrators now receive email as license expiration nears. Email is sent when the license is sixty days from expiring. Disable this behavior through the <code>Licensing.Expiration</code> setting.</li>
+<li>Resolved a bug in the version of the <code>rebuild-packrat</code> command-line tool that was released in v1.5.6. Previously, the migration utility would render static content inaccessible. This release fixes this behavior and adds support for running this CLI tool while the RStudio Connect server is online. However, due to the discovery of new defects, the utility is disabled by default and is not recommended for production use until further notice. Those wishing to attempt to use the utility anyway should do so on a staging server that can be safely lost, and all content should be thoroughly tested after it has completed. <a href="http://docs.rstudio.com/connect/1.5.8/admin/cli.html#migration-cli" class="uri">http://docs.rstudio.com/connect/1.5.8/admin/cli.html#migration-cli</a></li>
+<li>Faster LDAP group membership lookups by requiring fewer connections to the LDAP server.</li>
+<li>Fixed an issue with account confirmations and password resets for servers using non-UTC time zones.</li>
+<li>Updated Packrat to handle old Packrat caches better. This should improve functionality for early users of RStudio Connect.</li>
+<li>LDAP now updates user email, first name, and last name every time a user logs in.</li>
+<li><p>BREAKING: Changed the default value for <code>PAM.AuthenticatedSessionService</code> to <code>su</code>. Previously, on some distributions of Linux, setting <code>PAM.ForwardPassword</code> to <code>true</code> could present PAM errors to users when running applications as the current user if the <code>AuthenticatedSessionService</code> was not configured. System administrators who had previously edited the <code>rstudio-connect</code> PAM service for use in <code>ForwardPassword</code> mode should update the <code>PAM.AuthenticatedSessionService</code> configuration option. See: <a href="http://docs.rstudio.com/connect/1.5.8/admin/process-management.html#pam-credential-caching-kerberos" class="uri">http://docs.rstudio.com/connect/1.5.8/admin/process-management.html#pam-credential-caching-kerberos</a></p></li>
+</ul>
+</div>
+<div id="rstudio-connect-1.5.6.2" class="section level2">
+<h2>RStudio Connect 1.5.6.2</h2>
+<ul>
+<li>Additional improvements to SMTP mail sending.</li>
+<li>Disabled the migration utility by default due to its failure to successfully migrate static content. The utility may be run at the user’s own risk with a documented command line flag. A fix will be released with a subsequent release.</li>
+</ul>
+</div>
+<div id="rstudio-connect-1.5.6.1" class="section level2">
+<h2>RStudio Connect 1.5.6.1</h2>
+<ul>
+<li>Fix an issue when performing the “LOGIN” SMTP authentication mechanism.</li>
+</ul>
+</div>
+<div id="rstudio-connect-1.5.6" class="section level2">
+<h2>RStudio Connect 1.5.6</h2>
+<ul>
+<li>BREAKING: Running content as the current user is now disabled for content other than Shiny Applications or Shiny R Markdown Documents. Reports will execute as the application RunAs, falling back to the system <code>Applications.RunAs</code> if none is specified.</li>
+<li>Content deployment no longer requires explicit publishing. New content is available immediately after it is deployed and visible only to the owner. Enable the <code>Applications.ExplicitPublishing</code> setting to revert this behavior.</li>
+<li>Support for running R in authenticated PAM sessions that use the cached credentials of the current user. This can be used to expose resources requiring Kerberos authentication to running R processes securely and seamlessly. See <a href="http://docs.rstudio.com/connect/1.5.6/admin/process-management.html#pam-credential-caching-kerberos" class="uri">http://docs.rstudio.com/connect/1.5.6/admin/process-management.html#pam-credential-caching-kerberos</a></li>
+<li>Heterogeneous server migrations are now supported, allowing administrators to upgrade their distribution or change to a different (supported) Linux distribution. See <a href="http://docs.rstudio.com/connect/1.5.6/admin/files-directories.html#server-migrations" class="uri">http://docs.rstudio.com/connect/1.5.6/admin/files-directories.html#server-migrations</a> for more details.</li>
+<li>Admins are now able to toggle the content filtering settings to enumerate all content on the server so that they can manage settings, regardless of whether or not they have visibility into that content. The permissions here are unchanged; the admin will not be able to view the content itself without adding themselves as a viewer or collaborator of the content, which is an audited action.</li>
+<li>In highly available deployments, runtime settings of content now propagates to all nodes in the cluster, ensuring that applications are run with the appropriate configuration. The only remaining exception is if you change which Unix account runs the content, that change will still not cause all nodes in the cluster to terminate their existing processes which may be running as a now-outdated user.</li>
+<li>The <code>migrate</code> CLI now supports rebuilding the Packrat cache for all deployed content and manually checking the permissions of the working directories of all content. See <a href="http://docs.rstudio.com/connect/1.5.6/admin/cli.html#migration-cli" class="uri">http://docs.rstudio.com/connect/1.5.6/admin/cli.html#migration-cli</a> for more details.</li>
+<li>Shiny error sanitization is enabled by default. Disable the <code>Applications.ShinyErrorSanitization</code> setting to revert this behavior. See <a href="https://shiny.rstudio.com/articles/sanitize-errors.html" class="uri">https://shiny.rstudio.com/articles/sanitize-errors.html</a> for more information about Shiny error sanitization.</li>
+<li>Improved LDAP group lookup performance on large LDAP servers that don’t support <code>memberof</code>. Additionally, improved LDAP logging and error handling.</li>
+<li>The LDAP <code>WhitelistedLoginGroups</code> property is now documented and is no longer case-sensitive.</li>
+<li>User creation is now consistently audited across all authentication providers.</li>
+<li>Check content working directories for permission errors on server startup.</li>
+<li>On a failed attempt to deploy content, the browser will now immediately show the logs tab of the content.</li>
+<li>SECURITY: Duplicate proxy authentication headers are now rejected with a generic authentication failure. Administrators have always been advised to configure their proxy to delete existing auth headers from incoming requests, and should continue to do so. See <a href="http://docs.rstudio.com/connect/1.5.6/admin/authentication.html#authentication-proxy" class="uri">http://docs.rstudio.com/connect/1.5.6/admin/authentication.html#authentication-proxy</a></li>
+<li>SECURITY: Increased the strictness of URL redirects, ensuring that only valid Connect URLs are eligible targets of a redirect.</li>
+<li>SECURITY: Added support for a challenge-response (CAPTCHA) to help mitigate brute-force attacks on users’ passwords. Set <code>[Authentication].ChallengeResponseEnabled</code> to <code>true</code> to enable this feature.</li>
+<li>The subject prefix for all outgoing emails is now configurable using the <code>[Server].EmailSubjectPrefix</code> setting. The default is still <code>[RStudio   Connect]</code>.</li>
+<li>Known Issue: Ubuntu Trusty (14.04): <code>systemd-logind</code> was mistakenly identifying R processes as lost children of a closed login session and terminating them, yielding <code>error code 129</code>. The admin guide has been updated with a workaround. See <a href="http://docs.rstudio.com/connect/1.5.6/admin/process-management.html#process-management-pam-sessions" class="uri">http://docs.rstudio.com/connect/1.5.6/admin/process-management.html#process-management-pam-sessions</a></li>
+<li>Relaxed email validation at signup to support more TLDs.</li>
+</ul>
+</div>
+<div id="rstudio-connect-1.5.4" class="section level2">
+<h2>RStudio Connect 1.5.4</h2>
+<ul>
+<li>Each user can now create and manage personal API keys. These keys allow users to make authenticated requests to the server programmatically. For instance, users could leverage an API key to send requests to an authenticated Plumber API.</li>
+<li>Experimental support for Shiny reconnects. Turn this feature on by configuring <code>Client.ReconnectTimeout</code>. Reconnects allow clients that get disconnected from their Shiny session to reconnect to an existing Shiny session. This ensures that Shiny users aren’t interrupted if there’s a network hiccup.</li>
+<li>Experimental support for a multi-node, highly available, load-balanced RStudio Connect deployment. This new feature is experimental and does have the following known bugs:
+<ol style="list-style-type: decimal">
+<li>If you delete an application or variant, all running instances of that application will continue to run until they stop on their own (either the process completes or it’s been idle for a long enough period of time)</li>
+<li>If you change who runs this application on the server while an application is running, the current processes may continue to run as the previous user, while new processes will start with the intended user. Because of this, it is possible to see a mixture of R processes running as different users for the same application. Processes started using the previously configured user may remain running until Connect is restarted.</li>
+<li>Application runtime settings such as max processes, min processes, connection per process, load factor, and idle timeout may not take immediate effect across all nodes. New processes will use the updated settings. Existing processes will eventually see the changes; this is dependent on the amount of traffic targeted to that content. This will be especially noticeable when an application has a non-zero minimum number of processes.</li>
+</ol></li>
+<li>Authentication sessions used by Connect are more secure. This change requires all users to re-authenticate the first time they visit an upgraded server running this version.</li>
+<li>Session inactivity can optionally invalidate a login session. See the <code>Authentication.Inactivity</code> setting for more details.</li>
+<li>Support external R packages. This allows you to install an R package in the global system library and have deployed content use that package rather than trying to rebuild the package itself. This can be used as a workaround for packages that can’t be installed correctly using Packrat, but should be viewed as a last resort, since this practice decreases the reproducibility and isolation of your content. See <a href="http://docs.rstudio.com/connect/1.5.4/admin/package-management.html#external-package-installation" class="uri">http://docs.rstudio.com/connect/1.5.4/admin/package-management.html#external-package-installation</a> for more details.</li>
+<li>Display a warning to users when an RStudio Connect server is not using HTTPS. This behavior can be disabled using the <code>Http.NoWarning</code> setting.</li>
+<li>Upgraded to a new version of our license managing software which should minimize issues with licensing and also report errors more clearly.</li>
+<li>Added experimental support for floating licenses which can be used to support transient servers that might be running in a Docker or virtualized environment. Please contact <a href="mailto:support@rstudio.com">support@rstudio.com</a> if you’re interested in helping test this feature.</li>
+<li>Connect now kills all of its child processes when the server is stopped or restarted. Document rendering processes will no longer continue running in the background.</li>
+<li>Added caching for LDAP group queries. This will make it much faster for users who inherit access to content by group membership to access content.</li>
+<li>When searching for a user, we now perform a search for the whole query rather than just searching for the individual words in the query. This will improve search performance in environments which use multi-word user properties.</li>
+<li>Make a “best-effort” attempt at supporting HTTP proxies that do not provide the <code>X-RSC-Request</code> HTTP header which was previously required. See <a href="http://docs.rstudio.com/connect/1.5.4/admin/running-a-proxy.html" class="uri">http://docs.rstudio.com/connect/1.5.4/admin/running-a-proxy.html</a> for more details.</li>
+<li>Delete any incoming <code>Authorization</code> HTTP header before proxying the request to a Shiny application or Plumber API. This avoids leaking sensitive headers to applications.</li>
+<li>Administrators are no longer permitted to upload or deploy bundles unless they are either an owner or collaborator for the content they’re publishing to.</li>
+<li>Automatically display the Swagger UI for Plumber APIs that don’t define their own <code>GET</code> handler for <code>/</code>.</li>
+<li>Support caching of PAM passwords to inject into PAM sessions to facilitate environments like Kerberos that require injecting passwords. See <a href="http://docs.rstudio.com/connect/1.5.4/admin/process-management.html#process-management-pam-sessions" class="uri">http://docs.rstudio.com/connect/1.5.4/admin/process-management.html#process-management-pam-sessions</a> for more details.</li>
+<li>Provide ways of injecting <code>http_proxy</code> and <code>https_proxy</code> information into R processes. By default, if these are visible as environment variables to the main Connect process, they’ll also be set for each child R process. See <a href="http://docs.rstudio.com/connect/1.5.4/admin/package-management.html#proxy-configuration" class="uri">http://docs.rstudio.com/connect/1.5.4/admin/package-management.html#proxy-configuration</a> for additional information.</li>
+<li>RStudio Connect detects when the version of R has changed and communicates the need to restart the server.</li>
+<li>If a user is abruptly logged out while active on the dashboard, they’ll now be forwarded to the login page.</li>
+<li>Prompt users for their existing password when they go to change passwords.</li>
+<li>Improved the presentation of graphs on the Admin’s Metrics page.</li>
+<li>Formalize that versions of R version 3.1.0 and above are supported.</li>
+<li>Upgrade Pandoc to version 1.19.2.1</li>
+</ul>
+</div>
+<div id="rstudio-connect-1.5.2" class="section level2">
+<h2>RStudio Connect 1.5.2</h2>
+<ul>
+<li>BREAKING: Any private variants configured to send email to users other than the owner of the variant will no longer receive those emails.</li>
+<li>BREAKING: The LDAP, PAM, and Proxy authentication providers now require by default that a valid username is received from the provider. If a valid username is not received from the provider, an error will be thrown. If you wish to revert to the less restrictive behavior where the user is prompted for a valid username, please use the <code>RequireExternalUsernames = false</code> configuration setting for your auth provider.</li>
+<li>PostgreSQL support (previously in Beta).</li>
+<li>Beta support for hosting Plumber APIs. Hosting of Plumber APIs is available on Standard and Enterprise licenses. See <a href="http://docs.rstudio.com/connect/1.5.2/admin/process-management.html#shiny-applications-plumber-apis-1" class="uri">http://docs.rstudio.com/connect/1.5.2/admin/process-management.html#shiny-applications-plumber-apis-1</a> for more information. If you believe there has been a mistake for your license, please contact <a href="mailto:support@rstudio.com">support@rstudio.com</a>.</li>
+<li>Relaxed the username requirements for the LDAP, PAM, and Proxy authentication providers. These providers now accept any username, excepting a list of blacklisted usernames. See <a href="http://docs.rstudio.com/connect/1.5.2/admin/user-management.html" class="uri">http://docs.rstudio.com/connect/1.5.2/admin/user-management.html</a> for more information on blacklisted usernames.</li>
+<li>Added basic content search.</li>
+<li>SECURITY: LDAP authentication forbids empty passwords.</li>
+<li>Made authentication cookies used by Connect more secure which will require all users to re-authenticate the first time they visit this version.</li>
+<li>Upgraded the licensing system to offer better stability in a wider variety of environments.</li>
+<li>Allow users to run the <code>usermanager</code> command while the Connect server is still online if using a PostgreSQL database.</li>
+<li>Populate the <code>session$groups</code> field in a Shiny application when using built-in password authentication.</li>
+<li>BUGFIX: Shiny applications now properly rebuild when they encounter an unexpected version of R at runtime.</li>
+<li>Redesigned admin metrics to load much more quickly and consume fewer resources while open.</li>
+<li>Redesigned some pages including login, registration, password reset, admin settings, user management, and group management pages.</li>
+<li>BUGFIX: Increase the number of allowed open file handles for Connect and its subprocesses when using <code>systemd</code>.</li>
+<li>The <code>Authorization.DefaultUserRole</code> setting can no longer be configured as “administrator”.</li>
+<li>The <code>Applications.RunAs</code> setting can no longer be configured as “root”.</li>
+<li>Introduce <code>Server.MinRsconnectVersion</code> and <code>Server.MaxRsconnectVersion</code> to enable administrators to control which versions of the <code>rsconnect</code> client should be able to use the server.</li>
+<li>Added a healthcheck endpoint. More details at <a href="http://docs.rstudio.com/connect/1.5.2/admin/server-management.html#health-check" class="uri">http://docs.rstudio.com/connect/1.5.2/admin/server-management.html#health-check</a></li>
+<li>Added experimental support for running Highly Available (HA) configurations. Please contact <a href="mailto:support@rstudio.com">support@rstudio.com</a> if you are interested in helping to test this feature.</li>
+</ul>
+</div>
+<div id="rstudio-connect-1.5.0" class="section level2">
+<h2>RStudio Connect 1.5.0</h2>
+<ul>
+<li>Introduced tags as a mechanism for organizing and filtering for content. Administrators will be able to define a tag schema by visiting the “Admin” section then clicking the “Tags” page. More details <a href="http://docs.rstudio.com/connect/1.5.0/admin/content-management.html#tags">here</a>.</li>
+<li>Overhauled the default landing page.</li>
+<li>Added support for custom landing pages which enable organizations to provide a custom HTML page that will be visible at the root URL to logged out users. See full details <a href="http://docs.rstudio.com/connect/1.5.0/admin/custom-landing.html">here</a>.</li>
+<li>SECURITY: Fixed an issue where accounts could be created with a role that conflicted with <code>Authorization.DefaultUserRole</code>.</li>
+<li>SECURITY: Fixed an issue where unprivileged users were permitted to edit other user information.</li>
+<li>SECURITY: Added protections against Cross-Site Request Forgery (CSRF/XSRF). All users will need to login again on their next visit.</li>
+<li>BUGFIX: Systems using the <code>systemd</code> init system should no longer see the R processes associated with Shiny applications outlive the Connect process.</li>
+<li>Authentication.Lifetime now enables customized session durations. The default continues to be 30 days from the time of login.</li>
+<li>Optionally prevent self-registration when using password authentication. The setting <code>Password.SelfRegistration</code> specifies if self-registration is permitted. Administrators must create all user accounts when this setting is disabled.</li>
+<li>Renamed the “Performance” tab on Shiny applications to “Runtime.”</li>
+<li>Allow user and group names to contain periods.</li>
+<li>Added support for the config package. More details available <a href="http://docs.rstudio.com/connect/1.5.0/admin/process-management.html#using-the-config-package">here</a>.</li>
+<li>Further improve database performance in high-traffic environments.</li>
+<li>Formally documented the configuration options that support reloading via <code>HUP</code>. A setting will now mention <code>Reloadable: true</code> in its documentation if it supports reloading.</li>
+<li>Added experimental support for using PostgreSQL instead of SQLite as Connect’s database. If you’re interested in helping test this feature, please contact <a href="mailto:support@rstudio.com">support@rstudio.com</a>.</li>
+</ul>
+</div>
+<div id="rstudio-connect-1.4.6" class="section level2">
+<h2>RStudio Connect 1.4.6</h2>
+<ul>
+<li>BREAKING: Changed the default for <code>Authorization.DefaultUserRole</code> from <code>publisher</code> to <code>viewer</code>. New users will have a <code>viewer</code> account instead of a <code>publisher</code> account until promoted. The <a href="http://docs.rstudio.com/connect/1.4.5/admin/user-management.html#user-roles">user roles</a> documentation explains the differences. To restore the previous behavior, set <code>DefaultUserRole = publisher</code>.</li>
+<li>On-disk Shiny bookmark state is supported and enabled by default. Use the <code>Applications.ShinyBookmarking</code> setting to disable this feature. Configuring Shiny applications to use server bookmarking is described in <a href="https://shiny.rstudio.com/articles/bookmarking-state.html">this article</a>.</li>
+<li>BUGFIX: Restored functionality of the <code>Applications.ViewerOnDemandReports</code> and <code>Applications.ViewerCustomizedReports</code> which were both inadvertently broken in the previous release.</li>
+<li>Begin storing R jobs in the database. This makes server startup and other operations that involve listing R jobs notably faster. This migration will run when you update to 1.4.6 and may take a few minutes to complete if you have a very busy server that has run a lot of R jobs.</li>
+<li>Package installs are permitted to limit the number of concurrent compilation processes. This is controlled with the <code>Server.CompilationConcurrency</code> setting and passed as the value to the <code>make</code> flag <code>-jNUM</code>. The default is to permit four concurrent processes. Decrease this setting in low memory environments.</li>
+<li>The <code>/etc/rstudio-connect/rstudio-connect.gcfg</code> file is installed with more restrictive permissions.</li>
+<li>Log file downloads include a more descriptive file name by default. Previously, we used the naming convention <code>&lt;jobId&gt;.log</code>, which resulted in file names like <code>GBFCaiPE6tegbrEM.log</code>. Now, we use the naming convention <code>rstudio-connect.&lt;appId&gt;.&lt;reportId&gt;.&lt;bundleId&gt;.&lt;jobType&gt;.&lt;jobId&gt;.log</code>, which results in file names like <code>rstudio-connect.34.259.15.packrat_restore.GBFCaiPE6tegbrEM.log</code>.</li>
+<li>Bundle the admin guide and user guide in the product. You can access both from the <code>Documentation</code> tab.</li>
+<li>Implemented improved, pop-out filtering panel when filtering content, which offers a better experience on small/mobile screens.</li>
+<li>Improvements to the parameterized report pane when the viewer does not have the authority to render custom versions of the document.</li>
+<li>Improve database performance in high-traffic environments.</li>
+<li>KNOWN ISSUE: Systems using the <code>systemd</code> init system may see R processes continue running when RStudio Connect is stopped. This allows Connect to support long-running document rendering. Shiny processes are incorrectly allowed to continue running as well. These leftover Shiny processes are forcibly terminated when Connect restarts.</li>
+</ul>
+</div>
+<div id="rstudio-connect-1.4.4.1" class="section level2">
+<h2>RStudio Connect 1.4.4.1</h2>
+<ul>
+<li>SECURITY: fixed a vulnerability in the token authentication system that allowed for the creation of invalid tokens. See <a href="https://rstudioide.zendesk.com/hc/en-us/articles/115004691948" class="uri">https://rstudioide.zendesk.com/hc/en-us/articles/115004691948</a> for more details.</li>
+</ul>
+</div>
+<div id="rstudio-connect-1.4.4" class="section level2">
+<h2>RStudio Connect 1.4.4</h2>
+<ul>
+<li>Introduced a “Source Versions” view for deployed content that allows collaborators on content to list all of the versions of that content that they have published. Collaborators may also activate other versions of the content, delete old versions, or view the activation logs associated with a particular version. More details here: <a href="http://docs.rstudio.com/connect/1.4.4/admin/content-management.html#bundle-management" class="uri">http://docs.rstudio.com/connect/1.4.4/admin/content-management.html#bundle-management</a></li>
+<li>Allow automatic removal of older application bundles. The setting <code>Applications.BundleRetentionLimit</code> specifies the minimum number of bundles retained per application. This setting defaults to <code>0</code>; bundles are not automatically removed. A non-zero value indicates the number of inactive bundles to preserve. The oldest bundles are removed first. Active bundles are always preserved.</li>
+<li>Limit the concurrency of scheduled reports. This is configured with the <code>Applications.ScheduleConcurrency</code> setting. By default, two scheduled reports are permitted to execute at the same time. Some tasks may be slightly delayed when there are multiple long-running reports already in flight. Increase this limit if your hardware can support more concurrent report execution. Using too high a value could affect the resources available for interactive processes, including Shiny applications.</li>
+<li>Notify users if they’re taking an action that would cause them to lose unsaved information while customizing a parameterized R Markdown report.</li>
+<li>The report-emailing dialog is simpler and more informative.</li>
+<li>Added a “Print” menu option for more easily printing content from within the dashboard.</li>
+<li>A viewer-only account (not a publisher) that is a member of a group selected as a collaborator for an application is now properly downgraded to a viewer for that application. Previously, they were denied access to the application.</li>
+<li>When a collaborator for an application is downgraded to a viewer-only user account, their application access is properly downgraded. Previously, they were denied access to the application.</li>
+<li>Better cleanup on disk when applications are deleted.</li>
+<li>Improved the “too many users” LDAP error handling.</li>
+<li>Documented user permissions in admin guide: <a href="http://docs.rstudio.com/connect/1.4.4/admin/user-management.html#user-permissions" class="uri">http://docs.rstudio.com/connect/1.4.4/admin/user-management.html#user-permissions</a></li>
+</ul>
+</div>
+<div id="rstudio-connect-1.4.2" class="section level2">
+<h2>RStudio Connect 1.4.2</h2>
+<ul>
+<li>Overhaul of the parameterized report interface. You can now manage the parameters in the sidebar and quickly iterate through different versions of your report.</li>
+<li>Added the notion of “personal” report versions for parameterized reports. You can now create a private version of a parameterized report that is only visible to you. This report can still be scheduled and emailed.</li>
+<li>Users can now filter content to include only items that they can edit or items they can view.</li>
+<li>Content is set to private (“Just Me”) by default. Users can change the visibility of their content before publishing as before.</li>
+<li>Show progress indicator when updating a report.</li>
+<li>Only count a user against the license when that user logs in.</li>
+<li>The Applications.RunAsCurrentUser property permits execution of content by a Unix account associated with the currently logged-in user. Requires PAM authentication. <a href="http://docs.rstudio.com/connect/1.4.2/admin/process-management.html#process-management-runas-current" class="uri">http://docs.rstudio.com/connect/1.4.2/admin/process-management.html#process-management-runas-current</a></li>
+<li>Added support for global “System Messages” that can display an HTML message to your users either on the logged out or logged in landing pages. <a href="http://docs.rstudio.com/connect/1.4.2/admin/server-management.html#system-messages" class="uri">http://docs.rstudio.com/connect/1.4.2/admin/server-management.html#system-messages</a></li>
+<li>Updated packrat to gain more transparency on package build errors.</li>
+<li>Updated the list of SSL ciphers to correspond with modern best-practices.</li>
+</ul>
+</div>
+<div id="rstudio-connect-1.4.0" class="section level2">
+<h2>RStudio Connect 1.4.0</h2>
+<ul>
+<li>SECURITY: Added missing protection against replay attacks when interacting from the IDE.</li>
+<li>Redesigned the navigation of the dashboard to leverage dual-level top navigation bars.</li>
+<li>Added support for PAM sessions. This allows you to opt-in to having your R processes spawned via PAM. More details here: <a href="http://docs.rstudio.com/connect/1.4.0/admin/process-management.html#process-management-pam-sessions" class="uri">http://docs.rstudio.com/connect/1.4.0/admin/process-management.html#process-management-pam-sessions</a></li>
+<li>Allow administrators to change the username of any user on the system. <a href="http://docs.rstudio.com/connect/1.4.0/admin/authorization.html#user-renaming" class="uri">http://docs.rstudio.com/connect/1.4.0/admin/authorization.html#user-renaming</a></li>
+<li>Program supervisor support. Administrators may configure a command which is able to alter the environment used to execute R. See <a href="http://docs.rstudio.com/connect/1.4.0/admin/process-management.html#program-supervisors" class="uri">http://docs.rstudio.com/connect/1.4.0/admin/process-management.html#program-supervisors</a> for instructions and sample supervisor configurations.</li>
+<li>Added access logs in the Apache Combined Log Format for all HTTP requests that hit the server. More details at <a href="http://docs.rstudio.com/connect/1.4.0/admin/files-directories.html#access-logs" class="uri">http://docs.rstudio.com/connect/1.4.0/admin/files-directories.html#access-logs</a></li>
+<li>Expanded the directory permission checks introduced in v1.2.0.</li>
+<li>Introduced a new router for the dashboard which should minimize flickers while loading pages.</li>
+<li>Added support for anonymous LDAP binds. See the <code>AnonymousBind</code> feature here: <a href="http://docs.rstudio.com/connect/1.4.0/admin/authentication.html#ldap-or-ad-configuration-settings" class="uri">http://docs.rstudio.com/connect/1.4.0/admin/authentication.html#ldap-or-ad-configuration-settings</a></li>
+<li>Significantly reduced the memory consumption of the Connect server.</li>
+<li>Bumped the minimum officially supported version of the IDE to 1.0.0.</li>
+<li>Fixed a bug in the LDAP implementation that could lead to users being created in an “unconfirmed” state which would make it impossible for them to sign in.</li>
+<li>Include more events in the audit log such as the manipulation of vanity paths.</li>
+<li>Connect restricts the total number of verified user accounts and concurrent Shiny users according to the product license. See <a href="http://docs.rstudio.com/connect/1.4.0/admin/licensing-activation.html" class="uri">http://docs.rstudio.com/connect/1.4.0/admin/licensing-activation.html</a> for details.</li>
+</ul>
+</div>
+<div id="rstudio-connect-1.2.1" class="section level2">
+<h2>RStudio Connect 1.2.1</h2>
+<ul>
+<li><p>Stop masking the contents of <code>/home</code> by default. There are many environments where a shared <code>/home</code> is used and Connect cannot detect these situations. The file-system permissions of <code>/home</code> are responsible for determining if a <code>RunAs</code> user has access to files within the <code>/home</code> hierarchy.</p>
+<p>Revert to prior behavior by enabling <code>Applications.HomeMounting</code>. This specifies that the contents of <code>/home</code> should be hidden from R processes with additional bind mounts. The existing <code>/home</code> will have the home directory of the <code>RunAs</code> user mounted over it. If <code>RunAs</code> does not have a home directory, an empty temporary directory will mask <code>/home</code> instead. Launched R processes can discover this location through the the <code>HOME</code> environment variable.</p></li>
+</ul>
+</div>
+<div id="rstudio-connect-1.2.0" class="section level2">
+<h2>RStudio Connect 1.2.0</h2>
+<ul>
+<li>BREAKING: Default the <code>X-Frame-Options</code> HTTP header to <code>DENY</code> for all Connect resources that are not user content. User content does not have this header set and can still be embedded in external iframes by default. See the <code>Server.FrameOptionsContent</code> and <code>Server.FrameOptionsDashboard</code> settings.</li>
+<li>Introduce a new page under the “Admin” tab for audit logs. These logs track important changes in the system. To see exactly what is logged, see <a href="http://docs.rstudio.com/connect/admin/security-auditing.html#audit-logs" class="uri">http://docs.rstudio.com/connect/admin/security-auditing.html#audit-logs</a></li>
+<li>Automatically correct ownership and permissions for the R library directory and Packrat cache directory on startup. This helps to ensure that directory permissions are appropriately configured for the current <code>Applications.RunAs</code> user.</li>
+<li>We now instruct browser clients not to cache content that was cached before the most recent server restart or reload. This ensures that clients do not retain a version of a file that may have been obtained when the server was configured differently.</li>
+<li>Added a new command-line utility to help manage Connect users. The tool is available at <code>/opt/rstudio-connect/bin/usermanager</code> and currently has two functions: <code>list</code> and <code>alter</code>. It requires root privileges to execute, but will enable system administrators who find themselves unable to access their admin account on Connect to recover admin privileges.</li>
+<li>When requesting an update to a report, automatically reload the report when the new version is available.</li>
+<li>More informative 404 pages and more consistent error pages when viewing content that either doesn’t exist or that you don’t have access to.</li>
+<li>Configured the <code>X-Frame-Options</code> header to prohibit the embedding of the RSC dashboard inside an iframe. See <a href="http://docs.rstudio.com/connect/admin/security-auditing.html#content-embedding" class="uri">http://docs.rstudio.com/connect/admin/security-auditing.html#content-embedding</a></li>
+<li>Set the <code>X-Content-Type-Options</code> header to <code>nosniff</code> by default. Learn more here: <a href="http://docs.rstudio.com/connect/admin/security-auditing.html#content-sniffing" class="uri">http://docs.rstudio.com/connect/admin/security-auditing.html#content-sniffing</a></li>
+<li>Mark session cookies as <code>HttpOnly</code>.</li>
+<li>Added a “Permament” mode for HTTPS that instructs clients to refuse to attempt a connection to this server in the future unless it is HTTPS. <a href="http://docs.rstudio.com/connect/admin/security-auditing.html#guaranteeing-https" class="uri">http://docs.rstudio.com/connect/admin/security-auditing.html#guaranteeing-https</a></li>
+<li>Support the configuration of custom headers. These can be used to manage CSP or CORS policies, for instance. <a href="http://docs.rstudio.com/connect/admin/security-auditing.html#custom-headers" class="uri">http://docs.rstudio.com/connect/admin/security-auditing.html#custom-headers</a></li>
+<li>Static content will redirect to the primary file if it is not named <code>index.html</code>. This is different from the previous approach, which served a primary file of any name from the application root URL.</li>
+<li>Synchronize the client-side Shiny code across Connect, Shiny Server, and Shiny Server Pro.</li>
+<li>Better instrumentation and environment checks of deploys to help identify configuration issues.</li>
+<li>Prohibit removing the last administrator.</li>
+<li>Enforce group membership when specifying an application-specific <code>RunAs</code>.</li>
+</ul>
+</div>
+<div id="rstudio-connect-1.0.0" class="section level2">
+<h2>RStudio Connect 1.0.0</h2>
+<ul>
+<li>BREAKING: Removed support for the <code>Server.RPath</code> setting as announced in the previous release. Please use <code>Server.RVersion</code> instead. See <a href="http://docs.rstudio.com/connect/admin/r.html#r-versions" class="uri">http://docs.rstudio.com/connect/admin/r.html#r-versions</a> for details.</li>
+<li>BREAKING: Removed the <code>Server.RVersionMultiple</code> setting as documented in the previous release.</li>
+<li>Formally added LDAP group support, no longer experimental.</li>
+<li>Added support for Ubuntu 16.04.</li>
+<li>Support for private package repositories. Requires version 0.99.1285 or greater of the RStudio IDE. See <a href="http://docs.rstudio.com/connect/admin/package-management.html#private-repositories" class="uri">http://docs.rstudio.com/connect/admin/package-management.html#private-repositories</a></li>
+<li>Add details to the source of conflicts when unable to add a vanity URL.</li>
+<li>Allow anonymous user to enumerate and switch between the existing variants of a parameterized report.</li>
+<li>Improved the consistency of the admin user experience by ensuring that admins are able to manage even the content that they aren’t allowed to see. Of course administrators have the option of adding themselves as a viewer to any content, but this is an audited action.</li>
+<li>Improved styling of various error pages and the Google OAuth login page.</li>
+<li>Added support for application “titles” – user friendly representations of text that gives more flexibility to content names given in the IDE. This requires at least version 1.0.12 of the RStudio IDE.</li>
+<li>Version information in download links has slightly changed. The new form is rstudio-connect-X.Y.Z-B instead of rstudio-connect-X.Y.Z.B</li>
+<li>Various improvements to security and the dashboard interface.</li>
+</ul>
+</div>
+<div id="rstudio-connect-0.5.0" class="section level2">
+<h2>RStudio Connect 0.5.0</h2>
+<ul>
+<li>BREAKING: Removed support for the <code>Server.RunAs</code> setting as announced in the previous release. This setting is now managed in <code>Applications.RunAs</code>.</li>
+<li>BREAKING: Support for multiple R versions has altered how Connect discovers a compatible R version. This may affect installations where multiple R versions are already available. See <a href="http://docs.rstudio.com/connect/admin/r.html#scanning" class="uri">http://docs.rstudio.com/connect/admin/r.html#scanning</a> for more information as well as instructions for suppressing this auto-discovery.</li>
+<li>BREAKING: If using LDAP for authentication, <code>UserObjectClass</code> is now a required attribute.</li>
+<li>Support multiple versions of R. Different content can use different versions of R without conflict; an appropriate version is chosen when content is deployed. Configuring your system to use multiple R installations is described here: <a href="http://docs.rstudio.com/connect/admin/r.html#multiple-r-versions" class="uri">http://docs.rstudio.com/connect/admin/r.html#multiple-r-versions</a>. The algorithms which determine how Connect chooses an R version for each content deployment is described here: <a href="http://docs.rstudio.com/connect/admin/r.html#r-version-matching" class="uri">http://docs.rstudio.com/connect/admin/r.html#r-version-matching</a>.</li>
+<li>The <code>Server.RPath</code> configuration setting has been deprecated in favor of the <code>Server.RVersion</code> property. <code>Server.RPath</code> will be removed in the next release. See <a href="http://docs.rstudio.com/connect/admin/r.html#r-versions" class="uri">http://docs.rstudio.com/connect/admin/r.html#r-versions</a> for details about <code>Server.RVersion</code>.</li>
+<li>Added a work-around to support private R packages. See <a href="http://docs.rstudio.com/connect/admin/process-management.html#private-packages" class="uri">http://docs.rstudio.com/connect/admin/process-management.html#private-packages</a> for additional details.</li>
+<li>Restrict the ability to login to the server using LDAP groups. See the docs for the <code>LDAP.WhitelistedLoginGroup</code> setting here: <a href="http://docs.rstudio.com/connect/admin/appendix-configuration.html#appendix-configuration-ldap" class="uri">http://docs.rstudio.com/connect/admin/appendix-configuration.html#appendix-configuration-ldap</a></li>
+<li>For parameterized reports, add a drop-down selector at the top of the page that allows you to quickly switch between different variants of the report you’re inspecting.</li>
+<li>UI enhancements – primarily around content tables, iconography, and Shiny performance settings.</li>
+<li>Allow anonymous users to access content at the embedded dashboard link.</li>
+<li>Introduced the <code>Authentication.Name</code> config setting. This allows admins to specify a meaningful name for your authentication provider that will be presented on sign-in pages to give your users context.</li>
+<li>Display counts of different user types on metrics page</li>
+<li>Included version of Pandoc upgraded to version 1.17.2.</li>
+<li>Bugfix: Parameterized report configuration no longer generates a “Too Many Connections” error on IE10/11.</li>
+<li>Bugfix: reports now render at the appropriate time on servers which are not on UTC time.</li>
+</ul>
+</div>
+<div id="rstudio-connect-0.4.5" class="section level2">
+<h2>RStudio Connect 0.4.5</h2>
+<ul>
+<li>BREAKING: Forbid report viewers from regenerating R Markdown reports and from customizing parameterized R Markdown reports. Report collaborators are still able to generate ad-hoc reports. Two new configuration options in the <code>Applications</code> section can override this behavior: <code>ViewerOnDemandReports</code> and <code>ViewerCustomizedReports</code>.</li>
+<li>Redesigned the interface to be more unified, displaying settings and the content itself on same page.</li>
+<li>Don’t set the <code>/&lt;username&gt;/&lt;appname&gt;</code> path for content by default. Instead, reference the content by its numerical ID by default.</li>
+<li>Support configurable “vanity URLs” on content that enables admins to set custom paths for content. All existing content which was available under the <code>/&lt;username&gt;/&lt;appname&gt;</code> scheme have that vanity URL pre-configured for backwards compatability.</li>
+<li>Allow users to configure which Linux account should execute a given application – users can now select to run R as users other than the <code>rstudio-connect</code> user.</li>
+<li>Offer a “download” button when viewing application logs.</li>
+<li>Provide a logrotate configuration for <code>/var/log/rstudio-connect.log</code> where logrotate is available.</li>
+<li>Add a “miscellaneous” section to the CPU graph that tracks all CPU activity outside of <code>system</code> and <code>user</code> usage.</li>
+<li>Better cache control for web assets.</li>
+<li>Bump bundled pandoc to 1.17.0.2</li>
+<li>Move <code>RunAs</code> configuration option from the <code>Server</code> section to the <code>Applications</code> section. Both are currently supported, but Server.RunAs will be removed in the next release.</li>
+</ul>
+</div>
+<div id="rstudio-connect-0.4.4" class="section level2">
+<h2>RStudio Connect 0.4.4</h2>
+<ul>
+<li>Redesign the dashboard UI.</li>
+<li>Optimize the delivery of the client-side assets used in the dashboard. Now bundle most assets into a single, minified resource and use proper caching techniques to avoid redundant downloads.</li>
+<li>Show a table of all running R processes Connect has spawned on the Admin &gt; Metrics page complete with CPU and RAM information. Improved robustness of the real-time data feed on that page.</li>
+<li>Prohibit applications from changing their type.</li>
+<li>Don’t allow user deletion. Instead, allow “locking” of a user which prohibits the user from logging in or deploying new content.</li>
+<li>Set the “Reply-To” header on outgoing emails to be the email address of the user sending the report.</li>
+<li>Kill all running R processes associated with some content when that content is deleted.</li>
+<li>Bugfix: Better IE compatability for real-time streaming of metrics and rendering of gauges.</li>
+<li>Bugfix: Improved behavior when running Connect behind a path-altering proxy.</li>
+<li>Bugfix: Improved caching logic for the dashboard. Users of RStudio Connect may need to clear or otherwise reset their browser cache.</li>
+</ul>
+</div>
+<div id="rstudio-connect-0.4.3" class="section level2">
+<h2>RStudio Connect 0.4.3</h2>
+<ul>
+<li>Tune the runtime parameters of Shiny applications to control things like maximum processes per app or maximum connections per process. See <a href="http://docs.rstudio.com/connect/admin/process-management.html#shiny-applications" class="uri">http://docs.rstudio.com/connect/admin/process-management.html#shiny-applications</a> and <a href="http://docs.rstudio.com/connect/admin/appendix-configuration.html#appendix-configuration-scheduler" class="uri">http://docs.rstudio.com/connect/admin/appendix-configuration.html#appendix-configuration-scheduler</a></li>
+<li>Track historical data about your system including CPU and RAM. Initially, you can view historical data on your CPU and RAM usage in the new metrics page. See <a href="http://docs.rstudio.com/connect/admin/metrics.html" class="uri">http://docs.rstudio.com/connect/admin/metrics.html</a></li>
+<li>Support deployment of <code>site</code>s including Bookdown. See <a href="https://bookdown.org" class="uri">https://bookdown.org</a> for more information.</li>
+<li>Support TLS and StartTLS on connections to LDAP servers. See <a href="http://docs.rstudio.com/connect/admin/appendix-configuration.html#appendix-configuration-ldap" class="uri">http://docs.rstudio.com/connect/admin/appendix-configuration.html#appendix-configuration-ldap</a></li>
+<li>Usernames which differ only by case are now disqualified. Existing accounts are unaffected. If both <code>johndoe</code> and <code>JohnDoe</code> accounts have been created accidentally, we recommend removing the <code>JohnDoe</code> account and use <code>johndoe</code> going forward. If you use password auth and attempt to login to one of these <code>johndoe</code> accounts, you will be logged in to the oldest of the two. Other authentication strategies will send the username through as provided and allow the external system to make the decision about case sensitivity.</li>
+<li>If Metrics are enabled, Connect attempts ensure the correct directory ownership and privileges for running <code>rserver-monitor</code>. This includes ensuring that all users have execute permission (0701) on the main Connect data directory. If you have customized the Connect or metrics data directory location, please ensure that the metrics user has permission to <code>cd</code> into the metrics directory.</li>
+<li>Combined the CentOS/RedHat 6 and 7 builds. There is now a single installer for either platform.</li>
+<li>Bugfix: correct behavior when running behind a proxy. See <a href="http://docs.rstudio.com/connect/admin/running-a-proxy.html" class="uri">http://docs.rstudio.com/connect/admin/running-a-proxy.html</a> for more details.</li>
+</ul>
+</div>
+<div id="rstudio-connect-0.4.2-1218" class="section level2">
+<h2>RStudio Connect 0.4.2-1218</h2>
+<ul>
+<li>PAM authentication. Users can now use Pluggable Authentication Modules by configuring the <code>pam</code> auth provider. This will allow Connect to leverage local server accounts.</li>
+<li>Proxied authentication. Allow an external authentication provider to proxy all Connect traffic, appending an HTTP header that has the username of the current user.</li>
+<li>Don’t copy Shiny output to server log.</li>
+<li>Use the externally-provided username without prompting when creating an account unless it’s an invalid username.</li>
+<li>API endpoint to view all running R processes spawned by Connect.</li>
+<li>Various UI bugfixes and improvements.</li>
+</ul>
+</div>
+<div id="rstudio-connect-0.4.2-1093" class="section level2">
+<h2>RStudio Connect 0.4.2-1093</h2>
+<ul>
+<li>Password-based authentication. Connect can host the usernames and passwords in an internal database, complete with password reset and new user registration functions.</li>
+<li>LDAP and Active Directory authentication. Connect to an external server to authenticate users and to query for users in your organization when sharing content.</li>
+<li>Publishing of Shiny, R Markdown, and Shiny from the RStudio IDE.</li>
+<li>Scheduled execution and email delivery of R Markdown. Allows R Markdown reports published with source code to be scheduled for execution on the server. Email recipients can also be configured.</li>
+<li>Control of parameterized R Markdown reports. Variants can be executed once or scheduled for repeated execution.</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["rstudio-connect-news-1.5.10-6.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+CREATE TABLE reset_password_tokens (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  password TEXT NOT NULL DEFAULT '',
+  expires DATETIME NOT NULL);

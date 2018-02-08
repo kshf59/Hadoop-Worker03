@@ -1,0 +1,38 @@
+<div class="tableContainer">
+  <table class="contentListing clickableRows">
+    <thead>
+    <tr>
+      <th colSpan="2">User</th>
+      <th>Role</th>
+      <th ng-if="!!$ctrl.allowDelete"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-click="$ctrl.handleRowClick(principal)" ng-repeat="principal in $ctrl.usersList">
+
+      <td class="icon userIcon"><div class="user"><div class="userIcon"><gravatar-image
+        style="margin: 0 1px; width: 16px; display: inline-block"
+        data-gravatar-hash="principal.email_hash"
+        data-gravatar-size="16" data-gravatar-rating="pg"
+        data-gravatar-default="identicon"
+        data-gravatar-secure="true"></gravatar-image></div></div></td>
+      <td>
+        <span ng-show="!principal.name" class="itemTitle userFullName"><a ui-sref="people.users_view({ userId: principal.provider_key})">{{principal.username}}</a></span>
+        <span ng-show="principal.name" class="itemTitle userFullName"><a ui-sref="people.users_view({ userId: principal.provider_key})">{{principal.name}}</a></span>
+        <span ng-show="principal.name" class="itemTitle">({{principal.username}})</span>
+        <small ng-if="principal.locked" class="text-danger">(locked)</small>
+      </td>
+      <td>{{principal.user_role}}</td>
+      <td ng-if="$ctrl.canDelete(principal)" class="icon userIcon">
+        <div class="actionBar inline">
+          <button type="button" class="action delete" ng-click="$ctrl.removeMember($event, principal)">
+            <span class="actionTitle">Delete User</span>
+          </button>
+        </div>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+  <div ng-if="!$ctrl.usersList.length" class="noContentMessage">{{$ctrl.emptyText}}</div>
+</div>

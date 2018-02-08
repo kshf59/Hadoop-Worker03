@@ -1,0 +1,8 @@
+
+CREATE TABLE schedule (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  app_id INTEGER NOT NULL, 
+  type TEXT NOT NULL, 
+  schedule TEXT NOT NULL, 
+  next_run DATETIME NULL);
+

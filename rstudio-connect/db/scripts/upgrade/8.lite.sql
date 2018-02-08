@@ -1,0 +1,2 @@
+ALTER TABLE users ADD COLUMN temp_password TEXT NOT NULL DEFAULT '';
+

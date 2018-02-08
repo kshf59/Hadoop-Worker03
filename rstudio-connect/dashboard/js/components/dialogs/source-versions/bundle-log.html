@@ -1,0 +1,16 @@
+<modal-dialog key="$ctrl.key" on-cancel="$ctrl.hideLog()" un-closable="$ctrl.isDeploying">
+  <div class="dialogSpinnerContainer" ng-show="$ctrl.isDeploying"><spinner /></div>
+	<div class="purpose">{{$ctrl.title}}</div>
+	<div class="formSection">
+		<div class="logOutput inDialog" scroll-glue>
+			<div ng-bind-html="$ctrl.logs"> </div>
+		</div>
+	</div>
+	<div class="actions flex">
+		<div class="actionBar showTitles alignWithRegularButtons">
+			<button ng-show="$ctrl.buttons.previous.visible" class="action back" ng-disabled="!$ctrl.buttons.previous.enabled" ng-click="$ctrl.prevJob()">Previous Activation</button>
+			<button ng-show="$ctrl.buttons.next.visible" class="action forward" ng-disabled="!$ctrl.buttons.next.enabled" ng-click="$ctrl.nextJob()">Next</button>
+		</div> 
+		<a ng-show="$ctrl.buttons.download.visible" download="download" class="button default" ng-href="{{$ctrl.downloadUrl}}" ng-class="{disabled: !$ctrl.buttons.download.enabled}">Download Log</a>
+	</div>
+</modal-dialog>

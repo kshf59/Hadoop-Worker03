@@ -1,0 +1,25 @@
+2017-11-12 14:40:52,262 INFO org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode: STARTUP_MSG: 
+/************************************************************
+STARTUP_MSG: Starting SecondaryNameNode
+STARTUP_MSG:   host = hadoop-secmaster/192.168.252.130
+STARTUP_MSG:   args = []
+STARTUP_MSG:   version = 1.2.1
+STARTUP_MSG:   build = https://svn.apache.org/repos/asf/hadoop/common/branches/branch-1.2 -r 1503152; compiled by 'mattf' on Mon Jul 22 15:23:09 PDT 2013
+STARTUP_MSG:   java = 1.8.0_152
+************************************************************/
+2017-11-12 14:40:52,313 INFO org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode: dfs.namenode.edits.toleration.length is set to 0.  Override it with -1, i.e. disable it.
+2017-11-12 14:40:52,521 INFO org.mortbay.log: Logging to org.slf4j.impl.Log4jLoggerAdapter(org.mortbay.log) via org.mortbay.log.Slf4jLog
+2017-11-12 14:40:52,544 INFO org.apache.hadoop.http.HttpServer: Added global filtersafety (class=org.apache.hadoop.http.HttpServer$QuotingInputFilter)
+2017-11-12 14:40:52,546 INFO org.apache.hadoop.http.HttpServer: Port returned by webServer.getConnectors()[0].getLocalPort() before open() is -1. Opening the listener on 50090
+2017-11-12 14:40:52,547 INFO org.apache.hadoop.http.HttpServer: listener.getLocalPort() returned 50090 webServer.getConnectors()[0].getLocalPort() returned 50090
+2017-11-12 14:40:52,547 INFO org.apache.hadoop.http.HttpServer: Jetty bound to port 50090
+2017-11-12 14:40:52,547 INFO org.mortbay.log: jetty-6.1.26
+2017-11-12 14:40:52,731 INFO org.mortbay.log: Started SelectChannelConnector@0.0.0.0:50090
+2017-11-12 14:40:52,731 INFO org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode: Web server init done
+2017-11-12 14:40:52,731 INFO org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode: Secondary Web-server up at: 0.0.0.0:50090
+2017-11-12 14:40:52,731 WARN org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode: Checkpoint Period   :3600 secs (60 min)
+2017-11-12 14:40:52,731 WARN org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode: Log Size Trigger    :67108864 bytes (65536 KB)
+2017-11-12 14:45:04,931 INFO org.apache.hadoop.hdfs.server.namenode.SecondaryNameNode: SHUTDOWN_MSG: 
+/************************************************************
+SHUTDOWN_MSG: Shutting down SecondaryNameNode at hadoop-secmaster/192.168.252.130
+************************************************************/

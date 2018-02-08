@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>RStudio Connect: User Guide</title>
+  <meta name="description" content="RStudio Connect: User Guide">
+  <meta name="generator" content="bookdown 0.3.18 and GitBook 2.6.7">
+
+  <meta property="og:title" content="RStudio Connect: User Guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="RStudio Connect: User Guide" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="connecting.html">
+<link rel="next" href="api-keys.html">
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#shiny"><i class="fa fa-check"></i><b>1.1</b> Shiny</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#plumber-beta"><i class="fa fa-check"></i><b>1.2</b> Plumber (Beta)</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#swagger-documentation"><i class="fa fa-check"></i><b>1.2.1</b> Swagger Documentation</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#r-markdown"><i class="fa fa-check"></i><b>1.3</b> R Markdown</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#plots-and-graphs"><i class="fa fa-check"></i><b>1.4</b> Plots and Graphs</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="connecting.html"><a href="connecting.html"><i class="fa fa-check"></i><b>2</b> Connecting</a><ul>
+<li class="chapter" data-level="2.1" data-path="connecting.html"><a href="connecting.html#update-the-ide"><i class="fa fa-check"></i><b>2.1</b> Update the IDE</a></li>
+<li class="chapter" data-level="2.2" data-path="connecting.html"><a href="connecting.html#connecting-your-account"><i class="fa fa-check"></i><b>2.2</b> Connecting Your Account</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="publishing.html"><a href="publishing.html"><i class="fa fa-check"></i><b>3</b> Publishing</a><ul>
+<li class="chapter" data-level="3.1" data-path="publishing.html"><a href="publishing.html#publishing-instructions-for-all-content-types"><i class="fa fa-check"></i><b>3.1</b> Publishing Instructions for All Content Types</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="publishing.html"><a href="publishing.html#publishing-plumber-apis"><i class="fa fa-check"></i><b>3.1.1</b> Publishing Plumber APIs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="publishing.html"><a href="publishing.html#publishing-options-for-documents"><i class="fa fa-check"></i><b>3.2</b> Publishing Options for Documents</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="publishing.html"><a href="publishing.html#publishing-destination"><i class="fa fa-check"></i><b>3.2.1</b> Publishing Destination</a></li>
+<li class="chapter" data-level="3.2.2" data-path="publishing.html"><a href="publishing.html#publish-source-code"><i class="fa fa-check"></i><b>3.2.2</b> Publish Source Code</a></li>
+<li class="chapter" data-level="3.2.3" data-path="publishing.html"><a href="publishing.html#document-selection"><i class="fa fa-check"></i><b>3.2.3</b> Document Selection</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="api-keys.html"><a href="api-keys.html"><i class="fa fa-check"></i><b>4</b> API Keys</a><ul>
+<li class="chapter" data-level="4.1" data-path="api-keys.html"><a href="api-keys.html#examples"><i class="fa fa-check"></i><b>4.1</b> Examples</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="api-keys.html"><a href="api-keys.html#creating-and-deleting-an-api-key"><i class="fa fa-check"></i><b>4.1.1</b> Creating and Deleting an API Key</a></li>
+<li class="chapter" data-level="4.1.2" data-path="api-keys.html"><a href="api-keys.html#static-content"><i class="fa fa-check"></i><b>4.1.2</b> Static Content</a></li>
+<li class="chapter" data-level="4.1.3" data-path="api-keys.html"><a href="api-keys.html#plumber"><i class="fa fa-check"></i><b>4.1.3</b> Plumber</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RStudio Connect: User Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="publishing" class="section level1">
+<h1><span class="header-section-number">3</span> Publishing</h1>
+<blockquote>
+<p>Be sure to configure your Connect account before attempting to publish with the RStudio IDE. See Section <a href="connecting.html#connecting">2</a> for information on configuring your Connect account</p>
+</blockquote>
+<div id="publishing-instructions-for-all-content-types" class="section level2">
+<h2><span class="header-section-number">3.1</span> Publishing Instructions for All Content Types</h2>
+<p>RStudio Connect accepts Shiny applications, R Markdown documents, as well as plots and graphs. The blue <strong>publishing icon</strong> in the RStudio IDE indicates that a particular piece of content can be published.</p>
+<div class="figure">
+<img src="images/publishIcon_2x.png" />
+
+</div>
+<p>You can find the blue <strong>publishing icon</strong> at the following locations:</p>
+<ul>
+<li>The upper right of the file editor</li>
+<li>The document viewer when viewing a document</li>
+<li>The embedded viewer when running a Shiny application</li>
+<li>The plots pane</li>
+</ul>
+<p>Click on this icon to open a publishing dialog where you can name your content and select additional files to include in the deployment. By default, RStudio will try to infer the data files and scripts are used in your application. This window lets you refine those file selections. <img src="images/screenshots/publishing-rmd.png" alt="publishing dialog" /></p>
+<p>Most of the time, RStudio is able to determine automatically which files are needed to render your document on Connect. However, there are situations in which it will miss a file (for instance, if it isn’t referenced directly in your document). The <strong>Add More…</strong> button lets you add files to the bundle that will be sent to Connect so that they will be available on the server when your document is rendered. You can also use the resource_files field in your document’s YAML header to add additional files.</p>
+<p>Deployed data files must be in the same directory as your Shiny application or R Markdown document. Files stored elsewhere on your computer (<code>C:\Users\me\mydata.csv</code>) will not be available on the remote server.</p>
+<p>Click <strong>Publish</strong> after verifying your settings.</p>
+<p>Your first deployment may take a few minutes, as Connect attempts to recreate the R library you use locally – referenced packages are downloaded and installed. These packages are cached on the server; subsequent deployments will be faster.</p>
+<p>Not all of your IDE environment can be replicated on the server. Different operating systems or versions of R can occasionally make applications behave differently. Package installation failures may require the installation of additional system libraries.</p>
+<p>When the deployment completes, you’ll be taken to the application’s settings page in RStudio Connect. <img src="images/screenshots/deployed-settings-zoomed.png" alt="connect application settings" /></p>
+<p>This page lets you verify the sharing and visibility of your content. Click <strong>Publish</strong> to confirm these settings.</p>
+<blockquote>
+<p>Content cannot be viewed until it is published.</p>
+</blockquote>
+<p><img src="images/screenshots/running-app.png" /><br />
+You should now see your deployed content – a rendered version of the document or a live instance of your Shiny application. The content is displayed within the context of RStudio Connect, and you are able to further configure settings for your content.</p>
+<div id="publishing-plumber-apis" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Publishing Plumber APIs</h3>
+<blockquote>
+<p>Plumber APIs have the following known restrictions:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>Push-button publishing from the IDE is not supported</li>
+<li>Server-side latency is not tracked</li>
+</ul>
+</blockquote>
+<p>To get started with publishing Plumber API endpoints, create a directory with a <code>plumber.R</code> file defining your endpoints. From the console, execute the following, replacing <code>&lt;project-dir&gt;</code> with your project’s directory:</p>
+<pre><code>&gt; rsconnect::deployAPI(api = &#39;&lt;project-dir&gt;&#39;)</code></pre>
+<p>Once live, the content view will show you the results of your <code>@get /</code> endpoint. If <code>@get /</code> is not defined, you will see a “Swagger UI” presentation of your API. Swagger is an API documentation format; Plumber can automatically generate a <code>swagger.json</code> definition for your API by inspecting your endpoints. The “Swagger UI” page offers an interactive portal into your API that allows you to test your endpoints directly from the browser.</p>
+<p>To make a call to your new API yourself, you’re going to need the target URL. You can find it by looking at the bottom of the <code>Access</code> tab in your API’s settings, or by clicking the <code>...</code> menu in the upper-right of the content view and select “Open Solo”.</p>
+<p><img src="images/screenshots/open-solo.png" alt="A screenshot of the menu with Open Solo displayed." /><br />
+The location should look like the following:</p>
+<pre><code>https://example.com/content/42/</code></pre>
+<p>All calls can be made relative to this path. For example, if you want to make a request to <code>/volcano</code>, the location in the above example would be <code>https://example.com/content/42/volcano</code>, like so:</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="kw">curl</span> -XPOST https://example.com/content/42/volcano --data-binary <span class="st">&#39;{ &quot;line_plot&quot;: true }&#39;</span></code></pre></div>
+<p>If your API restricts access to a particular set of users, then Connect will require that incoming requests authenticate the user making the request. The best approach for authenticating a request targeting an API is to use API Keys <a href="api-keys.html#api-keys">4</a>.</p>
+<p>Alternatively, if your server is configured to use proxy authentication, you should ask your IT Administrator about ways to make API calls through that proxy.</p>
+<p>If you want to perform access control in your Plumber API itself, or if you want to allow anyone to access your API, open the application settings, then the “Access” tab, and set “Who can view this API” to “Everyone”.</p>
+<p><img src="images/screenshots/everyone-can-view-this-api.png" alt="A screenshot showing everyone selected under Who can view this API dropdown." /><br />
+A simple way to control access might be like the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#* @filter shared-secret-auth</span>
+keyAuth &lt;-<span class="st"> </span>function(res, <span class="dt">secret =</span> <span class="ot">NULL</span>) {
+    if(<span class="kw">is.null</span>(secret) ||<span class="st"> </span>secret !=<span class="st"> &#39;mySecret&#39;</span>) {
+        res$status &lt;-<span class="st"> </span><span class="dv">401</span> <span class="co"># 401 UNAUTHORIZED</span>
+        <span class="kw">list</span>(<span class="dt">error =</span> <span class="st">&quot;Authentication Failed&quot;</span>)
+    } else {
+        plumber::<span class="kw">forward</span>()
+    }
+}</code></pre></div>
+<p>See the Plumber documentation for more information on <code>@filter</code> methods, and how they can be skipped in your route with <code>@preempt</code>.</p>
+<p>Security is hard. The example above might be good enough for some purposes, but is unsuitable in cases where you need multiple keys you can invalidate arbitrarily. In those cases, API Keys <a href="api-keys.html#api-keys">4</a> would be preferable. Ask your IT Administrator for guidance if you need help choosing a suitable authentication scheme.</p>
+</div>
+</div>
+<div id="publishing-options-for-documents" class="section level2">
+<h2><span class="header-section-number">3.2</span> Publishing Options for Documents</h2>
+<p>When publishing documents to RStudio Connect, you may encounter other deployment options depending on your content. These options are discussed below.</p>
+<div id="publishing-destination" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Publishing Destination</h3>
+<p><img src="images/screenshots/publish-rpubs-or-connect.png" alt="publish to RPubs or Connect" /> <a href="http://rpubs.com">RPubs</a> is a service for easily sharing R Markdown documents. RPubs is not related to Connect, and you should always choose “RStudio Connect” if you wish to publish your content to Connect.</p>
+<p>RPubs documents are (1) always public, (2) always self-contained, and (3) and cannot contain any Shiny content. You will see the choice to publish to RPubs if your document is self-contained and does not require Shiny. Some organizations want to prohibit publishing to RPubs to reduce the chance that sensitive data will be accidentally made public; publishing to RPubs (and <a href="http://www.shinyapps.io/">shinyapps.io</a>) can be disabled if desired using an RStudio Server option.</p>
+</div>
+<div id="publish-source-code" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Publish Source Code</h3>
+<div class="figure">
+<img src="images/screenshots/publish-source-or-finished.png" alt="publish source code?" />
+<p class="caption">publish source code?</p>
+</div>
+<p>You will see these options when publishing from the document viewer.</p>
+<p>Publishing the document with source code means that your R Markdown file (<code>.Rmd</code>) will be deployed to RStudio Connect. This file is rendered (usually to HTML) on the server.</p>
+<p>Publishing only the finished document means that the HTML file you rendered locally is deployed to RStudio Connect.</p>
+<p>We recommend publishing your documents with source code, as it allows you to re-render the document with RStudio Connect (on a weekly schedule, for example). If the document cannot be rendered by RStudio Connect because of files or data sources that are unavailable on the server, choose “Publish finished document only” so others can view your work.</p>
+</div>
+<div id="document-selection" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Document Selection</h3>
+<p><img src="images/screenshots/publish-one-or-all.png" alt="publish one or all documents?" /> You will see these options when publishing an R Markdown document from a directory that contains more than one R Markdown document. It is possible to link together multiple R Markdown documents to make a multi-page document, so this is your chance to indicate that you’ve done this, and to publish all the documents at once. In most cases however you’ll want to publish just the current document.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="connecting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="api-keys.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["rstudio-connect-user-guide-1.5.10-6.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

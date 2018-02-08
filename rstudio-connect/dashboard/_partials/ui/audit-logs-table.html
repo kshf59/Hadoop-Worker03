@@ -1,0 +1,47 @@
+<div class="tableContainer">
+    <table class="auditLogs contentListing" ng-if="$ctrl.auditLogs && $ctrl.auditLogs.length > 0">
+        <thead>
+        <tr>
+            <th style="width: 20%;">Time</th>
+            <th style="width: 15%;">User</th>
+            <th style="width: 65%;;">Event</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="log in $ctrl.auditLogs">
+            <td>{{log.time}}</td>
+            <td>{{log.userDescription}}</td>
+            <td>{{log.eventDescription}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <ul class="pager" ng-if="$ctrl.auditLogs && $ctrl.auditLogs.length > 0">
+        <li ng-class="{disabled:$ctrl.pagination[0].disabled}" class="previous" >
+            <a href="#"
+               ng-click="$ctrl.pagination[0].disabled || $ctrl.first(); $event.preventDefault();"
+            >
+                &#x21E4; First
+            </a>
+        </li>
+        <li ng-class="{disabled:$ctrl.pagination[1].disabled}" class="previous">
+            <a href="#"
+               ng-click="$ctrl.pagination[1].disabled || $ctrl.prev(); $event.preventDefault();"
+            >
+                &larr; Previous
+            </a>
+        </li>
+        <li ng-class="{disabled:$ctrl.pagination[3].disabled}" class="next">
+            <a href="#"
+               ng-click="$ctrl.pagination[3].disabled || $ctrl.last(); $event.preventDefault();"
+            >
+                Last &#x21E5;
+            </a>
+        </li>
+        <li ng-class="{disabled:$ctrl.pagination[2].disabled}" class="next">
+            <a href="#"
+               ng-click="$ctrl.pagination[2].disabled || $ctrl.next(); $event.preventDefault();"
+            >
+                Next &rarr;</a>
+        </li>
+     </ul>
+</div>

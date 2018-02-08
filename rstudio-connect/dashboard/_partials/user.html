@@ -1,0 +1,78 @@
+<div class="band">
+  <div class="bandContent mainPage">
+
+    <div ng-if="isMe" class="menu">
+      <div class="menuItems">
+        <a ui-sref="people.users_view({ userId: user.provider_key })"
+           ui-sref-active="active"
+           class="menuItem"
+        >Profile</a>
+        <a ui-sref="people.users_apikeys({ userId: user.provider_key })"
+           ui-sref-active="active"
+           class="menuItem"
+        >API Keys</a>
+      </div>
+    </div>
+
+    <div class="majorMinorColumnsContainer minorLeft">
+
+      <div class="minorColumn">
+        <div class="sectionTitle">
+          <div class="user" ng-if="user"><div class="userIcon">
+            <gravatar-image data-gravatar-hash="user.email_hash" data-gravatar-size="120" data-gravatar-rating="pg" data-gravatar-default="identicon" data-gravatar-secure="true"></gravatar-image>
+          </div></div>
+          <span id="sel_username">{{user.username}}</span>
+        </div>
+        <div class="panel user-ui">
+          <div class="formSection" ng-if="user">
+            <div class="rsc-row" id="sel_user_name">
+              {{ user.first_name }} {{ user.last_name }}
+              <span ng-if="user.locked" class="text-danger">(locked)</span>
+            </div>
+            <div class="rsc-row">
+              <span id="sel_user_role">{{user.user_role | sentenceCase}}</span>
+            </div>
+            <div class="rsc-row" ng-if="user.email">
+              <a href="mailto:{{ user.email }}" id="sel_user_email">{{ user.email }}</a><br/>
+              Joined {{ user.created_time | date: "mediumDate" }}
+            </div>
+          </div>
+          <div class="formSection" ng-if="user && privileges.canEditUser(user)">
+            <div class="rsc-row">
+              <div class="actions alignRight">
+                <button id="sel_{{password}}" ng-if="privileges.canChangePassword(user)" ng-click="goChangePassword()">Change Password</button>
+                <button id="sel_{{lock}}" ng-if="privileges.canLockUser(user)" ng-click="toggleLockUser()">{{lock}}</button>
+                <button id="sel_edit_user" ng-click="editUser()">Edit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="majorColumn">
+        <div class="sectionTitle flex">
+          <div>Published Content</div>
+        </div>
+
+        <content-list-table
+          ng-if="user"
+          show-owner="false"
+          custom-filters="['account_id:' + user.id,'needs_config:0']"
+          show-icon="true"
+          on-total-change="onTotalAppChange"
+          on-loaded="onLoaded"
+          load-on-init="true"
+        >
+        </content-list-table>
+        <div ng-if="loaded && !haveApps" class="text-center">
+          <p class="empty-search" id="sel_empty_search">
+            <i class="fa fa-search"></i><br />
+            No content found.
+          </p>
+          <p>This user hasn't published anything yet.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

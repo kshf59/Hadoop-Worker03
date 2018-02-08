@@ -1,0 +1,76 @@
+<div class="band">
+  <div class="bandContent mainPage">
+
+    <div class="majorMinorColumnsContainer minorLeft">
+
+      <div class="minorColumn">
+
+        <div class="sectionTitle sectionBottomBorder">
+          <div class="user">
+            <div class="userIcon">
+              <img ng-src="images/principal-group.png" />
+            </div>
+          </div>
+          {{group.name}}
+        </div>
+
+        <div class="panel user-ui" ng-if="privileges.canAddGroupUser(group)">
+          <div class="formSection">
+            <div class="sectionTitle">Add Member</div>
+
+            <div class="panel user-ui">
+              <div class="rsc-row">
+                <div id="searchMember"
+                     principal-search="searchUsers"
+                     add-class="form-control"
+                     accept="addMember"
+                     placeholder="Add user"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formSection">
+          <div class="rsc-row">
+            <div>
+
+              <div class="user"><div class="userIcon"><gravatar-image
+                style="margin: 0 1px; width: 16px; display: inline-block"
+                data-gravatar-hash="group.owner.email_hash"
+                data-gravatar-size="16" data-gravatar-rating="pg"
+                data-gravatar-default="identicon"
+                data-gravatar-secure="true"></gravatar-image></div></div>
+
+              <span ng-show="!group.owner.name" class="itemTitle userFullName"><a ui-sref="people.users_view({ userId: group.owner.provider_key})">{{group.owner.username}}</a></span>
+              <span ng-show="group.owner.name" class="itemTitle userFullName"><a ui-sref="people.users_view({ userId: group.owner.provider_key})">{{group.owner.name}}</a></span>
+              (owner)
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="majorColumn">
+        <div class="sectionTitle flex">
+          <div>
+            Members
+          </div>
+
+          <div class="actionBar inline showTitles">
+            <button ng-show="privileges.canDeleteGroup(group)" id="sel_add_group" type="button" class="action delete" ng-click="deleteGroup()">
+              <span class="actionTitle">Delete Group</span>
+            </button>
+          </div>
+
+        </div>
+
+        <people-list empty-text="This group has no members" ng-if="group" delete-action="removeMember({principal})" allow-delete="privileges.canRemoveGroupUserFunc(group)" users-list="group.members" getting-list="true" />
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>

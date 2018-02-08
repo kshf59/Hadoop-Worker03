@@ -1,0 +1,65 @@
+<div class="band">
+  <div class="bandContent mainPage">
+
+    <admin-menu location="location"></admin-menu>
+
+    <div class="tagEditor majorColumn">
+
+      <!-- error dialog -->
+      <modal-dialog ng-if="$ctrl.crudError"
+                    key="tagEditor"
+                    on-cancel="$ctrl.hideCrudErrorDialog()"
+                    un-closable="false">
+        <div class="purpose">Reload tags?</div>
+        <div class="formSection">
+          <div class="">
+            <div>An error occurred: {{$ctrl.crudError}}</div>
+          </div>
+        </div>
+        <div class="actions alignRight">
+          <button ng-click="$ctrl.hideCrudErrorDialog()">
+            Don't Reload
+          </button>
+          <button type="submit" ng-click="$ctrl.reload()">
+            Reload
+          </button>
+        </div>
+      </modal-dialog>
+
+      <!-- confirm delete selected tag dialog -->
+      <confirm-dialog
+        key="tagEditor"
+        ng-if="$ctrl.confirmTagDeletionDialog.showConfirmDeleteTagDialog"
+        purpose="Delete tag &quot;{{$ctrl.confirmTagDeletionDialog.tagToDelete}}&quot;"
+        details="You can't undo this delete."
+        on-confirm="$ctrl.confirmTagDeletionDialog.deleteSelectedTag()"
+        on-cancel="$ctrl.confirmTagDeletionDialog.hideTagDeletionDialog()"
+        button="OK"
+      ></confirm-dialog>
+
+      <!-- begin content -->
+      <div class="sectionTitle flex">
+        <div>Tags Schema</div>
+        <div class="tagEditor actionBar inline showTitles">
+          <rs-button
+            enabled="!$ctrl.disableAddCategoryBtn"
+            on-click="$ctrl.button.onAddNewTopLevelTag"
+            button-class="$ctrl.button.buttonClass"
+            button-style="$ctrl.button.style"
+            button-title-class="$ctrl.button.titleClass"
+            button-title="$ctrl.button.title"
+          >
+          </rs-button>
+        </div>
+      </div>
+
+      <tag-editor-rsc-ui
+        enabled="!$ctrl.disabled"
+        default-info="$ctrl.defaultInfo"
+        store-state="$ctrl.storeState"
+        updaters="$ctrl.updaters"
+      >
+
+    </div>
+  </div>
+</div>

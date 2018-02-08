@@ -1,0 +1,34 @@
+<modal-dialog key="$ctrl.key" on-cancel="$ctrl.onCancel()" ng-hide="$ctrl.showingLogs">
+  <div class="purpose">Source Versions</div>
+  <form ng-submit="$ctrl.onCancel()">
+    <div class="formSection noSeparator">
+      <div class="listbox jobsList">
+        <div class="item version" ng-class="{selected: bundle.isSelected()}"
+             ng-click="$ctrl.handleClick(bundle.id)" ng-repeat="bundle in $ctrl.bundles">
+          <div class="versionId">
+            <div><span class="pId">{{bundle.id}}</span>
+              <span ng-if="bundle.size"> ({{bundle.size | bytes}})</span>
+              <span ng-if="!bundle.size"> &mdash; Unable to determine size</span>
+            </div>
+            <div class="activeVersion" ng-if="bundle.activeString">{{bundle.activeString}}</div>
+          </div>
+          <div class="operation">{{bundle.firstOperationText}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="actions flex noMinButtonWidth">
+      <div class="actionBar showTitles alignWithRegularButtons">
+				<a ng-href="{{$ctrl.disableActions ? '' : $ctrl.downloadURL}}" download="download" class="action download" ng-class="{disabled: $ctrl.disableActions}">
+					<span class="actionTitle">Download</span>
+				</a>
+				<button ng-disabled="$ctrl.disableActions" class="action viewLog" ng-click="$ctrl.handleShowLog()">
+					<span class="actionTitle">View Log</span>
+        </button>
+        <button ng-disabled="$ctrl.disableDelete" class="action delete" ng-click="$ctrl.doDelete()">
+          <span class="actionTitle">Delete</span>
+        </button>
+      </div>
+      <button type="submit" ng-disabled="$ctrl.disableActivate" ng-click="$ctrl.doPublish()">Activate</button>
+    </div>
+  </form>
+</modal-dialog>

@@ -1,0 +1,221 @@
+<app-tab>
+  <div ng-if="!$ctrl.appHasRuntimeSettings" class="formSection infoSection">
+    <p>
+      This content does not run when visited. There are no runtime settings to
+      configure.
+    </p>
+  </div>
+  <div ng-if="$ctrl.appHasRuntimeSettings">
+    <save-settings-panel
+        show="$ctrl.parametrizedShowSave"
+        save-action="$ctrl.parametrizedSaveAppSettings"
+        cancel-action="$ctrl.parametrizedCancelSave"
+        save-title="'Save'"
+        save-disabled="false"
+    >
+    </save-settings-panel>
+
+    <form role="form" name="$ctrl.appUtilization" class="form-horizontal" novalidate>
+      <fieldset ng-disabled="$ctrl.editingDisabled()">
+
+        <div class="formSection">
+          <div class="rsc-row header flex">
+            <div>Runtime settings</div>
+            <div class="infoToggle" ng-click="$ctrl.runtimeToggleInfo(0)"></div>
+          </div>
+          <div ng-show="$ctrl.infoToggleState[0]" class="subPanel">
+            <div class="settingsNote">
+              Changes to runtime settings will be applied immediately to any
+              running instances of this content. However, existing user
+              connections (or processes with open connections) will not be
+              disconnected; the settings will take effect opportunistically.
+              Learn more about these settings in the RStudio Connect
+              <a target="_blank" ng-href="{{$ctrl.schedulerDocumentation()}}">Admin Guide</a>.
+            </div>
+          </div>
+          <div class="rsc-row">
+            <input type="radio"
+                id="useServer"
+                ng-model="$ctrl.override"
+                ng-value="false"
+                ng-change="$ctrl.parametrizedOnRuntimeFormChange()"
+            >
+            <label for="useServer">Use server defaults</label>
+          </div>
+          <div class="rsc-row">
+            <input type="radio"
+                id="overrideServer"
+                ng-model="$ctrl.override"
+                ng-value="true"
+                ng-change="$ctrl.parametrizedOnRuntimeFormChange()"
+            >
+            <label for="overrideServer">Specify custom settings</label>
+          </div>
+        </div>
+
+        <div class="formSection performance" ng-class="{disabled : !$ctrl.override }">
+          <div class="rsc-row header flex">
+            <div>Max processes</div>
+            <div class="infoToggle" ng-click="$ctrl.runtimeToggleInfo(1)"></div>
+          </div>
+          <div ng-show="$ctrl.infoToggleState[1]" class="subPanel">
+            <div class="settingsNote">
+              The most R processes that will ever be simultaneously running for
+              this content, regardless of load.
+            </div>
+          </div>
+          <div class="rsc-row">
+            <div class="form-group textInputContainer"
+                ng-class="{ 'hasError' : $ctrl.appUtilization.maxProcesses.$invalid && !$ctrl.appUtilization.maxProcesses.$pristine }"
+            >
+              <input ng-readonly="!$ctrl.override"
+                  utilization-setting="$ctrl.min"
+                  direction="lte"
+                  name="maxProcesses"
+                  type="number"
+                  min="0"
+                  integer="1"
+                  id="max-processes"
+                  ng-model="$ctrl.max"
+                  ng-change="$ctrl.parametrizedOnRuntimeFormChange()"
+              >
+              <span ng-hide="$ctrl.appUtilization.maxProcesses.$pristine">
+                <p ng-show="$ctrl.appUtilization.maxProcesses.$error.utilizationsetting && !$ctrl.appUtilization.maxProcesses.$error.number && !$ctrl.appUtilization.maxProcesses.$error.min && !$ctrl.appUtilization.maxProcesses.$error.integer" 
+                    class="textInputError"
+                >
+                  Max Processes must be >= Min Processes.
+                </p>
+                <p ng-show="$ctrl.appUtilization.maxProcesses.$error.integer" class="textInputError">
+                  Value must be a valid integer.
+                </p>
+                <p ng-show="$ctrl.appUtilization.maxProcesses.$error.number" class="textInputError">
+                  Not a valid number.
+                </p>
+                <p ng-show="$ctrl.appUtilization.maxProcesses.$error.min" class="textInputError">
+                  Value must be >= 0.
+                </p>
+              </span>
+            </div>
+          </div>
+
+          <div class="rsc-row header flex">
+            <div>Min processes</div>
+            <div class="infoToggle" ng-click="$ctrl.runtimeToggleInfo(2)"></div>
+          </div>
+          <div ng-show="$ctrl.infoToggleState[2]" class="subPanel">
+            <div class="settingsNote">
+              The minimum number of R processes that will be kept running for
+              this content, regardless of load.
+            </div>
+          </div>
+          <div class="rsc-row">
+            <div class="form-group textInputContainer"
+                ng-class="{ 'hasWarning': $ctrl.min > 9, 'hasError' : $ctrl.appUtilization.minProcesses.$invalid && !$ctrl.appUtilization.minProcesses.$pristine }"
+            >
+              <input ng-readonly="!$ctrl.override"
+                  utilization-setting="$ctrl.max"
+                  direction="gte"
+                  name="minProcesses"
+                  type="number"
+                  min="0"
+                  max="{{$ctrl.minProcessesLimit}}"
+                  integer="1"
+                  id="min-processes"
+                  ng-model="$ctrl.min"
+                  ng-change="$ctrl.parametrizedOnRuntimeFormChange()"
+              >
+              <span ng-hide="$ctrl.appUtilization.minProcesses.$pristine">
+                <p ng-show="$ctrl.appUtilization.minProcesses.$error.utilizationsetting && !$ctrl.appUtilization.minProcesses.$error.integer"
+                    class="textInputError"
+                >
+                  Min Processes must be <= Max Processes.
+                </p>
+                <p ng-show="$ctrl.appUtilization.minProcesses.$error.integer" class="textInputError">
+                  Value must be a valid integer.
+                </p>
+                <p ng-show="$ctrl.appUtilization.minProcesses.$error.number" class="textInputError">
+                  Not a valid number.
+                </p>
+                <p ng-show="$ctrl.appUtilization.minProcesses.$error.min" class="textInputError">
+                  Value must be greater than or equal to 0.
+                </p>
+                <p ng-show="$ctrl.appUtilization.minProcesses.$error.max && !$ctrl.appUtilization.minProcesses.$error.utilizationsetting"
+                    class="textInputError"
+                >
+                  Value must be <= {{$ctrl.minProcessesLimit}}.
+                </p>
+                <p ng-show="$ctrl.min > 9 && !$ctrl.appUtilization.minProcesses.$invalid" class="textInputWarning">
+                  Warning: Large values significantly increase<br/> memory usage.
+                </p>
+              </span>
+            </div>
+          </div>
+
+          <div class="rsc-row header flex">
+            <div>Max connections per process</div>
+            <div class="infoToggle" ng-click="$ctrl.runtimeToggleInfo(3)"></div>
+          </div>
+          <div ng-show="$ctrl.infoToggleState[3]" class="subPanel">
+            <div class="settingsNote">
+              The maximum number of client connections allowed to an individual
+              R process. Incoming connections which will exceed this limit are
+              routed to a new R process or rejected.
+            </div>
+          </div>
+          <div class="rsc-row">
+            <div class="form-group textInputContainer" ng-class="{ 'hasError' : $ctrl.appUtilization.maxConnsPerProcess.$invalid && !$ctrl.appUtilization.maxConnsPerProcess.$pristine }">
+              <input ng-readonly="!$ctrl.override"
+                  type="number"
+                  min="0"
+                  integer="1"
+                  name="maxConnsPerProcess"
+                  id="max-conns-per-process"
+                  ng-model="$ctrl.maxConns"
+                  ng-change="$ctrl.parametrizedOnRuntimeFormChange()"
+              >
+              <span ng-hide="$ctrl.appUtilization.maxConnsPerProcess.$pristine">
+                <p ng-show="$ctrl.appUtilization.maxConnsPerProcess.$error.integer" class="textInputError">
+                  Value must be a valid integer.
+                </p>
+                <p ng-show="$ctrl.appUtilization.maxConnsPerProcess.$error.number" class="textInputError">
+                  Not a valid number.
+                </p>
+                <p ng-show="$ctrl.appUtilization.maxConnsPerProcess.$error.min" class="textInputError">
+                  Value must be greater than or equal to 0.
+                </p>
+              </span>
+            </div>
+          </div>
+
+          <div class="rsc-row header flex">
+            <div>Load factor: {{$ctrl.loadFactor | number: 2}}</div>
+            <div class="infoToggle" ng-click="$ctrl.runtimeToggleInfo(4)"></div>
+          </div>
+          <div ng-show="$ctrl.infoToggleState[4]" class="subPanel">
+            <div class="settingsNote">
+              A value between 0 and 1 which determines how lazily additional R processes will be spawned to
+              handle incoming load for this process. At the highest setting, Connect will only spawn
+              additional R processes when existing processes are not allowed to accept an additional
+              connection. At the lowest setting, Connect will create many new R processes as new users
+              arrive to handle the load.
+            </div>
+          </div>
+          <div class="rsc-row rangeContainer">
+            <input type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                ng-model="$ctrl.loadFactor"
+                ng-change="$ctrl.parametrizedOnRuntimeFormChange()"
+                ng-disabled="!$ctrl.override"
+            >
+          </div>
+          <div class="rsc-row rangeValues">
+            <div class="min">0</div>
+            <div class="max">1</div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</app-tab>

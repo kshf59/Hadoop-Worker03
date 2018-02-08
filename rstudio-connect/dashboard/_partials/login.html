@@ -1,0 +1,57 @@
+<div class="band pushFooter">
+  <div class="bandContent mainPage">
+    <div class="fullPageFormContainer" ng-show="ready" ng-cloak>
+      <div class="formTitle">Log in</div>
+      <form name="loginForm" role="form" ng-submit="signIn(false);" id="sel_login_panel">
+
+        <fieldset class="chunk login-type">
+          <div>Log in with your {{authentication_name}} credentials</div>
+        </fieldset>
+
+        <fieldset class="chunk">
+          <div class="textInputContainer" ng-class="{'labelAbove': user.username, 'hasFocus': focus.username, 'hasError': loginForm.username.$invalid && !loginForm.username.$pristine}">
+            <input id="username" name="username" type="text" ng-focus="handleOnFocus('username')" ng-blur="handleOnBlur('username')" ng-model="user.username" not-blank/>
+            <div class="textInputLabel" ng-click="setFocusedElement('username')">Username</div>
+            <span ng-hide="loginForm.username.$pristine">
+              <div ng-show="loginForm.username.$error.blankValue" class="textInputError">{{valueError.isBlank}}</div>
+            </span>
+          </div>
+        </fieldset>
+
+        <fieldset class="chunk">
+          <div class="textInputContainer" ng-class="{'labelAbove': user.password, 'hasFocus': focus.password }">
+            <input id="password" name="password" type="password" ng-focus="handleOnFocus('password')" ng-blur="handleOnBlur('password')" ng-model="user.password"/>
+            <div class="textInputLabel" ng-click="setFocusedElement('password')">Password</div>
+          </div>
+          <div ng-hide="external_user_data" class="right finePrint"><a href="#/resetpassword?u={{username}}">Forgot your password?</a></div>
+        </fieldset>
+
+        <img id="captcha-image" ng-if="challenge_img" data-ng-src="data:image/png;base64,{{challenge_img}}"
+             alt="image captcha"
+        >
+        <audio ng-if="challenge_audio" controls>
+          Audio captcha is unsupported on this browser.
+          <source data-ng-src="data:audio/wav;base64,{{challenge_audio}}" type="audio/wav">
+        </audio>
+
+        <div class="chunk" ng-if="challenge_response_enabled && !(challenge_audio || challenge_img)">
+          A new captcha is loading, please wait.
+        </div>
+
+        <fieldset class="chunk" ng-show="challenge_response_enabled">
+          <div class="textInputContainer" ng-class="{'labelAbove': user.response, 'hasFocus': focus.response, 'hasError': loginForm.response.$invalid && !loginForm.response.$pristine}">
+            <!-- `type="text"` is needed by css here, despite being implied -->
+            <input type="text" id="response" name="response" ng-model="user.response" ng-focus="handleOnFocus('response')" ng-blur="handleOnBlur('response')">
+            <div class="textInputLabel" ng-click="setFocusedElement('response')">Verification</div>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="submit">Log In</button>
+        </div>
+
+      </form>
+      <div ng-show="showRegisterLink" class="formFooter">Don't have an account? <a ng-click="register();">Sign Up</a></div>
+    </div>
+  </div>
+</div>

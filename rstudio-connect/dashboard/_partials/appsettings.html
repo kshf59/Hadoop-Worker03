@@ -1,0 +1,49 @@
+<div>
+
+<div class="appsettings settingsPane" ng-if="loaded">
+  <div>
+      <div class="formSection">
+        <div class="tabs">
+          <div ng-repeat="tab in tabs" class="{{'tab ' + tab.icon}}" ng-class="{ 'current' : isTabActive(tab.route)  }">
+            <a href="{{tab.href}}">{{tab.name}}</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab content -->
+      <ui-view></ui-view>
+
+  </div>
+</div>
+<div class="container-fluid standardPadding" ng-if="missing">
+  <div ng-if="!dopub">
+    <div ng-if="!loggedIn()">
+      <h2>You're Not Logged In</h2>
+      <p class="lead">You must log in to view and edit content settings.</p>
+      <a class = "btn btn-primary" href="{{signInUrl()}}">Sign in</a>
+    </div>
+    <div ng-if="loggedIn()">
+      <h2>Not found</h2>
+      <p class="lead">This application is missing or not visible to you.</p>
+      <p>The application may have been deleted, or you may have followed an
+      incorrect link.</p>
+      <br />
+      <a class="btn btn-primary" ui-sref="content.listing">Back to app list</a>
+    </div>
+  </div>
+  <div ng-if="dopub">
+    <div ng-if="!loggedIn()">
+      <h2>You're Not Logged In</h2>
+      <p class="lead">You must log in to finish publishing your content.</p>
+      <a class = "btn btn-primary" href="{{signInUrl()}}">Sign in</a>
+    </div>
+    <div ng-if="loggedIn()">
+      <h2>Wrong account?</h2>
+      <p class="lead">Are you logged in as the right user?</p>
+      <p>It looks like you're trying to publish an application, but the account you're logged in as doesn't have permissions to be here. Perhaps you're trying to publish to a different account?</p>
+      <a class="btn btn-primary" ui-sref="content.listing">Back to app list</a>
+    </div>
+  </div>
+</div>
+
+</div>

@@ -1,0 +1,2 @@
+ALTER TABLE bundles DROP COLUMN url;
+ALTER TABLE bundles DROP COLUMN dir_path;

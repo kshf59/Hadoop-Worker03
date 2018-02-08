@@ -1,0 +1,4 @@
+#!/bin/sh
+dir=`dirname "$0"`
+export LD_LIBRARY_PATH="$dir/../ext/activation:$LD_LIBRARY_PATH"
+exec "$dir/../ext/activation/license-manager" "$@"

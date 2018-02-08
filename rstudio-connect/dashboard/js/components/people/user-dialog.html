@@ -1,0 +1,57 @@
+<modal-dialog key="$ctrl.key" on-cancel="$ctrl.onCancel()">
+  <div class="purpose">{{$ctrl.purpose}} </div>
+  <form name="$ctrl.newUserForm" id="newUserForm" ng-submit="$ctrl.handleSubmit($event, $ctrl.key)">
+
+    <!-- the main form -->
+    <div class="formSection">
+
+      <field label="Username" error="{{$ctrl.newUserForm.username.$invalid && !$ctrl.newUserForm.username.$pristine}}">
+        <input type="text" name="username" ng-model="$ctrl.state.user.username" valid-username not-blank />
+        <span ng-hide="$ctrl.newUserForm.username.$pristine">
+          <div ng-show="$ctrl.newUserForm.username.$error.blankValue" class="textInputError">{{valueError.isBlank}}</div>
+          <div ng-show="$ctrl.newUserForm.username.$error.shortUsername" class="textInputError">{{usernameError.isShort}}</div>
+          <div ng-show="$ctrl.newUserForm.username.$error.longUsername" class="textInputError">{{usernameError.isLong}}</div>
+          <div ng-show="$ctrl.newUserForm.username.$error.firstCharacter" class="textInputError">{{usernameError.badFirstChar}}</div>
+          <div ng-show="$ctrl.newUserForm.username.$error.validCharacters" class="textInputError">{{usernameError.badChar}}</div>
+          <div ng-show="$ctrl.newUserForm.username.$error.blacklisted" class="textInputError">{{usernameError.blacklisted}}</div>
+        </span>
+      </field>
+
+
+      <field label="First Name" error="{{$ctrl.newUserForm.first_name.$invalid && !$ctrl.newUserForm.first_name.$pristine}}">
+        <input name="first_name" type="text" id="first_name" ng-model="$ctrl.state.user.first_name" not-blank />
+        <span ng-hide="$ctrl.newUserForm.first_name.$pristine">
+          <div ng-show="$ctrl.newUserForm.first_name.$error.blankValue" class="textInputError">{{valueError.isBlank}}</div>
+        </span>
+      </field>
+
+      <field label="Last Name" error="{{$ctrl.newUserForm.last_name.$invalid && !$ctrl.newUserForm.last_name.$pristine}}">
+        <input name="last_name" type="text" id="last_name" ng-model="$ctrl.state.user.last_name" not-blank />
+        <span ng-hide="$ctrl.newUserForm.last_name.$pristine">
+          <div ng-show="$ctrl.newUserForm.last_name.$error.blankValue" class="textInputError">{{valueError.isBlank}}</div>
+        </span>
+      </field>
+
+      <field label="Email" error="{{$ctrl.newUserForm.email.$invalid && !$ctrl.newUserForm.email.$pristine}}">
+        <input type="text" name="email" ng-model="$ctrl.state.user.email" valid-email not-blank />
+        <span ng-hide="$ctrl.newUserForm.email.$pristine">
+          <div ng-show="$ctrl.newUserForm.email.$error.blankValue" class="textInputError">{{valueError.isBlank}}</div>
+          <div ng-show="$ctrl.newUserForm.email.$error.validEmail" class="textInputError">{{validEmailErrorMessage}}</div>
+        </span>
+      </field>
+
+      <field label="Role">
+        <select class="full" id="user_role" ng-model="$ctrl.state.user.user_role">
+          <option value="viewer">Viewer</option>
+          <option value="publisher">Publisher</option>
+          <option value="administrator" ng-disabled="$ctrl.notAdmin()">Administrator</option>
+        </select>
+      </field>
+
+    </div>
+
+    <div class="actions">
+      <button id="sel_submit_new_user" type="submit">{{$ctrl.button}}</button>
+    </div>
+  </form>
+</modal-dialog>

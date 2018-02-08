@@ -1,0 +1,23 @@
+<div class="historyBarContainer">
+  <div class="actionBar inline">
+    <!-- Uncomment the line below when implementing the floating window UI for history: -->
+    <!--<button class="action showHistoryPanel first" disabled="disabled"></button>-->
+
+    <!-- Uncomment the two lines below when implementing scrolling history header: -->
+    <!--<button class="action arrowLeft" disabled="disabled"></button>-->
+    <!--<button class="action arrowRight first" disabled="disabled"></button>-->
+  </div>
+  <div class="listOuterContainer">
+    <div class="listContainer">
+      <div class="listbox horizontal alignRight">
+        <div class="item"
+             ng-class="{'selected': item.id === $ctrl.appHistory.displayedBundleId}"
+             ng-click="$ctrl.displayBundle(item)"
+             ng-repeat="item in $ctrl.appHistory.items | orderBy:'updated_time'">
+          {{item.updated_time | date: 'short'}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="barClose" ng-click="$ctrl.toggleHistory()"></div>
+</div>

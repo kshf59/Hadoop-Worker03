@@ -1,0 +1,9 @@
+<ul ng-if="pager.total_pages > 1" class="{{cssClass}} {{cssClass}}-{{size}}">
+  <li ng-class="{ 'disabled': pager.on_first }"><a href="#" ng-click="pager.first_page(); $event.preventDefault();"><i class="fa fa-angle-double-left"></i></a></li>
+  <li ng-class="{ 'disabled': pager.on_first }"><a href="#" ng-click="pager.prev_page(); $event.preventDefault();"><i class="fa fa-angle-left"></i></a></li>
+  <li ng-repeat="num in pager.visible_pages" ng-class="{ 'active': pager.page === num }">
+    <a href="#" ng-click="pager.set_page(num); $event.preventDefault()">{{ num + 1 }}</a>
+  </li>
+  <li ng-class="{ 'disabled': pager.on_last }"><a href="#" ng-click="pager.next_page(); $event.preventDefault();"><i class="fa fa-angle-right"></i></a></li>
+  <li ng-class="{ 'disabled': pager.on_last }"><a href="#" ng-click="pager.last_page(); $event.preventDefault();"><i class="fa fa-angle-double-right"></i></a></li>
+</ul>

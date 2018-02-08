@@ -1,0 +1,34 @@
+<app-tab>
+  <save-settings-panel
+    show="$ctrl.saveDialog.wrappedShowSave"
+    save-action="$ctrl.saveDialog.wrappedSaveAppSettings"
+    cancel-action="$ctrl.saveDialog.wrappedCancelSave"
+    save-title="'Save'"
+    save-disabled="false"
+  >
+  </save-settings-panel>
+  <div ng-if="$ctrl.showAppTagsSettings">
+  <form role="form" name="app-tags" class="form-horizontal" novalidate>
+    <fieldset ng-disabled="!$ctrl.canEdit">
+      <rsc-category-checkbox-tree
+        enabled="$ctrl.canEdit"
+        selected-checks="$ctrl.categoryCheckboxTree.selectedChecks"
+        categories="$ctrl.categoryCheckboxTree.categories"
+        on-checkbox-change="$ctrl.categoryCheckboxTree.onCheckboxChange"
+      >
+      </rsc-category-checkbox-tree>
+    </fieldset>
+  </form>
+  </div>
+  <!-- no tags message -->
+  <div ng-if="$ctrl.showNoCategoriesMessage">
+    <p class="text-muted lead">No tags can be assigned because none have been created yet.</p>
+    <p ng-if="$ctrl.isAdmin">
+      To create some tags, please use the <a ui-sref="admin.tag_editor">Tag Editor</a>.
+      Only an administrator can create tags.
+    </p>
+    <p ng-if="!$ctrl.isAdmin">
+      Contact an administrator for more information.
+    </p>
+  </div>
+</app-tab>

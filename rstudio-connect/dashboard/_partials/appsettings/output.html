@@ -1,0 +1,28 @@
+<app-tab>
+  <div ng-if="sc.isNewVariant" class="formSection infoSection">
+    <p>
+      Unsaved reports cannot be scheduled. Please save this report before
+      attempting to schedule it.
+    </p>
+  </div>
+  <div ng-if="sc.notSchedulable" class="formSection infoSection">
+    <p ng-if="sc.app.isWorker()">
+      This is {{ sc.appModeDescription() }}
+      so there is no need to render on a schedule - it will present the
+      latest data whenever it is run.
+    </p>
+    <p ng-if="sc.app.isStatic()">
+      The source code for this content was not published. The output cannot be
+      refreshed.
+    </p>
+    <p ng-if="sc.app.isUnknown()">
+      This content cannot be refreshed.
+    </p>
+  </div>
+  <div ng-if="sc.schedulable">
+    <!-- Use an `ng-repeat` to force the directive to rerender when the selected variant changes -->
+    <div relink-event="DiscardVariantChanges">
+      <variant ng-if="sc.variant" ng-repeat="v in [sc.variant]" app="sc.app" variant="v" variants="sc.variants" unsubscribe="sc.unsubscribe" dirty-state-change="sc.dirtyStateChange"></variant>
+    </div>
+  </div>
+</app-tab>
